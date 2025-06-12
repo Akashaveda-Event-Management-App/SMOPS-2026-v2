@@ -1,0 +1,2959 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="SMOPS-2025: International Conference on Spacecraft Mission Operations"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <title>SMOPS-2026: Spacecraft Mission Operations</title>
+
+    <!-- Preload important resources -->
+    <link rel="preload" href="css/space-theme.css" as="style" />
+    <link rel="preload" href="js/space-animations.js" as="script" />
+    <link rel="preload" href="assets/videos/space-hero.mp4" as="video" />
+
+    <!-- Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Enable smooth scrolling and dark mode -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              primary: "#1e40af",
+              secondary: "#0f172a",
+              space: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
+              },
+              accent: {
+                yellow: "#fbbf24",
+                blue: "#3b82f6",
+                purple: "#8b5cf6",
+              },
+            },
+            animation: {
+              "fade-in": "fadeIn 0.6s ease-out forwards",
+              "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+              "fade-in-down": "fadeInDown 0.8s ease-out forwards",
+              "fade-in-left": "fadeInLeft 0.8s ease-out forwards",
+              "fade-in-right": "fadeInRight 0.8s ease-out forwards",
+              "slide-up": "slideUp 0.6s ease-out forwards",
+              "slide-down": "slideDown 0.6s ease-out forwards",
+              "scale-in": "scaleIn 0.6s ease-out forwards",
+              float: "float 6s ease-in-out infinite",
+              "pulse-glow": "pulseGlow 2s ease-in-out infinite alternate",
+              "rotate-slow": "rotateSlow 20s linear infinite",
+              "bounce-slow": "bounceSlow 3s ease-in-out infinite",
+              shimmer: "shimmer 2s ease-in-out infinite",
+              typewriter: "typewriter 3s steps(40) 1s forwards",
+              blink: "blink 1s ease-in-out infinite",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              fadeInUp: {
+                "0%": { opacity: "0", transform: "translateY(30px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              fadeInDown: {
+                "0%": { opacity: "0", transform: "translateY(-30px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              fadeInLeft: {
+                "0%": { opacity: "0", transform: "translateX(-30px)" },
+                "100%": { opacity: "1", transform: "translateX(0)" },
+              },
+              fadeInRight: {
+                "0%": { opacity: "0", transform: "translateX(30px)" },
+                "100%": { opacity: "1", transform: "translateX(0)" },
+              },
+              slideUp: {
+                "0%": { opacity: "0", transform: "translateY(50px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              slideDown: {
+                "0%": { opacity: "0", transform: "translateY(-50px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              scaleIn: {
+                "0%": { opacity: "0", transform: "scale(0.9)" },
+                "100%": { opacity: "1", transform: "scale(1)" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+              pulseGlow: {
+                "0%": { boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)" },
+                "100%": { boxShadow: "0 0 40px rgba(59, 130, 246, 0.8)" },
+              },
+              rotateSlow: {
+                "0%": { transform: "rotate(0deg)" },
+                "100%": { transform: "rotate(360deg)" },
+              },
+              bounceSlow: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              shimmer: {
+                "0%": { backgroundPosition: "-200% 0" },
+                "100%": { backgroundPosition: "200% 0" },
+              },
+              typewriter: {
+                "0%": { width: "0" },
+                "100%": { width: "100%" },
+              },
+              blink: {
+                "50%": { opacity: "0" },
+              },
+            },
+            spacing: {
+              18: "4.5rem",
+              88: "22rem",
+              128: "32rem",
+            },
+            boxShadow: {
+              "inner-lg": "inset 0 2px 15px 0 rgba(0, 0, 0, 0.05)",
+              glow: "0 0 20px rgba(59, 130, 246, 0.3)",
+              "glow-lg": "0 0 40px rgba(59, 130, 246, 0.4)",
+              neon: "0 0 5px theme(colors.blue.400), 0 0 20px theme(colors.blue.400), 0 0 35px theme(colors.blue.400)",
+              "neon-purple":
+                "0 0 5px theme(colors.purple.400), 0 0 20px theme(colors.purple.400), 0 0 35px theme(colors.purple.400)",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-sans bg-space-900 text-white overflow-x-hidden">
+    <!-- Star background -->
+    <div class="fixed inset-0 star-bg opacity-50 pointer-events-none z-0"></div>
+
+    <!-- Navbar -->
+    <nav
+      class="w-full z-50 bg-black/60 backdrop-blur-lg border-b border-white/10 transition-all duration-300 animate-fade-in-down fixed top-0 left-0 shadow-lg"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20 relative z-10">
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <a
+              href="/"
+              class="transition-transform hover:scale-105 duration-300"
+            >
+              <img
+                src="assets/images/smops2025logo.png"
+                alt="SMOPS-2025 logo"
+                class="h-16 w-auto"
+              />
+            </a>
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex md:items-center md:space-x-8">
+            <!-- Navigation Links -->
+            <nav class="flex items-center space-x-6">
+              <a
+                href="#overview"
+                class="nav-link text-sm font-medium text-white hover:text-white/80 transition-colors duration-300"
+                >Overview</a
+              >
+              <a
+                href="#about"
+                class="nav-link text-sm font-medium text-white hover:text-white/80 transition-colors duration-300"
+                >About Us</a
+              >
+
+              <!-- Topics Dropdown -->
+              <div class="relative group z-40">
+                <button
+                  class="flex items-center space-x-1 text-white hover:text-white/80 text-sm font-medium"
+                >
+                  <span>Topics</span>
+                  <svg
+                    class="w-4 h-4 transition-transform group-hover:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <div
+                  class="absolute left-0 mt-2 w-56 z-50 rounded-lg shadow-lg bg-black/80 backdrop-blur-md border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out"
+                >
+                  <div class="py-1">
+                    <a
+                      href="#topics-spacecraft"
+                      class="block px-4 py-2 text-sm text-white/90 hover:bg-white/10"
+                      >Spacecraft Operations</a
+                    >
+                    <a
+                      href="#topics-ground"
+                      class="block px-4 py-2 text-sm text-white/90 hover:bg-white/10"
+                      >Ground Systems</a
+                    >
+                    <a
+                      href="#topics-automation"
+                      class="block px-4 py-2 text-sm text-white/90 hover:bg-white/10"
+                      >Automation & AI</a
+                    >
+                    <a
+                      href="#topics-security"
+                      class="block px-4 py-2 text-sm text-white/90 hover:bg-white/10"
+                      >Cybersecurity</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="#Timeline"
+                class="nav-link text-sm font-medium text-white hover:text-white/80"
+                >Important Dates</a
+              >
+              <a
+                href="#Committee"
+                class="nav-link text-sm font-medium text-white hover:text-white/80"
+                >Committee</a
+              >
+
+              <!-- Registration Dropdown -->
+              <div class="relative group z-40">
+                <button
+                  class="flex items-center space-x-1 text-white hover:text-white/80 text-sm font-medium"
+                >
+                  <span>Registration</span>
+                  <svg
+                    class="w-4 h-4 transition-transform group-hover:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <div
+                  class="absolute left-0 mt-2 w-56 z-50 rounded-md shadow-lg bg-black/80 backdrop-blur-md ring-1 ring-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out"
+                >
+                  <div class="py-1">
+                    <a
+                      href="#Registration"
+                      class="block px-4 py-2 text-sm text-white hover:bg-white/10"
+                      >Registration Info</a
+                    >
+                    <a
+                      href="#Paper"
+                      class="block px-4 py-2 text-sm text-white hover:bg-white/10"
+                      >Paper Submission</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Support Dropdown -->
+              <div class="relative group z-40">
+                <button
+                  class="flex items-center space-x-1 text-white hover:text-white/80 text-sm font-medium"
+                >
+                  <span>Support</span>
+                  <svg
+                    class="w-4 h-4 transition-transform group-hover:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <div
+                  class="absolute left-0 mt-2 w-56 z-50 rounded-md shadow-lg bg-black/80 backdrop-blur-md ring-1 ring-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out"
+                >
+                  <div class="py-1">
+                    <a
+                      href="#sponsorship"
+                      class="block px-4 py-2 text-sm text-white hover:bg-white/10"
+                      >Sponsorship</a
+                    >
+                    <a
+                      href="#Supporters"
+                      class="block px-4 py-2 text-sm text-white hover:bg-white/10"
+                      >Supporters</a
+                    >
+                    <a
+                      href="#contact"
+                      class="block px-4 py-2 text-sm text-white hover:bg-white/10"
+                      >Contact Us</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </nav>
+
+            <!-- Register Button -->
+            <a
+              href="#Registration"
+              class="cosmic-hover inline-flex items-center px-4 py-2 border border-white/20 text-sm font-medium rounded-md text-white hover:bg-white/10"
+              >Register Now</a
+            >
+          </div>
+
+          <!-- Partner Logos -->
+          <div class="hidden md:flex items-center space-x-4">
+            <a href="https://www.isro.gov.in/" target="_blank"
+              ><img
+                src="assets/images/ISRO-logo.svg"
+                alt="ISRO logo"
+                class="h-16 w-auto"
+            /></a>
+            <a href="https://www.asindia.org/" target="_blank"
+              ><img
+                src="assets/images/ASI2.png"
+                alt="ASI logo"
+                class="h-16 w-auto"
+            /></a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="flex items-center md:hidden">
+            <button
+              onclick="toggleMobileMenu()"
+              class="p-2 rounded-md text-white hover:bg-white/10"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="w-full bg-black/90 backdrop-blur-lg hidden md:hidden"
+      >
+        <div class="mobile-menu-content py-8 px-6">
+          <div class="flex justify-end mb-4">
+            <button
+              onclick="toggleMobileMenu()"
+              class="p-2 text-white/90 hover:text-white transition"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <nav class="flex flex-col space-y-6">
+            <a
+              href="#overview"
+              class="text-xl font-medium text-white hover:text-white/80"
+              >Overview</a
+            >
+            <a
+              href="#topics"
+              class="text-xl font-medium text-white hover:text-white/80"
+              >Topics</a
+            >
+            <a
+              href="#Timeline"
+              class="text-xl font-medium text-white hover:text-white/80"
+              >Important Dates</a
+            >
+            <a
+              href="#Committee"
+              class="text-xl font-medium text-white hover:text-white/80"
+              >Committee</a
+            >
+            <a
+              href="#Registration"
+              class="text-xl font-medium text-white hover:text-white/80"
+              >Registration</a
+            >
+            <a
+              href="#sponsorship"
+              class="text-xl font-medium text-white hover:text-white/80"
+              >Sponsorship</a
+            >
+            <a
+              href="#Supporters"
+              class="text-xl font-medium text-white hover:text-white/80"
+              >Supporters</a
+            >
+            <a
+              href="#contact"
+              class="text-xl font-medium text-white hover:text-white/80"
+              >Contact Us</a
+            >
+          </nav>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      <!-- Video Background -->
+      <div class="absolute inset-0 w-full h-full">
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-space-900/90 via-transparent to-space-900/90 z-10"
+        ></div>
+        <video
+          class="w-full h-full object-cover scale-105 object-center"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="assets/videos/space.mp4" type="video/mp4" />
+          <!-- Fallback for browsers that don't support video -->
+          <img
+            src="assets/gifs/space-hero.gif"
+            alt="Space background"
+            class="w-full h-full object-cover"
+          />
+        </video>
+      </div>
+
+      <!-- Hero Content -->
+      <div
+        class="relative z-20 text-center text-white px-4 sm:px-8 lg:px-8 max-w-full sm:max-w-3xl mx-auto"
+      >
+        <div class="space-y-4 sm:space-y-6">
+          <h1
+            class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight animate-fade-in-up"
+          >
+            <span
+              class="block bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
+            >
+              International Conference on
+            </span>
+            <span
+              class="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-blue-400 to-purple-400"
+            >
+              Spacecraft Mission Operations
+            </span>
+          </h1>
+          <h2
+            class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold bg-clip-text text-white animate-fade-in-up"
+            style="animation-delay: 0.2s"
+          >
+            SMOPS-2026
+          </h2>
+          <p
+            class="text-base sm:text-lg md:text-xl mb-6 text-blue-100/90 animate-fade-in-up"
+            style="animation-delay: 0.4s"
+          >
+            8th - 9th Apr 2026 • Bengaluru, India
+          </p>
+
+          <!-- Countdown -->
+          <div
+            class="cosmic-hover inline-block backdrop-blur-md bg-gradient-to-r from-blue-900/40 via-purple-900/40 to-blue-900/40 border border-white/10 text-white font-bold px-6 py-4 rounded-xl text-sm sm:text-base shadow-glow animate-scale-in"
+            id="countdown"
+            style="animation-delay: 0.6s"
+          >
+            <div
+              class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4"
+            >
+              <span
+                class="w-3 h-3 bg-blue-400 rounded-full animate-pulse shadow-glow"
+              ></span>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
+                <div class="text-center">
+                  <div
+                    class="text-lg sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-blue-200 to-blue-400"
+                    id="days"
+                  >
+                    000
+                  </div>
+                  <div
+                    class="text-xs uppercase tracking-wider text-blue-200/80"
+                  >
+                    Days
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div
+                    class="text-lg sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-purple-200 to-purple-400"
+                    id="hours"
+                  >
+                    00
+                  </div>
+                  <div
+                    class="text-xs uppercase tracking-wider text-purple-200/80"
+                  >
+                    Hours
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div
+                    class="text-lg sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-indigo-200 to-indigo-400"
+                    id="minutes"
+                  >
+                    00
+                  </div>
+                  <div
+                    class="text-xs uppercase tracking-wider text-indigo-200/80"
+                  >
+                    Mins
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div
+                    class="text-lg sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-pink-200 to-pink-400"
+                    id="seconds"
+                  >
+                    00
+                  </div>
+                  <div
+                    class="text-xs uppercase tracking-wider text-pink-200/80"
+                  >
+                    Secs
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div
+            class="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 animate-fade-in-up"
+            style="animation-delay: 0.8s"
+          >
+            <a
+              href="#Registration"
+              class="w-full sm:w-auto cosmic-hover px-6 sm:px-8 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white rounded-full font-semibold shadow-glow transition-all duration-300 hover:shadow-glow-lg transform hover:scale-105 text-center"
+            >
+              Register Now
+            </a>
+            <a
+              href="#Paper"
+              class="w-full sm:w-auto cosmic-hover px-6 sm:px-8 py-3 bg-white/5 backdrop-blur-sm border border-white/20 text-white/90 rounded-full font-semibold hover:bg-white/10 hover:text-white hover:border-white/30 transition-all duration-300 shadow-lg transform hover:scale-105 text-center"
+            >
+              Call for Papers
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section
+      id="overview"
+      class="py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      <!-- Space Background -->
+      <div class="absolute inset-0 w-full h-full">
+        <!-- Video Layer -->
+        <video
+          class="w-full h-full object-cover scale-105 opacity-100"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="assets/videos/1.mp4" type="video/mp4" />
+          <!-- Fallback for browsers that don't support video -->
+          <img
+            src="assets/gifs/space-hero.gif"
+            alt="Space background"
+            class="w-full h-full object-cover"
+          />
+        </video>
+
+        <!-- Dark Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-15"
+        ></div>
+      </div>
+
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div
+            class="glassmorphic-bg p-8 sm:p-10 md:p-12 rounded-3xl animate-fade-in-up"
+          >
+            <div class="text-center mb-8 sm:mb-12">
+              <div class="inline-block cosmic-hover">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                  <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
+                  >
+                    Theme of the Conference
+                  </span>
+                </h2>
+                <div
+                  class="h-1 w-32 sm:w-40 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"
+                ></div>
+              </div>
+              <p
+                class="text-lg sm:text-xl lg:text-2xl font-semibold mt-6 max-w-3xl mx-auto bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-300 to-yellow-200"
+              >
+                Emerging Technologies and Automation in Space Mission Operations
+                and Ground Segment
+              </p>
+            </div>
+
+            <div class="space-y-6 text-base sm:text-lg">
+              <p
+                class="leading-relaxed text-blue-100/90 animate-fade-in-left"
+                style="animation-delay: 0.2s"
+              >
+                This conference is to associate and connect with the various
+                space agencies, start-ups, industry and academia. The conference
+                aims to bring in all space leaders together to share their views
+                on existing technologies and its challenges, while previewing
+                the state-of-the-art technologies that are being conceived
+                globally to make space mission operations more secure and
+                robust.
+              </p>
+              <p
+                class="leading-relaxed text-blue-100/90 animate-fade-in-left"
+                style="animation-delay: 0.4s"
+              >
+                The scope of the conference is to cover a wide range of topics
+                related to mission operations management, advanced mission
+                design, automation, large constellations management, present and
+                future trends in ground station operations etc… while addressing
+                the futuristic techniques in both upstream and downstream
+                segments.
+              </p>
+              <p
+                class="leading-relaxed text-blue-100/90 animate-fade-in-left"
+                style="animation-delay: 0.6s"
+              >
+                This conference will provide a platform to boost the synergy
+                between start-ups, academia, industry and space agencies; also
+                provide the opportunity for users to interact with service
+                providers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section
+      id="topics"
+      class="py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      <!-- Background -->
+      <div class="absolute inset-0 w-full h-full">
+        <!-- Video Layer -->
+        <video
+          class="w-full h-full object-cover scale-105 opacity-100"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="assets/videos/2.mp4" type="video/mp4" />
+          <!-- Fallback for browsers that don't support video -->
+          <img
+            src="assets/gifs/space-hero.gif"
+            alt="Space background"
+            class="w-full h-full object-cover"
+          />
+        </video>
+
+        <!-- Dark Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-15"
+        ></div>
+      </div>
+
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12 sm:mb-16 w-full">
+            <div
+              class="glassmorphic-bg p-6 sm:p-8 rounded-3xl w-full animate-fade-in-down"
+            >
+              <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                <span
+                  class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
+                >
+                  Conference Topics
+                </span>
+              </h2>
+              <div
+                class="h-1 w-32 sm:w-40 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"
+              ></div>
+              <p
+                class="mt-6 text-lg sm:text-xl text-blue-100/90 max-w-2xl mx-auto"
+              >
+                Embark on a cosmic journey through our key conference topics
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion -->
+          <div class="w-full space-y-4">
+            <!-- Topic 1 -->
+            <div
+              class="glassmorphic-bg p-4 sm:p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 animate-fade-in-up"
+              style="animation-delay: 0.1s"
+            >
+              <button
+                class="flex justify-between items-center w-full group"
+                onclick="toggleAccordion('topic1')"
+              >
+                <h3
+                  class="text-lg sm:text-xl font-semibold text-white/90 group-hover:text-white transition-colors duration-300 text-left"
+                >
+                  Present and Future trends in S/C operations and mission design
+                </h3>
+                <svg
+                  class="w-6 h-6 text-white/70 group-hover:text-white transform transition-transform duration-200 flex-shrink-0 ml-4"
+                  id="icon-topic1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div class="mt-4 pl-4 hidden" id="topic1">
+                <ul class="space-y-2 text-sm sm:text-base text-blue-100/80">
+                  <li>• Mission design and architecture</li>
+                  <li>• Mission operation management</li>
+                  <li>
+                    • Science mission design and operation challenges
+                    (Astronomy, Lunar, Solar and planetary mission)
+                  </li>
+                  <li>
+                    • Mission design and operations strategy for Lunar missions
+                  </li>
+                  <li>• Mission operation strategy for Robotic mission</li>
+                  <li>• Emergency and Contingency Operation methodology</li>
+                  <li>• Low cost solution for satellite mission management</li>
+                  <li>
+                    • On-Board Automation and Lost in space Recovery techniques
+                  </li>
+                  <li>• Methodologies for Attitude Accuracy Improvement</li>
+                  <li>
+                    • Automation in mission Operation Management and Ground
+                    resource optimization
+                  </li>
+                  <li>• End of Life mission Management strategy</li>
+                  <li>• Challenges in Autonomous Satellite design</li>
+                  <li>
+                    • System Design and operations for next generation payloads
+                  </li>
+                  <li>
+                    • Novel techniques for mission management using electric
+                    propulsion systems
+                  </li>
+                  <li>• Latest trends in spacecraft thermal management</li>
+                  <li>• On-orbit satellite servicing</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div
+              class="glassmorphic-bg p-4 sm:p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 animate-fade-in-up"
+              style="animation-delay: 0.2s"
+            >
+              <button
+                class="flex justify-between items-center w-full group"
+                onclick="toggleAccordion('topic2')"
+              >
+                <h3
+                  class="text-lg sm:text-xl font-semibold text-white/90 group-hover:text-white transition-colors duration-300 text-left"
+                >
+                  Operation Challenges in GSO mission
+                </h3>
+                <svg
+                  class="w-6 h-6 text-white/70 group-hover:text-white transform transition-transform duration-200 flex-shrink-0 ml-4"
+                  id="icon-topic2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div class="mt-4 pl-4 hidden" id="topic2">
+                <ul class="space-y-2 text-sm sm:text-base text-blue-100/80">
+                  <li>
+                    • Communication payloads Users challenges - Interference,
+                    Geo-location and mitigation
+                  </li>
+                  <li>• GSO satellite Launch and Early Orbit Operations</li>
+                  <li>
+                    • Electric propulsion Orbit Raising (EOR) Operation and
+                    mission management
+                  </li>
+                  <li>
+                    • High throughput satellites (HTS)- Beam Pointing
+                    methodologies, In Orbit testing of payloads
+                  </li>
+                  <li>
+                    • Formation Flying and colocation of satellites in GSO -
+                    Operations and challenges
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div
+              class="glassmorphic-bg p-4 sm:p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 animate-fade-in-up"
+              style="animation-delay: 0.3s"
+            >
+              <button
+                class="flex justify-between items-center w-full group"
+                onclick="toggleAccordion('topic3')"
+              >
+                <h3
+                  class="text-lg sm:text-xl font-semibold text-white/90 group-hover:text-white transition-colors duration-300 text-left"
+                >
+                  Human Spaceflight mission operation management
+                </h3>
+                <svg
+                  class="w-6 h-6 text-white/70 group-hover:text-white transform transition-transform duration-200 flex-shrink-0 ml-4"
+                  id="icon-topic3"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div class="mt-4 pl-4 hidden" id="topic3">
+                <ul class="space-y-2 text-sm sm:text-base text-blue-100/80">
+                  <li>• Mission operations management</li>
+                  <li>• Ground segment architecture design</li>
+                  <li>• Reliability aspect for ground and space segment</li>
+                  <li>• Crew Training and simulation facility design</li>
+                  <li>• Mission Operation Training and simulation</li>
+                  <li>• Ascent and Descent Trajectory Design</li>
+                  <li>• Recovery and rehabilitation strategy</li>
+                  <li>• Crew Life support system design</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div
+              class="glassmorphic-bg p-4 sm:p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 animate-fade-in-up"
+              style="animation-delay: 0.4s"
+            >
+              <button
+                class="flex justify-between items-center w-full group"
+                onclick="toggleAccordion('topic4')"
+              >
+                <h3
+                  class="text-lg sm:text-xl font-semibold text-white/90 group-hover:text-white transition-colors duration-300 text-left"
+                >
+                  Satellite constellations management
+                </h3>
+                <svg
+                  class="w-6 h-6 text-white/70 group-hover:text-white transform transition-transform duration-200 flex-shrink-0 ml-4"
+                  id="icon-topic4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div class="mt-4 pl-4 hidden" id="topic4">
+                <ul class="space-y-2 text-sm sm:text-base text-blue-100/80">
+                  <li>
+                    • Formation Flying and Constellations Management techniques
+                    and challenges
+                  </li>
+                  <li>• Challenges in maintenance of constellation</li>
+                  <li>• optimal scheduling of constellation</li>
+                  <li>• multi-mission management strategy</li>
+                  <li>• Data relay and Inter-satellite communication design</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div
+              class="glassmorphic-bg p-4 sm:p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 animate-fade-in-up"
+              style="animation-delay: 0.5s"
+            >
+              <button
+                class="flex justify-between items-center w-full group"
+                onclick="toggleAccordion('topic5')"
+              >
+                <h3
+                  class="text-lg sm:text-xl font-semibold text-white/90 group-hover:text-white transition-colors duration-300 text-left"
+                >
+                  Present and Future trends in Ground Station operations
+                </h3>
+                <svg
+                  class="w-6 h-6 text-white/70 group-hover:text-white transform transition-transform duration-200 flex-shrink-0 ml-4"
+                  id="icon-topic5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div class="mt-4 pl-4 hidden" id="topic5">
+                <ul class="space-y-2 text-sm sm:text-base text-blue-100/80">
+                  <li>
+                    • New technologies in ground stations establishment and
+                    operations
+                  </li>
+                  <li>• Deep Space Network array design techniques</li>
+                  <li>• Optical and quantum communications</li>
+                  <li>
+                    • Advanced design, Interference and mitigation Ground
+                    station Communications in complete spectral bands (viz. 5-G,
+                    6-G, X-band etc.)
+                  </li>
+                  <li>• Cross support and interoperability</li>
+                  <li>• Ground station software architecture and design</li>
+                  <li>• Data acquisition system design</li>
+                  <li>• Methodology for qualifying Ground systems</li>
+                  <li>• Cloud-based Ground system architecture</li>
+                  <li>
+                    • Advance Radar design and application for space object
+                    tracking, phased array antenna design
+                  </li>
+                  <li>
+                    • Ground based optical communication and tera hertz
+                    frequency Management
+                  </li>
+                  <li>
+                    • Mobile Stations for LEO data reception - New Techniques
+                  </li>
+                  <li>
+                    • Evolving Technologies in Ground Station Miniaturization
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section
+      id="Timeline"
+      class="py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      <!-- Background -->
+      <div class="absolute inset-0 w-full h-full">
+        <!-- Video Layer -->
+        <video
+          class="w-full h-full object-cover scale-105 opacity-100"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="assets/videos/3.mp4" type="video/mp4" />
+          <!-- Fallback for browsers that don't support video -->
+          <img
+            src="assets/gifs/space-hero.gif"
+            alt="Space background"
+            class="w-full h-full object-cover"
+          />
+        </video>
+
+        <!-- Dark Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-15"
+        ></div>
+      </div>
+
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-down"
+          >
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              <span
+                class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
+              >
+                Important Dates
+              </span>
+            </h2>
+            <div
+              class="h-1 w-32 sm:w-40 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"
+            ></div>
+            <p
+              class="mt-6 text-lg sm:text-xl text-blue-100/90 max-w-2xl mx-auto"
+            >
+              Mark your calendar for these key conference milestones
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Table -->
+        <div class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-up">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left min-w-full">
+              <thead>
+                <tr class="border-b border-white/20">
+                  <th class="pb-4 text-lg sm:text-xl font-semibold text-white">
+                    Events
+                  </th>
+                  <th class="pb-4 text-lg sm:text-xl font-semibold text-white">
+                    Date
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-sm sm:text-base text-blue-100/90">
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">Announcement of Conference</td>
+                  <td class="py-4 font-semibold text-accent-yellow">
+                    To be announce
+                  </td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">Abstract Submission & Registration Opens</td>
+                  <td class="py-4 font-semibold text-accent-blue">
+                    To be announce
+                  </td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">Last date for Abstract submission</td>
+                  <td class="py-4 font-semibold text-accent-purple">
+                    To be announce
+                  </td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">
+                    Notification of acceptance and Call for Final Paper
+                    Submission
+                  </td>
+                  <td class="py-4 font-semibold text-accent-blue">
+                    To be announce
+                  </td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 bg-white/5 hover:bg-white/10 transition-colors duration-300"
+                >
+                  <td class="py-4 font-bold text-white">
+                    Last Date of Author Registration and Final Paper Submission
+                  </td>
+                  <td class="py-4 font-bold text-accent-yellow">
+                    To be announce
+                  </td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">Last Date of Early Bird Registration</td>
+                  <td class="py-4 font-semibold text-accent-purple">
+                    To be announce
+                  </td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">Last Date of Attendee Registration</td>
+                  <td class="py-4 font-semibold text-accent-blue">
+                    To be announce
+                  </td>
+                </tr>
+                <tr
+                  class="bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 transition-all duration-300"
+                >
+                  <td class="py-4 font-bold text-white">Conference Dates</td>
+                  <td class="py-4 font-bold text-accent-yellow">
+                    To be announce
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Committee Section -->
+    <section
+      id="Committee"
+      class="py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      <!-- Background -->
+      <div class="absolute inset-0 w-full h-full">
+        <!-- Video Layer -->
+        <video
+          class="w-full h-full object-cover scale-105 opacity-100"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="assets/videos/4.mp4" type="video/mp4" />
+          <!-- Fallback for browsers that don't support video -->
+          <img
+            src="assets/gifs/space-hero.gif"
+            alt="Space background"
+            class="w-full h-full object-cover"
+          />
+        </video>
+
+        <!-- Dark Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-15"
+        ></div>
+      </div>
+
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-down"
+          >
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              <span
+                class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
+              >
+                Organizing Committee
+              </span>
+            </h2>
+            <div
+              class="h-1 w-32 sm:w-40 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"
+            ></div>
+            <p
+              class="mt-6 text-lg sm:text-xl text-blue-100/90 max-w-2xl mx-auto"
+            >
+              Meet the distinguished team leading SMOPS 2026
+            </p>
+          </div>
+        </div>
+
+        <!-- Chief Patrons -->
+        <div class="mb-12 sm:mb-16">
+          <h3
+            class="text-2xl font-bold text-white mb-6 sm:mb-8 text-center animate-fade-in-left"
+          >
+            Chief Patrons
+          </h3>
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-up"
+          >
+            <div class="overflow-x-auto">
+              <table class="w-full text-left min-w-full">
+                <tbody class="text-sm sm:text-base text-blue-100/90">
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4 font-semibold text-white">
+                      Shri. Somanath S.
+                    </td>
+                    <td class="py-4">
+                      Secretary, DOS/Chairman, ISRO and President, ASI
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4 font-semibold text-white">
+                      Dr. K Radhakrishnan
+                    </td>
+                    <td class="py-4">Member, Space Commission</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4 font-semibold text-white">
+                      Shri. A. S. Kiran Kumar
+                    </td>
+                    <td class="py-4">Member, Space Commission</td>
+                  </tr>
+                  <tr class="hover:bg-white/5 transition-colors duration-300">
+                    <td class="py-4 font-semibold text-white">
+                      Dr. Pawan Kumar Goenka
+                    </td>
+                    <td class="py-4">Chairman, INSPACe</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advisory Committee -->
+        <div class="mb-12 sm:mb-16">
+          <h3
+            class="text-2xl font-bold text-white mb-6 sm:mb-8 text-center animate-fade-in-right"
+          >
+            Advisory Committee
+          </h3>
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-up"
+            style="animation-delay: 0.2s"
+          >
+            <div class="overflow-x-auto">
+              <table class="w-full text-left min-w-full">
+                <tbody class="text-sm sm:text-base text-blue-100/90">
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4 font-semibold text-white">
+                      Shri. M. Sankaran, Director, URSC
+                    </td>
+                    <td class="py-4 text-accent-yellow font-semibold">
+                      Chairman
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">
+                      Shri. B. N. Ramakrishna, Director, ISTRAC
+                    </td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">
+                      Shri. Jean Michel Contant, Secretary, IAA
+                    </td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">Dr. Prakash Chauhan, Director, NRSC</td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">Dr. D Sam Dayala Dev, Director, IISU</td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">
+                      Shri. H. Premanand Shenoy, Director, MCF
+                    </td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">
+                      Dr. Vinod Kumar, Director, Directorate of Promotion,
+                      INSPACe / Executive Secretary, ASI
+                    </td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">
+                      Shri. Shantanu Bhatawdekar, Scientific Secretary, ISRO
+                    </td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">
+                      Shri. Victor Joseph, Associate Scientific Secretary, ISRO
+                    </td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">
+                      Dr. V V Srinivasan, Prof. Satish Dhawan Professor
+                    </td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">Lt. Gen. Anil Kumar Bhatt, DG ISpA</td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">
+                      Air Vice Marshal D V Khot, Defence Space Agency
+                    </td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr
+                    class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                  >
+                    <td class="py-4">
+                      Shri. R. Hutton, Project Director, HSP, ISRO
+                    </td>
+                    <td class="py-4">Member</td>
+                  </tr>
+                  <tr class="hover:bg-white/5 transition-colors duration-300">
+                    <td class="py-4">
+                      Smt. Nandini Harinath, Deputy Director, SpOA, ISTRAC
+                    </td>
+                    <td class="py-4 text-accent-purple font-semibold">
+                      Member Secretary
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section
+      id="Registration"
+      class="py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      <!-- Background -->
+      <div class="absolute inset-0 w-full h-full">
+        <!-- Video Layer -->
+        <video
+          class="w-full h-full object-cover scale-105 opacity-100"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="assets/videos/7.mp4" type="video/mp4" />
+          <!-- Fallback for browsers that don't support video -->
+          <img
+            src="assets/gifs/space-hero.gif"
+            alt="Space background"
+            class="w-full h-full object-cover"
+          />
+        </video>
+
+        <!-- Dark Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-15"
+        ></div>
+      </div>
+
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-down"
+          >
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              <span
+                class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
+              >
+                Registration
+              </span>
+            </h2>
+            <div
+              class="h-1 w-32 sm:w-40 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"
+            ></div>
+            <p
+              class="mt-6 text-lg sm:text-xl text-blue-100/90 max-w-2xl mx-auto"
+            >
+              Join us at SMOPS-2026 and be part of this exciting conference
+            </p>
+          </div>
+        </div>
+
+        <!-- Registration Table -->
+        <div
+          class="glassmorphic-bg p-6 sm:p-8 rounded-3xl mb-12 sm:mb-16 animate-fade-in-up"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full text-left min-w-full">
+              <thead>
+                <tr class="border-b border-white/20">
+                  <th class="pb-4 text-lg sm:text-xl font-semibold text-white">
+                    Type
+                  </th>
+                  <th class="pb-4 text-lg sm:text-xl font-semibold text-white">
+                    Charges (incl. of taxes)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-sm sm:text-base text-blue-100/90">
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">
+                    Students / Academia (Early Bird offer until 30 April 2026)
+                  </td>
+                  <td class="py-4 font-semibold text-accent-yellow">₹3,800</td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">
+                    Corporate / Industry (Early Bird offer until 30 April 2026)
+                  </td>
+                  <td class="py-4 font-semibold text-accent-yellow">₹9,450</td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">Students / Academia</td>
+                  <td class="py-4 font-semibold text-accent-blue">₹4,720</td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">Corporate / Industry</td>
+                  <td class="py-4 font-semibold text-accent-blue">₹10,620</td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">ASI Members</td>
+                  <td class="py-4 font-semibold text-accent-purple">₹2,950</td>
+                </tr>
+                <tr
+                  class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300"
+                >
+                  <td class="py-4">International Authors</td>
+                  <td class="py-4 font-semibold text-accent-yellow">$120</td>
+                </tr>
+                <tr class="hover:bg-white/5 transition-colors duration-300">
+                  <td class="py-4">International Attendees</td>
+                  <td class="py-4 font-semibold text-accent-yellow">$180</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-8 space-y-4">
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="./src/pages/IndividualReg.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cosmic-hover px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold text-center transition-all duration-300 hover:shadow-glow transform hover:scale-105"
+              >
+                Individual Registration
+              </a>
+              <a
+                href="./src/pages/SponsersReg.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cosmic-hover px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold text-center transition-all duration-300 hover:shadow-glow transform hover:scale-105"
+              >
+                Sponsor Registration
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paper Submission -->
+        <div
+          id="Paper"
+          class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-up"
+          style="animation-delay: 0.2s"
+        >
+          <h3 class="text-2xl font-bold text-white mb-6 text-center">
+            Call for Paper
+          </h3>
+          <div class="space-y-6 text-sm sm:text-base text-blue-100/90">
+            <p>
+              International Academy of Astronautics (IAA) is the technical
+              sponsor of SMOPS-2026. The conference proceedings will be
+              published in IAA proceedings and selected papers will be published
+              in "Acta Astronautica", Journal of IAA.
+            </p>
+            <p>
+              Authors are requested to follow the standard format specified by
+              the Journal. Authors will be redirected to IAA portal for paper
+              submission; follow the instructions provided by IAA regarding the
+              submission process and format.
+            </p>
+            <div class="text-center">
+              <a
+                href="./src/pages/callforpaper.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cosmic-hover inline-block px-6 sm:px-8 py-3 bg-gradient-to-r from-accent-yellow to-orange-500 text-black rounded-lg font-semibold transition-all duration-300 hover:shadow-glow transform hover:scale-105"
+              >
+                PAPER SUBMISSION
+              </a>
+            </div>
+            <div class="mt-6">
+              <p class="font-semibold text-white mb-2">Note:</p>
+              <ol class="list-decimal list-inside space-y-2">
+                <li>
+                  Author can submit the Full length paper following the above
+                  link without registration.
+                </li>
+                <li>
+                  Authors who have missed abstract submission can also submit
+                  the full length paper.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsorship Section -->
+    <section
+      id="sponsorship"
+      class="py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      <!-- Background -->
+      <div class="absolute inset-0 w-full h-full">
+        <!-- Video Layer -->
+        <video
+          class="w-full h-full object-cover scale-105 opacity-100"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="assets/videos/6.mp4" type="video/mp4" />
+          <!-- Fallback for browsers that don't support video -->
+          <img
+            src="assets/gifs/space-hero.gif"
+            alt="Space background"
+            class="w-full h-full object-cover"
+          />
+        </video>
+
+        <!-- Dark Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-15"
+        ></div>
+      </div>
+
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-down"
+          >
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              <span
+                class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
+              >
+                Sponsorship Opportunities
+              </span>
+            </h2>
+            <div
+              class="h-1 w-32 sm:w-40 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"
+            ></div>
+            <p
+              class="mt-6 text-lg sm:text-xl text-blue-100/90 max-w-2xl mx-auto"
+            >
+              Partner with us to showcase your brand to the space industry's
+              leading professionals
+            </p>
+          </div>
+        </div>
+
+        <!-- Sponsorship Cards -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16"
+        >
+          <!-- Title Partner -->
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up"
+            style="animation-delay: 0.1s"
+          >
+            <div class="text-center">
+              <h3 class="text-xl sm:text-2xl font-bold text-accent-yellow mb-4">
+                Title Partner
+              </h3>
+              <div class="text-3xl sm:text-4xl font-bold text-white mb-6">
+                ₹10L<span class="text-base sm:text-lg text-blue-100/80">
+                  +GST</span
+                >
+              </div>
+              <ul
+                class="space-y-3 text-left text-sm sm:text-base text-blue-100/90 mb-8"
+              >
+                <li>• 8 complimentary guests</li>
+                <li>• 20 minutes keynote</li>
+                <li>• Premium exhibit booth at prime location</li>
+                <li>
+                  • Acknowledgment during inaugural, awards and valedictory
+                  function
+                </li>
+                <li>• Logo on all printed material, backdrop and website</li>
+                <li>
+                  • Permission to keep company brochure in registration kit
+                </li>
+              </ul>
+              <div class="space-y-3">
+                <a
+                  href="#contact"
+                  class="block w-full py-3 px-6 text-center rounded-lg border border-accent-yellow text-accent-yellow hover:bg-accent-yellow hover:text-black transition-colors duration-300"
+                  >Contact us</a
+                >
+                <a
+                  href="./src/pages/SponsersReg.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block w-full py-3 px-6 text-center rounded-lg bg-accent-yellow text-black font-semibold hover:bg-accent-yellow/90 transition-colors duration-300 transform hover:scale-105"
+                  >Register</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Platinum Partner -->
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up"
+            style="animation-delay: 0.2s"
+          >
+            <div class="text-center">
+              <h3 class="text-xl sm:text-2xl font-bold text-accent-purple mb-4">
+                Platinum Partner
+              </h3>
+              <div class="text-3xl sm:text-4xl font-bold text-white mb-6">
+                ₹8L<span class="text-base sm:text-lg text-blue-100/80">
+                  +GST</span
+                >
+              </div>
+              <ul
+                class="space-y-3 text-left text-sm sm:text-base text-blue-100/90 mb-8"
+              >
+                <li>• 6 complimentary guests</li>
+                <li>• 15 minutes keynote</li>
+                <li>• Standard exhibit booth at prime location</li>
+                <li>
+                  • Acknowledgment during inaugural, awards and valedictory
+                  function
+                </li>
+                <li>• Logo on all printed material, backdrop and website</li>
+                <li>
+                  • Permission to keep company brochure in registration kit
+                </li>
+              </ul>
+              <div class="space-y-3">
+                <a
+                  href="#contact"
+                  class="block w-full py-3 px-6 text-center rounded-lg border border-accent-purple text-accent-purple hover:bg-accent-purple hover:text-white transition-colors duration-300"
+                  >Contact us</a
+                >
+                <a
+                  href="./src/pages/SponsersReg.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block w-full py-3 px-6 text-center rounded-lg bg-accent-purple text-white font-semibold hover:bg-accent-purple/90 transition-colors duration-300 transform hover:scale-105"
+                  >Register</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Diamond Partner -->
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up"
+            style="animation-delay: 0.3s"
+          >
+            <div class="text-center">
+              <h3 class="text-xl sm:text-2xl font-bold text-accent-blue mb-4">
+                Diamond Partner
+              </h3>
+              <div class="text-3xl sm:text-4xl font-bold text-white mb-6">
+                ₹5L<span class="text-base sm:text-lg text-blue-100/80">
+                  +GST</span
+                >
+              </div>
+              <ul
+                class="space-y-3 text-left text-sm sm:text-base text-blue-100/90 mb-8"
+              >
+                <li>• 5 complimentary guests</li>
+                <li>• 10 minutes keynote</li>
+                <li>• Standard exhibit booth at prime location</li>
+                <li>
+                  • Acknowledgment during inaugural, awards and valedictory
+                  function
+                </li>
+                <li>• Logo on all printed material, backdrop and website</li>
+                <li>
+                  • Permission to keep company brochure in registration kit
+                </li>
+              </ul>
+              <div class="space-y-3">
+                <a
+                  href="#contact"
+                  class="block w-full py-3 px-6 text-center rounded-lg border border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white transition-colors duration-300"
+                  >Contact us</a
+                >
+                <a
+                  href="./src/pages/SponsersReg.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block w-full py-3 px-6 text-center rounded-lg bg-accent-blue text-white font-semibold hover:bg-accent-blue/90 transition-colors duration-300 transform hover:scale-105"
+                  >Register</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Sponsorship Levels -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <!-- Gold Partner -->
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 animate-fade-in-up"
+            style="animation-delay: 0.4s"
+          >
+            <div class="text-center">
+              <h3 class="text-xl sm:text-2xl font-bold text-yellow-400 mb-4">
+                Gold Partner
+              </h3>
+              <div class="text-2xl sm:text-3xl font-bold text-white mb-6">
+                ₹2L<span class="text-base sm:text-lg text-blue-100/80">
+                  +GST</span
+                >
+              </div>
+              <ul
+                class="space-y-3 text-left text-sm sm:text-base text-blue-100/90 mb-8"
+              >
+                <li>• 3 complimentary guests</li>
+                <li>• 5 minutes keynote</li>
+                <li>• Economy exhibit booth</li>
+                <li>
+                  • Acknowledgment during inaugural, awards and valedictory
+                  function
+                </li>
+                <li>• Logo on all printed material, backdrop and website</li>
+              </ul>
+              <div class="space-y-3">
+                <a
+                  href="#contact"
+                  class="block w-full py-3 px-6 text-center rounded-lg border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors duration-300"
+                  >Contact us</a
+                >
+                <a
+                  href="./src/pages/SponsersReg.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block w-full py-3 px-6 text-center rounded-lg bg-yellow-400 text-black font-semibold hover:bg-yellow-400/90 transition-colors duration-300 transform hover:scale-105"
+                  >Register</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Silver Partner -->
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 animate-fade-in-up"
+            style="animation-delay: 0.5s"
+          >
+            <div class="text-center">
+              <h3 class="text-xl sm:text-2xl font-bold text-gray-300 mb-4">
+                Silver Partner
+              </h3>
+              <div class="text-2xl sm:text-3xl font-bold text-white mb-6">
+                ₹1L<span class="text-base sm:text-lg text-blue-100/80">
+                  +GST</span
+                >
+              </div>
+              <ul
+                class="space-y-3 text-left text-sm sm:text-base text-blue-100/90 mb-8"
+              >
+                <li>• 2 complimentary guests</li>
+                <li>
+                  • Acknowledgment during inaugural, awards and valedictory
+                  function
+                </li>
+                <li>• Logo on all printed material, backdrop and website</li>
+              </ul>
+              <div class="space-y-3">
+                <a
+                  href="#contact"
+                  class="block w-full py-3 px-6 text-center rounded-lg border border-gray-300 text-gray-300 hover:bg-gray-300 hover:text-black transition-colors duration-300"
+                  >Contact us</a
+                >
+                <a
+                  href="./src/pages/SponsersReg.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block w-full py-3 px-6 text-center rounded-lg bg-gray-300 text-black font-semibold hover:bg-gray-300/90 transition-colors duration-300 transform hover:scale-105"
+                  >Register</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section
+      id="about"
+      class="py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      <!-- Background -->
+      <div class="absolute inset-0 w-full h-full">
+        <!-- Video Layer -->
+        <video
+          class="w-full h-full object-cover scale-105 opacity-100"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="assets/videos/7.mp4" type="video/mp4" />
+          <!-- Fallback for browsers that don't support video -->
+          <img
+            src="assets/gifs/space-hero.gif"
+            alt="Space background"
+            class="w-full h-full object-cover"
+          />
+        </video>
+
+        <!-- Dark Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-15"
+        ></div>
+      </div>
+
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-down"
+          >
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              <span
+                class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
+              >
+                About Us
+              </span>
+            </h2>
+            <div
+              class="h-1 w-32 sm:w-40 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"
+            ></div>
+          </div>
+        </div>
+
+        <div class="space-y-8 sm:space-y-12">
+          <!-- About ISRO -->
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-left"
+          >
+            <h3 class="text-xl sm:text-2xl font-bold text-accent-blue mb-4">
+              About ISRO
+            </h3>
+            <p class="text-sm sm:text-base text-blue-100/90 leading-relaxed">
+              Indian Space Research Organisation (ISRO) is the space agency of
+              India. The organisation is involved in science, engineering and
+              technology to harvest the benefits of outer space for India and
+              the mankind. ISRO is a major constituent of the Department of
+              Space (DoS), Government of India. The department executes the
+              Indian Space Programme primarily through various Centres or units
+              within ISRO.
+            </p>
+          </div>
+
+          <!-- About ASI -->
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-right"
+            style="animation-delay: 0.2s"
+          >
+            <h3 class="text-xl sm:text-2xl font-bold text-accent-purple mb-4">
+              About ASI
+            </h3>
+            <p class="text-sm sm:text-base text-blue-100/90 leading-relaxed">
+              The Astronautical Society of India (ASI) was set up in 1990 to
+              foster the development of Astronautics in the country. ASI is
+              engaged in the dissemination of technical and other information
+              related to astronautics by conducting technical meetings, bringing
+              out technical publications, and organizing exhibitions. The
+              society has eminent personalities in the field of astronautics as
+              Distinguished Fellows/Fellows on its roll. ASI also plays an
+              active role in promoting the interests of other developing
+              countries in the field of astronautics through the International
+              Astronautical Federation, Paris, of which it is a voting member.
+            </p>
+          </div>
+
+          <!-- About Bengaluru -->
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-left"
+            style="animation-delay: 0.4s"
+          >
+            <h3 class="text-xl sm:text-2xl font-bold text-accent-yellow mb-4">
+              About Bengaluru
+            </h3>
+            <p class="text-sm sm:text-base text-blue-100/90 leading-relaxed">
+              Bengaluru, also known as Bangalore, is the third largest city of
+              India. With numerous gardens sprawling over acres of land,
+              Bangalore has earned the rightful moniker of "Garden City of
+              India". Blessed with pleasant weather, the city presents a
+              multitude of sightseeing options including architectural marvels
+              like the Bangalore Palace and Tipu Sultan's Summer Palace and
+              spots of picturesque natural beauty like the Nandi Hills. A home
+              to hundreds of technology, software, and telecommunications
+              companies, Bangalore is also known as the Silicon Valley of India.
+              With restaurants, street food corners, quirky cafes, artisanal
+              coffee roasters, microbreweries and pubs dotting every corner,
+              Bengaluru is a unique mélange of old-town nostalgia and modern
+              cityscape offering a vibrant and colourful nightlife.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supporters Section -->
+    <section
+      id="Supporters"
+      class="py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      <!-- Video Background -->
+      <div class="absolute inset-0 w-full h-full">
+        <!-- Video Layer -->
+        <video
+          class="w-full h-full object-cover scale-105 opacity-100"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="assets/videos/8.mp4" type="video/mp4" />
+          <!-- Fallback for browsers that don't support video -->
+          <img
+            src="assets/gifs/space-hero.gif"
+            alt="Space background"
+            class="w-full h-full object-cover"
+          />
+        </video>
+
+        <!-- Dark Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-15"
+        ></div>
+      </div>
+
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-down"
+          >
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              <span
+                class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
+              >
+                Our Supporters
+              </span>
+            </h2>
+            <div
+              class="h-1 w-32 sm:w-40 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"
+            ></div>
+            <p
+              class="mt-6 text-lg sm:text-xl text-blue-100/90 max-w-2xl mx-auto"
+            >
+              Proudly supported by leading organizations in the space industry
+            </p>
+          </div>
+        </div>
+
+        <div class="glassmorphic-bg p-8 sm:p-12 rounded-3xl animate-fade-in-up">
+          <div
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center"
+          >
+            <a
+              href="https://www.isro.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 animate-fade-in-up"
+              style="animation-delay: 0.1s"
+            >
+              <img
+                src="assets/images/ISRO-logo.svg"
+                alt="ISRO logo"
+                class="h-16 sm:h-20 w-auto"
+              />
+            </a>
+            <a
+              href="https://www.asindia.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 animate-fade-in-up"
+              style="animation-delay: 0.2s"
+            >
+              <img
+                src="assets/images/ASI2.png"
+                alt="ASI logo"
+                class="h-16 sm:h-20 w-auto"
+              />
+            </a>
+            <a
+              href="https://iaaspace.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 animate-fade-in-up"
+              style="animation-delay: 0.3s"
+            >
+              <img
+                src="assets/images/IAA.png"
+                alt="IAA logo"
+                class="h-16 sm:h-20 w-auto"
+              />
+            </a>
+            <a
+              href="https://ispa.space/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 animate-fade-in-up"
+              style="animation-delay: 0.4s"
+            >
+              <img
+                src="assets/images/ISPA.png"
+                alt="ISPA logo"
+                class="h-16 sm:h-20 w-auto"
+              />
+            </a>
+            <a
+              href="https://www.sia-india.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 animate-fade-in-up"
+              style="animation-delay: 0.5s"
+            >
+              <img
+                src="assets/images/SIA.png"
+                alt="SIA logo"
+                class="h-16 sm:h-20 w-auto"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      <!-- Background -->
+      <div class="absolute inset-0 w-full h-full">
+        <!-- Video Layer -->
+        <video
+          class="w-full h-full object-cover scale-105 opacity-100"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="assets/videos/inverted_space.mp4" type="video/mp4" />
+          <!-- Fallback for browsers that don't support video -->
+          <img
+            src="assets/gifs/space-hero.gif"
+            alt="Space background"
+            class="w-full h-full object-cover"
+          />
+        </video>
+
+        <!-- Dark Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-15"
+        ></div>
+      </div>
+
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <div
+            class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-down"
+          >
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              <span
+                class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
+              >
+                Contact Us
+              </span>
+            </h2>
+            <div
+              class="h-1 w-32 sm:w-40 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"
+            ></div>
+          </div>
+        </div>
+
+        <div class="glassmorphic-bg p-6 sm:p-8 rounded-3xl animate-fade-in-up">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+            <div class="space-y-6 sm:space-y-8">
+              <div class="animate-fade-in-left">
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-4">
+                  Conference Queries
+                </h3>
+                <div class="space-y-3 text-sm sm:text-base text-blue-100/90">
+                  <div class="flex items-center space-x-3">
+                    <svg
+                      class="w-5 h-5 text-accent-blue flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 012 2z"
+                      ></path>
+                    </svg>
+                    <a
+                      href="mailto:smops2025@istrac.gov.in"
+                      class="hover:text-white transition-colors duration-300 break-all"
+                      >smops2025@istrac.gov.in</a
+                    >
+                  </div>
+                  <div class="flex items-center space-x-3">
+                    <svg
+                      class="w-5 h-5 text-accent-blue flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 012 2z"
+                      ></path>
+                    </svg>
+                    <a
+                      href="mailto:asi@ursc.gov.in"
+                      class="hover:text-white transition-colors duration-300"
+                      >asi@ursc.gov.in</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="animate-fade-in-left" style="animation-delay: 0.2s">
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-4">
+                  Registration & Sponsorship
+                </h3>
+                <div class="space-y-3 text-sm sm:text-base text-blue-100/90">
+                  <div class="flex items-center space-x-3">
+                    <svg
+                      class="w-5 h-5 text-accent-purple flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 012 2z"
+                      ></path>
+                    </svg>
+                    <a
+                      href="mailto:asi@ursc.gov.in"
+                      class="hover:text-white transition-colors duration-300"
+                      >asi@ursc.gov.in</a
+                    >
+                  </div>
+                  <div class="flex items-center space-x-3">
+                    <svg
+                      class="w-5 h-5 text-accent-purple flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716   21 3 14.284 3 6V5z"
+                      ></path>
+                    </svg>
+                    <span>+91-80-2508 2536</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="animate-fade-in-left" style="animation-delay: 0.4s">
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-4">
+                  Venue Address
+                </h3>
+                <div class="text-sm sm:text-base text-blue-100/90">
+                  <p>ISRO Telemetry, Tracking and Command Network (ISTRAC)</p>
+                  <p>Peenya Industrial Area</p>
+                  <p>Bengaluru - 560058</p>
+                  <p>Karnataka, India</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-center animate-fade-in-right">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5!2d77.5946!3d13.0281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDA0JzM5LjQiTiA3N8KwMzUnNDAuNSJF!5e0!3m2!1sen!2sin!4v1234567890"
+                width="100%"
+                height="350"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="rounded-lg shadow-lg"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="bg-space-900/95 backdrop-blur-lg border-t border-white/10 text-gray-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div class="space-y-4 sm:space-y-6 animate-fade-in-up">
+            <img
+              src="assets/images/smops2025logo.png"
+              alt="SMOPS-2025 logo"
+              class="h-12 sm:h-16 w-auto"
+            />
+            <p class="text-sm text-blue-100/80">
+              International Conference on Spacecraft Mission Operations
+            </p>
+            <p class="text-sm text-blue-100/60">
+              8th - 9th Apr 2026 • Bengaluru, India
+            </p>
+          </div>
+          <div
+            class="space-y-4 animate-fade-in-up"
+            style="animation-delay: 0.2s"
+          >
+            <h3 class="text-lg font-semibold text-white">Quick Links</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="#overview"
+                  class="hover:text-white transition-colors duration-300"
+                  >Overview</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#topics"
+                  class="hover:text-white transition-colors duration-300"
+                  >Topics</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#Timeline"
+                  class="hover:text-white transition-colors duration-300"
+                  >Important Dates</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#Registration"
+                  class="hover:text-white transition-colors duration-300"
+                  >Registration</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#sponsorship"
+                  class="hover:text-white transition-colors duration-300"
+                  >Sponsorship</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="space-y-4 animate-fade-in-up"
+            style="animation-delay: 0.4s"
+          >
+            <h3 class="text-lg font-semibold text-white">Connect With Us</h3>
+            <div class="flex space-x-4">
+              <a
+                href="https://www.isro.gov.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:opacity-80 transition-opacity duration-300"
+              >
+                <img
+                  src="assets/images/ISRO-logo.svg"
+                  alt="ISRO"
+                  class="h-6 sm:h-8 w-auto"
+                />
+              </a>
+              <a
+                href="https://www.asindia.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:opacity-80 transition-opacity duration-300"
+              >
+                <img
+                  src="assets/images/ASI2.png"
+                  alt="ASI"
+                  class="h-6 sm:h-8 w-auto"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-white/10 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-sm animate-fade-in-up"
+          style="animation-delay: 0.6s"
+        >
+          <p>&copy; 2026 SMOPS. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- CSS for glassmorphic effects and animations -->
+    <style>
+      /* Base styles */
+      .bg-space-900 {
+        background-color: #0b0d17;
+      }
+
+      .from-space-900 {
+        --tw-gradient-from: #0b0d17;
+      }
+
+      .via-space-900 {
+        --tw-gradient-via: #0b0d17;
+      }
+
+      .to-space-900 {
+        --tw-gradient-to: #0b0d17;
+      }
+
+      /* Glassmorphic Effects */
+      .glassmorphic-bg {
+        background: rgba(9, 11, 21, 0.7);
+        backdrop-filter: blur(12px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+
+      /* Space Animations */
+      .cosmic-hover {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        z-index: 1;
+      }
+
+      .cosmic-hover::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: linear-gradient(
+          45deg,
+          rgba(59, 130, 246, 0.3),
+          rgba(139, 92, 246, 0.3),
+          rgba(236, 72, 153, 0.3)
+        );
+        z-index: -1;
+        border-radius: inherit;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .cosmic-hover:hover {
+        transform: translateY(-3px);
+      }
+
+      .cosmic-hover:hover::before {
+        opacity: 1;
+      }
+
+      /* Navigation Link Animations */
+      .nav-link {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Star Background */
+      .star-bg {
+        background: radial-gradient(
+            2px 2px at 40px 60px,
+            #fff,
+            rgba(0, 0, 0, 0)
+          ),
+          radial-gradient(2px 2px at 20px 50px, #fff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 30px 100px, #fff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 40px 60px, #fff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 110px 90px, #fff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 190px 150px, #fff, rgba(0, 0, 0, 0));
+        background-repeat: repeat;
+        background-size: 200px 200px;
+        animation: sparkle 120s linear infinite;
+        opacity: 0.3;
+      }
+
+      @keyframes sparkle {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-200px);
+        }
+      }
+
+      /* Enhanced Scroll Animations */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* 3D Space Effects */
+      .space-depth {
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .floating {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .glow-effect {
+        position: relative;
+      }
+
+      .glow-effect::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+        filter: blur(15px);
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.3s ease;
+      }
+
+      .glow-effect:hover::after {
+        opacity: 0.5;
+      }
+
+      .space-gradient {
+        background: linear-gradient(
+          135deg,
+          rgba(15, 23, 42, 0.9),
+          rgba(30, 41, 59, 0.8),
+          rgba(51, 65, 85, 0.9)
+        );
+        position: relative;
+      }
+
+      .space-gradient::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(59, 130, 246, 0.15),
+          transparent 70%
+        );
+      }
+
+      /* Section Transitions */
+      .section-transition::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 150px;
+        background: linear-gradient(to bottom, transparent, #0b0d17);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Button Hover Effects */
+      .btn-glow {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-glow::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .btn-glow:hover::before {
+        left: 100%;
+      }
+
+      /* Enhanced Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .glassmorphic-bg {
+          backdrop-filter: blur(8px) saturate(160%);
+          padding: 1.5rem;
+        }
+
+        .star-bg {
+          background-size: 150px 150px;
+        }
+
+        /* Mobile-specific animations */
+        .mobile-fade-in {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Reduce motion for better mobile performance */
+        @media (prefers-reduced-motion: reduce) {
+          .animate-fade-in,
+          .animate-fade-in-up,
+          .animate-fade-in-down,
+          .animate-fade-in-left,
+          .animate-fade-in-right,
+          .animate-slide-up,
+          .animate-scale-in {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+        }
+      }
+
+      /* Loading animations */
+      .section-loading {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: sectionLoad 0.8s ease-out forwards;
+      }
+
+      @keyframes sectionLoad {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Improved button animations */
+      .btn-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .btn-hover:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Smooth section spacing */
+      section {
+        scroll-margin-top: 5rem;
+      }
+
+      /* Enhanced table responsiveness */
+      @media (max-width: 640px) {
+        table {
+          font-size: 0.875rem;
+        }
+
+        th,
+        td {
+          padding: 0.75rem 0.5rem;
+        }
+      }
+    </style>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+      // Enhanced mobile menu toggle with better animations
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        const content = menu.querySelector(".mobile-menu-content");
+
+        if (menu.classList.contains("hidden")) {
+          // Show the menu
+          menu.classList.remove("hidden");
+          content.style.opacity = "0";
+          content.style.transform = "translateY(20px)";
+
+          requestAnimationFrame(() => {
+            content.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+            content.style.opacity = "1";
+            content.style.transform = "translateY(0)";
+          });
+        } else {
+          // Animate and then hide
+          content.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+          content.style.opacity = "0";
+          content.style.transform = "translateY(20px)";
+
+          setTimeout(() => {
+            menu.classList.add("hidden");
+            content.style.transition = "";
+          }, 400);
+        }
+      }
+
+      // Enhanced accordion functionality with smooth animations
+      function toggleAccordion(id) {
+        const content = document.getElementById(id);
+        const icon = document.getElementById("icon-" + id);
+
+        if (content.classList.contains("hidden")) {
+          content.classList.remove("hidden");
+          content.style.maxHeight = "0";
+          content.style.opacity = "0";
+
+          requestAnimationFrame(() => {
+            content.style.transition =
+              "max-height 0.4s ease, opacity 0.3s ease";
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.style.opacity = "1";
+          });
+
+          icon.classList.add("rotate-180");
+        } else {
+          content.style.maxHeight = "0";
+          content.style.opacity = "0";
+
+          setTimeout(() => {
+            content.classList.add("hidden");
+            content.style.transition = "";
+            content.style.maxHeight = "";
+          }, 400);
+
+          icon.classList.remove("rotate-180");
+        }
+      }
+
+      // Enhanced smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+
+            window.scrollTo({
+              top: offsetTop,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById("mobile-menu");
+            if (!mobileMenu.classList.contains("hidden")) {
+              toggleMobileMenu();
+            }
+          }
+        });
+      });
+
+      // Enhanced navbar scroll behavior with better performance
+      let lastScroll = 0;
+      let ticking = false;
+      const navbar = document.querySelector("nav");
+
+      function updateNavbar() {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll <= 0) {
+          navbar.classList.remove("shadow-md");
+          navbar.style.transform = "translateY(0)";
+        } else if (currentScroll > lastScroll && currentScroll > 100) {
+          // Scrolling down
+          navbar.style.transform = "translateY(-100%)";
+        } else {
+          // Scrolling up
+          navbar.style.transform = "translateY(0)";
+          navbar.classList.add("shadow-md");
+        }
+
+        lastScroll = currentScroll;
+        ticking = false;
+      }
+
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          requestAnimationFrame(updateNavbar);
+          ticking = true;
+        }
+      });
+
+      // Enhanced countdown timer with better formatting
+      function updateCountdown() {
+        const conferenceDate = new Date("2025-05-28T00:00:00");
+        const now = new Date();
+        const diff = conferenceDate - now;
+
+        if (diff <= 0) {
+          document.getElementById("countdown").innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-neon"></span>
+                        <span class="text-lg font-bold">Registration started!</span>
+                    </div>`;
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = days
+          .toString()
+          .padStart(3, "0");
+        document.getElementById("hours").textContent = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("minutes").textContent = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("seconds").textContent = seconds
+          .toString()
+          .padStart(2, "0");
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // Enhanced Intersection Observer for better animation performance
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const animationObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = "running";
+
+            // Add stagger effect for child elements
+            const children = entry.target.querySelectorAll(
+              '[style*="animation-delay"]'
+            );
+            children.forEach((child, index) => {
+              setTimeout(() => {
+                child.style.animationPlayState = "running";
+              }, index * 100);
+            });
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      document
+        .querySelectorAll('[class*="animate-"]')
+        .forEach(function (element) {
+          element.style.animationPlayState = "paused";
+          animationObserver.observe(element);
+        });
+
+      // Enhanced video lazy loading with performance optimization
+      const videoObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            const video = entry.target;
+            if (entry.isIntersecting && video.paused) {
+              video.play().catch(console.error);
+            } else if (!entry.isIntersecting && !video.paused) {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+
+      document.querySelectorAll("video").forEach(function (video) {
+        // Preload video metadata
+        video.preload = "metadata";
+        videoObserver.observe(video);
+      });
+
+      // Performance optimization: Debounce resize events
+      let resizeTimeout;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function () {
+          // Recalculate any position-dependent animations
+          updateNavbar();
+        }, 250);
+      });
+
+      // Enhanced loading performance
+      document.addEventListener("DOMContentLoaded", function () {
+        // Remove any initial loading states
+        document.body.classList.add("loaded");
+
+        // Initialize all components
+        updateCountdown();
+
+        // Add progressive enhancement for accordion max-height
+        document.querySelectorAll('[id^="topic"]').forEach((topic) => {
+          topic.style.transition = "max-height 0.4s ease, opacity 0.3s ease";
+        });
+      });
+
+      // Add keyboard navigation for accessibility
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          const mobileMenu = document.getElementById("mobile-menu");
+          if (!mobileMenu.classList.contains("hidden")) {
+            toggleMobileMenu();
+          }
+        }
+      });
+
+      // Enhanced performance monitoring (optional)
+      if ("performance" in window) {
+        window.addEventListener("load", function () {
+          const loadTime =
+            performance.timing.loadEventEnd -
+            performance.timing.navigationStart;
+          console.log(`Page loaded in ${loadTime}ms`);
+        });
+      }
+    </script>
+  </body>
+</html>

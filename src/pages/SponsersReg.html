@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechConf 2025 - Sponsor Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'conference-blue': '#3B82F6',
+                        'conference-purple': '#8B5CF6',
+                        'gold': '#FFD700',
+                        'silver': '#C0C0C0',
+                        'bronze': '#CD7F32',
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</head>
+<body class="bg-gray-900 min-h-screen py-8 px-4 relative overflow-x-hidden">
+    <div class="max-w-4xl mx-auto ">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-800 rounded-full mb-4">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+            </div>
+            <h1 class="text-4xl font-bold text-gray-100 mb-2">SMOPS-2026</h1>
+            <p class="text-gray-100 text-xl">Sponsor Registration</p>
+            <p class="text-sm text-gray-300 mt-2">April 8th-9th, 2026 • Bangalore, Karnataka</p>
+            <div class="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-4 inline-block">
+                <p class="text-blue-800 font-medium">Expected Attendance: 5,000+ Tech Professionals</p>
+            </div>
+        </div>
+
+        <!-- Sponsorship Form -->
+        <div class="glass rounded-2xl shadow-xl p-8">
+            <h2 class="text-3xl font-semibold text-gray-100 mb-2 text-center">Become a Sponsor</h2>
+            <p class="text-gray-200 text-center mb-8">Partner with us to reach thousands of tech professionals and industry leaders</p>
+            
+            <form id="sponsorForm" class="space-y-8">
+                <!-- Company Information -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-semibold text-gray-200 border-b-2 border-blue-200  pb-3">Company Information</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="companyName" class="block text-sm font-medium text-gray-200 mb-2">Company Name *</label>
+                            <input type="text" id="companyName" name="companyName" required
+                                class="bg-gray-500/40 text-white w-full px-4 py-3 border 
+                                border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out">
+                        </div>
+                        <div>
+                            <label for="website" class="block text-sm font-medium text-gray-200 mb-2">Company Website *</label>
+                            <input type="url" id="website" name="website" required placeholder="https://example.com"
+                                class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="industry" class="block text-sm font-medium text-gray-200 mb-2">Industry *</label>
+                            <select id="industry" name="industry" required
+                                class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out">
+                                <option class="bg-gray-800 text-white" value="">Select Industry</option>
+                                <option class="bg-gray-800 text-white" value="software">Software Development</option>
+                                <option class="bg-gray-800 text-white" value="cloud">Cloud Services</option>
+                                <option class="bg-gray-800 text-white" value="ai-ml">AI/Machine Learning</option>
+                                <option class="bg-gray-800 text-white" value="cybersecurity">Cybersecurity</option>
+                                <option class="bg-gray-800 text-white" value="fintech">FinTech</option>
+                                <option class="bg-gray-800 text-white" value="healthcare">Healthcare Tech</option>
+                                <option class="bg-gray-800 text-white" value="hardware">Hardware</option>
+                                <option class="bg-gray-800 text-white" value="consulting">Consulting</option>
+                                <option class="bg-gray-800 text-white" value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="companySize" class="block text-sm font-medium text-gray-200 mb-2">Company Size</label>
+                            <select id="companySize" name="companySize"
+                                class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out">
+                                <option class="bg-gray-800 text-white" value="">Select Size</option>
+                                <option class="bg-gray-800 text-white" value="startup">Startup (1-50 employees)</option>
+                                <option class="bg-gray-800 text-white" value="small">Small (51-200 employees)</option>
+                                <option class="bg-gray-800 text-white" value="medium">Medium (201-1000 employees)</option>
+                                <option class="bg-gray-800 text-white" value="large">Large (1000+ employees)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="companyDescription" class="block text-sm font-medium text-gray-200 mb-2">Company Description *</label>
+                        <textarea id="companyDescription" name="companyDescription" rows="4" required
+                            class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out"
+                            placeholder="Brief description of your company and what you do..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-semibold text-gray-200 border-b-2 border-blue-200 pb-3">Primary Contact Information</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="contactName" class="block text-sm font-medium text-gray-200 mb-2">Contact Name *</label>
+                            <input type="text" id="contactName" name="contactName" required
+                                class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out">
+                        </div>
+                        <div>
+                            <label for="contactTitle" class="block text-sm font-medium text-gray-200 mb-2">Job Title *</label>
+                            <input type="text" id="contactTitle" name="contactTitle" required
+                                class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="contactEmail" class="block text-sm font-medium text-gray-200 mb-2">Email Address *</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required
+                                class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out">
+                        </div>
+                        <div>
+                            <label for="contactPhone" class="block text-sm font-medium text-gray-200 mb-2">Phone Number *</label>
+                            <input type="tel" id="contactPhone" name="contactPhone" required
+                                class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sponsorship Packages -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-semibold text-gray-200 border-b-2 border-blue-200 pb-3">Sponsorship Packages</h3>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Platinum Package -->
+                        <label class="block">
+                            <input type="radio" name="sponsorshipLevel" value="platinum" class="sr-only peer">
+                            <div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer peer-checked:border-purple-900 peer-checked:bg-purple-900 hover:border-purple-300 transition-all duration-200">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-2xl font-bold text-purple-500">Platinum</h4>
+                                    <div class="text-3xl font-bold text-purple-500">$50,000</div>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-200">
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Keynote speaking slot (30 min)</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Premium booth space (20x20)</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Logo on all marketing materials</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>20 conference tickets</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>VIP networking dinner access</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Branded conference swag</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Attendee list access</li>
+                                </ul>
+                            </div>
+                        </label>
+
+                        <!-- Gold Package -->
+                        <label class="block">
+                            <input type="radio" name="sponsorshipLevel" value="gold" class="sr-only peer">
+                            <div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer peer-checked:border-yellow-500 peer-checked:bg-yellow-900  
+                            hover:border-yellow-300 transition-all duration-200">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-2xl font-bold text-yellow-600">Gold</h4>
+                                    <div class="text-3xl font-bold text-yellow-600">$25,000</div>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-200 ">
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Workshop/breakout session (45 min)</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Large booth space (15x15)</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Logo on website & programs</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>12 conference tickets</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Networking reception access</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Email blast to attendees</li>
+                                </ul>
+                            </div>
+                        </label>
+
+                        <!-- Silver Package -->
+                        <label class="block">
+                            <input type="radio" name="sponsorshipLevel" value="silver" class="sr-only peer">
+                            <div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer peer-checked:border-gray-400 peer-checked:bg-gray-900 hover:border-gray-300 transition-all duration-200">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-2xl font-bold text-gray-300">Silver</h4>
+                                    <div class="text-3xl font-bold text-gray-300">$15,000</div>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-200">
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Standard booth space (10x10)</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Logo on website</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>8 conference tickets</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Social media mentions</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Product demo opportunity</li>
+                                </ul>
+                            </div>
+                        </label>
+
+                        <!-- Bronze Package -->
+                        <label class="block">
+                            <input type="radio" name="sponsorshipLevel" value="bronze" class="sr-only peer">
+                            <div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer peer-checked:border-orange-500 peer-checked:bg-orange-900 hover:border-orange-300 transition-all duration-200">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-2xl font-bold text-orange-600">Bronze</h4>
+                                    <div class="text-3xl font-bold text-orange-600">$7,500</div>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-200">
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Small booth space (8x8)</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Logo on website</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>4 conference tickets</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Digital program listing</li>
+                                </ul>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Additional Services -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-semibold text-gray-200 border-b-2 border-blue-200 pb-3">Additional Services</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-700">
+                            <input type="checkbox" name="additionalServices" value="custom-booth" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <div class="ml-3">
+                                <div class="font-medium text-gray-200">Custom Booth Design</div>
+                                <div class="text-sm text-gray-400">+$5,000</div>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-700">
+                            <input type="checkbox" name="additionalServices" value="branded-lanyards" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <div class="ml-3">
+                                <div class="font-medium text-gray-200">Branded Lanyards</div>
+                                <div class="text-sm text-gray-400">+$2,500</div>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-700">
+                            <input type="checkbox" name="additionalServices" value="lunch-sponsor" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <div class="ml-3">
+                                <div class="font-medium text-gray-200">Lunch Sponsorship</div>
+                                <div class="text-sm text-gray-400">+$15,000</div>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-700">
+                            <input type="checkbox" name="additionalServices" value="coffee-sponsor" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <div class="ml-3">
+                                <div class="font-medium text-gray-200">Coffee Break Sponsorship</div>
+                                <div class="text-sm text-gray-400">+$8,000</div>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-700">
+                            <input type="checkbox" name="additionalServices" value="mobile-app" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <div class="ml-3">
+                                <div class="font-medium text-gray-200">Mobile App Banner</div>
+                                <div class="text-sm text-gray-400">+$3,000</div>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-700">
+                            <input type="checkbox" name="additionalServices" value="live-stream" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <div class="ml-3">
+                                <div class="font-medium text-gray-200">Live Stream Sponsorship</div>
+                                <div class="text-sm text-gray-400">+$10,000</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Marketing Goals -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-semibold text-gray-200 border-b-2 border-blue-200 pb-3">Marketing Goals</h3>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-200 mb-3">What are your primary goals for sponsoring this event? (Select all that apply)</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="goals" value="brand-awareness" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <span class="ml-2 text-sm text-gray-200">Brand Awareness</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="goals" value="lead-generation" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <span class="ml-2 text-sm text-gray-200">Lead Generation</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="goals" value="product-launch" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <span class="ml-2 text-sm text-gray-200">Product Launch</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="goals" value="networking" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <span class="ml-2 text-sm text-gray-200">Networking</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="goals" value="talent-acquisition" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <span class="ml-2 text-sm text-gray-200">Talent Acquisition</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="goals" value="thought-leadership" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <span class="ml-2 text-sm text-gray-200">Thought Leadership</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="previousSponsor" class="block text-sm font-medium text-gray-200 mb-3">Have you sponsored tech conferences before?</label>
+                        <div class="flex space-x-6">
+                            <label class="flex items-center">
+                                <input type="radio" name="previousSponsor" value="yes" class="text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-sm text-gray-200">Yes</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="previousSponsor" value="no" class="text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-sm text-gray-200">No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Requirements -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-semibold text-gray-200 border-b-2 border-blue-200 pb-3">Special Requirements</h3>
+                    
+                    <div>
+                        <label for="specialRequests" class="block text-sm font-medium text-gray-200 mb-2">Special Requests or Requirements</label>
+                        <textarea id="specialRequests" name="specialRequests" rows="4"
+                            class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out"
+                            placeholder="Any special booth requirements, AV needs, catering preferences, etc..."></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="setupDate" class="block text-sm font-medium text-gray-200 mb-2">Preferred Setup Date</label>
+                            <input type="date" id="setupDate" name="setupDate"
+                                class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out">
+                        </div>
+                        <div>
+                            <label for="teamSize" class="block text-sm font-medium text-gray-200 mb-2">Expected Team Size at Event</label>
+                            <select id="teamSize" name="teamSize"
+                                class="bg-gray-500/40 text-white w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out">
+                                <option class="bg-gray-800 text-white" value="">Select team size</option>
+                                <option class="bg-gray-800 text-white" value="1-2">1-2 people</option>
+                                <option class="bg-gray-800 text-white" value="3-5">3-5 people</option>
+                                <option class="bg-gray-800 text-white" value="6-10">6-10 people</option>
+                                <option class="bg-gray-800 text-white" value="10+">10+ people</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agreement -->
+                <div class="space-y-4">
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                        <h4 class="font-semibold text-blue-800 mb-2">Payment Terms</h4>
+                        <ul class="text-sm text-blue-700 space-y-1">
+                            <li>• 50% deposit required upon contract signing</li>
+                            <li>• Remaining balance due 30 days before event</li>
+                            <li>• All prices include standard booth setup</li>
+                            <li>• Cancellation policy applies as per contract terms</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms" name="terms" required
+                            class="mt-1 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="terms" class="ml-3 text-sm text-gray-200">
+                            I agree to the <a href="#" class="text-blue-600 hover:text-blue-800 underline">Sponsorship Terms and Conditions</a> and understand that this is an application subject to approval *
+                        </label>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <input type="checkbox" id="marketing" name="marketing"
+                            class="mt-1 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="marketing" class="ml-3 text-sm text-gray-200">
+                            I consent to being contacted about future sponsorship opportunities
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-6 border-t border-gray-200">
+                    <button type="submit" 
+                        class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 px-6 rounded-lg hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:scale-[1.02] transition duration-200 ease-in-out shadow-lg text-lg">
+                        Submit Sponsorship Application
+                    </button>
+                    <p class="text-center text-sm text-gray-400 mt-4">Our team will review your application and contact you within 2 business days</p>
+                </div>
+
+                <div class="text-center text-sm text-gray-400 pt-4 border-t border-gray-100">
+                    <p>Questions about sponsorship? Contact our partnerships team:</p>
+                    <p><a href="mailto:sponsors@techconf2025.com" class="text-blue-600 hover:text-blue-800 font-medium">smops@techconf2025.com</a> • <a href="tel:+1-555-123-4567" class="text-blue-600 hover:text-blue-800 font-medium">+1 (555) 123-4567</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('sponsorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validation
+            const requiredFields = ['companyName', 'website', 'industry', 'companyDescription', 'contactName', 'contactTitle', 'contactEmail', 'contactPhone', 'terms'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                const input = document.getElementById(field);
+                if (field === 'terms') {
+                    if (!input.checked) {
+                        isValid = false;
+                    }
+                } else if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('border-red-500');
+                } else {
+                    input.classList.remove('border-red-500');
+                }
+            });
+            
+            // Check if sponsorship level is selected
+            const sponsorshipLevels = document.querySelectorAll('input[name="sponsorshipLevel"]');
+            const levelSelected = Array.from(sponsorshipLevels).some(radio => radio.checked);
+            if (!levelSelected) {
+                isValid = false;
+                alert('Please select a sponsorship package.');
+                return;
+            }
+            
+            if (isValid) {
+                // Simulate form submission
+                const submitBtn = document.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Processing Application...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Sponsorship application submitted successfully! Our partnerships team will review your application and contact you within 2 business days with next steps.');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    // Reset form
+                    this.reset();
+                }, 3000);
+            } else {
+                alert('Please fill in all required fields and accept the terms and conditions.');
+            }
+        });
+
+        // Calculate estimated total cost
+        function updateEstimatedCost() {
+            let baseCost = 0;
+            let additionalCost = 0;
+            
+            // Get selected sponsorship level
+            const selectedLevel = document.querySelector('input[name="sponsorshipLevel"]:checked');
+            if (selectedLevel) {
+                switch(selectedLevel.value) {
+                    case 'platinum': baseCost = 50000; break;
+                    case 'gold': baseCost = 25000; break;
+                    case 'silver': baseCost = 15000; break;
+                    case 'bronze': baseCost = 7500; break;
+                }
+            }
+            
+            // Calculate additional services cost
+            const additionalServices = document.querySelectorAll('input[name="additionalServices"]:checked');
+            additionalServices.forEach(service => {
+                switch(service.value) {
+                    case 'custom-booth': additionalCost += 5000; break;
+                    case 'branded-lanyards': additionalCost += 2500; break;
+                    case 'lunch-sponsor': additionalCost += 15000; break;
+                    case 'coffee-sponsor': additionalCost += 8000; break;
+                    case 'mobile-app': additionalCost += 3000; break;
+                    case 'live-stream': additionalCost += 10000; break;
+                }
+            });
+            
+            // Update cost display if exists
+            const costDisplay = document.getElementById('estimatedCost');
+            if (costDisplay) {
+                const totalCost = baseCost + additionalCost;
+                costDisplay.textContent = totalCost > 0 ? `${totalCost.toLocaleString()}` : '$0';
+            }
+        }
+        
+        // Add event listeners for cost calculation
+        document.querySelectorAll('input[name="sponsorshipLevel"]').forEach(radio => {
+            radio.addEventListener('change', updateEstimatedCost);
+        });
+        
+        document.querySelectorAll('input[name="additionalServices"]').forEach(checkbox => {
+            checkbox.addEventListener('change', updateEstimatedCost);
+        });
+        
+        // Add cost estimator display
+        const submitSection = document.querySelector('.pt-6.border-t');
+        const costEstimator = document.createElement('div');
+        costEstimator.className = 'bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6';
+        costEstimator.innerHTML = `
+            <div class="flex justify-between items-center">
+                <span class="text-lg font-medium text-gray-700">Estimated Total Cost:</span>
+                <span id="estimatedCost" class="text-2xl font-bold text-blue-600">$0</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-1">Final pricing subject to contract negotiation</p>
+        `;
+        submitSection.insertBefore(costEstimator, submitSection.firstChild);
+    </script>
+</body>
+</html>
