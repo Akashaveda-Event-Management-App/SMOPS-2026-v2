@@ -154,7 +154,7 @@
                             <div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer peer-checked:border-purple-900 peer-checked:bg-purple-900 hover:border-purple-300 transition-all duration-200">
                                 <div class="flex items-center justify-between mb-4">
                                     <h4 class="text-2xl font-bold text-purple-500">Platinum</h4>
-                                    <div class="text-3xl font-bold text-purple-500">$50,000</div>
+                                    <div class="text-3xl font-bold text-purple-500">₹50,000</div>
                                 </div>
                                 <ul class="space-y-2 text-sm text-gray-200">
                                     <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Keynote speaking slot (30 min)</li>
@@ -175,7 +175,7 @@
                             hover:border-yellow-300 transition-all duration-200">
                                 <div class="flex items-center justify-between mb-4">
                                     <h4 class="text-2xl font-bold text-yellow-600">Gold</h4>
-                                    <div class="text-3xl font-bold text-yellow-600">$25,000</div>
+                                    <div class="text-3xl font-bold text-yellow-600">₹2,50,000</div>
                                 </div>
                                 <ul class="space-y-2 text-sm text-gray-200 ">
                                     <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Workshop/breakout session (45 min)</li>
@@ -194,7 +194,7 @@
                             <div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer peer-checked:border-gray-400 peer-checked:bg-gray-900 hover:border-gray-300 transition-all duration-200">
                                 <div class="flex items-center justify-between mb-4">
                                     <h4 class="text-2xl font-bold text-gray-300">Silver</h4>
-                                    <div class="text-3xl font-bold text-gray-300">$15,000</div>
+                                    <div class="text-3xl font-bold text-gray-300">₹1,50,000</div>
                                 </div>
                                 <ul class="space-y-2 text-sm text-gray-200">
                                     <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Standard booth space (10x10)</li>
@@ -212,7 +212,7 @@
                             <div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer peer-checked:border-orange-500 peer-checked:bg-orange-900 hover:border-orange-300 transition-all duration-200">
                                 <div class="flex items-center justify-between mb-4">
                                     <h4 class="text-2xl font-bold text-orange-600">Bronze</h4>
-                                    <div class="text-3xl font-bold text-orange-600">$7,500</div>
+                                    <div class="text-3xl font-bold text-orange-600">₹75,000</div>
                                 </div>
                                 <ul class="space-y-2 text-sm text-gray-200">
                                     <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Small booth space (8x8)</li>
@@ -234,7 +234,7 @@
                             <input type="checkbox" name="additionalServices" value="custom-booth" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                             <div class="ml-3">
                                 <div class="font-medium text-gray-200">Custom Booth Design</div>
-                                <div class="text-sm text-gray-400">+$5,000</div>
+                                <div class="text-sm text-gray-400">+₹50,000</div>
                             </div>
                         </label>
                         
@@ -242,7 +242,7 @@
                             <input type="checkbox" name="additionalServices" value="branded-lanyards" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                             <div class="ml-3">
                                 <div class="font-medium text-gray-200">Branded Lanyards</div>
-                                <div class="text-sm text-gray-400">+$2,500</div>
+                                <div class="text-sm text-gray-400">+₹20,000</div>
                             </div>
                         </label>
                         
@@ -250,7 +250,7 @@
                             <input type="checkbox" name="additionalServices" value="lunch-sponsor" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                             <div class="ml-3">
                                 <div class="font-medium text-gray-200">Lunch Sponsorship</div>
-                                <div class="text-sm text-gray-400">+$15,000</div>
+                                <div class="text-sm text-gray-400">+₹15,000</div>
                             </div>
                         </label>
                         
@@ -258,7 +258,7 @@
                             <input type="checkbox" name="additionalServices" value="coffee-sponsor" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                             <div class="ml-3">
                                 <div class="font-medium text-gray-200">Coffee Break Sponsorship</div>
-                                <div class="text-sm text-gray-400">+$8,000</div>
+                                <div class="text-sm text-gray-400">+₹8,000</div>
                             </div>
                         </label>
                         
@@ -266,7 +266,7 @@
                             <input type="checkbox" name="additionalServices" value="mobile-app" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                             <div class="ml-3">
                                 <div class="font-medium text-gray-200">Mobile App Banner</div>
-                                <div class="text-sm text-gray-400">+$3,000</div>
+                                <div class="text-sm text-gray-400">+₹3,000</div>
                             </div>
                         </label>
                         
@@ -274,7 +274,7 @@
                             <input type="checkbox" name="additionalServices" value="live-stream" class="text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                             <div class="ml-3">
                                 <div class="font-medium text-gray-200">Live Stream Sponsorship</div>
-                                <div class="text-sm text-gray-400">+$10,000</div>
+                                <div class="text-sm text-gray-400">+₹10,000</div>
                             </div>
                         </label>
                     </div>
@@ -489,7 +489,7 @@
             const costDisplay = document.getElementById('estimatedCost');
             if (costDisplay) {
                 const totalCost = baseCost + additionalCost;
-                costDisplay.textContent = totalCost > 0 ? `${totalCost.toLocaleString()}` : '$0';
+                costDisplay.textContent = totalCost > 0 ? `₹{totalCost.toLocaleString()}` : '₹0';
             }
         }
         
@@ -509,7 +509,7 @@
         costEstimator.innerHTML = `
             <div class="flex justify-between items-center">
                 <span class="text-lg font-medium text-gray-700">Estimated Total Cost:</span>
-                <span id="estimatedCost" class="text-2xl font-bold text-blue-600">$0</span>
+                <span id="estimatedCost" class="text-2xl font-bold text-blue-600">₹0</span>
             </div>
             <p class="text-sm text-gray-500 mt-1">Final pricing subject to contract negotiation</p>
         `;
