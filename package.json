@@ -1,35 +1,32 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "smops-2026",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "SMOPS-2026: International Conference on Spacecraft Mission Operations",
+  "main": "index.html",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "start": "http-server -p 8080 -c-1",
+    "dev": "http-server -p 8080 -c-1",
+    "build": "npm run build:css",
+    "build:css": "npx tailwindcss -i ./css/tailwind.css -o ./css/styles.css --minify",
+    "preview": "http-server -p 8080 -c-1"
   },
   "dependencies": {
-    "@types/three": "^0.177.0",
-    "lucide-react": "^0.344.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "three": "^0.177.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.9.1",
-    "@types/react": "^18.3.5",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "autoprefixer": "^10.4.18",
-    "eslint": "^9.9.1",
-    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
-    "eslint-plugin-react-refresh": "^0.4.11",
-    "globals": "^15.9.0",
-    "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.5.3",
-    "typescript-eslint": "^8.3.0",
-    "vite": "^5.4.2"
-  }
+    "http-server": "^14.1.1",
+    "tailwindcss": "^3.4.14"
+  },
+  "keywords": [
+    "spacecraft",
+    "mission-operations",
+    "conference",
+    "space",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "SMOPS-2026 Organizing Committee",
+  "license": "MIT"
 }

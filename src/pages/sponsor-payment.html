@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMOPS-2026 - Sponsor Payment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'space-blue': '#3B82F6',
+                        'space-purple': '#8B5CF6',
+                        'space-dark': '#0f172a',
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-input {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .glass-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        
+        .glass-button {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-button:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(139, 92, 246, 0.9));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .payment-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .payment-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+        
+        .floating-orb {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            backdrop-filter: blur(2px);
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .secure-badge {
+            background: linear-gradient(45deg, #10b981, #059669);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 relative overflow-x-hidden">
+    
+    <!-- Floating orbs for animation -->
+    <div class="floating-orb w-32 h-32 top-10 left-10" style="animation-delay: 0s;"></div>
+    <div class="floating-orb w-24 h-24 top-1/3 right-20" style="animation-delay: 2s;"></div>
+    <div class="floating-orb w-40 h-40 bottom-20 left-1/4" style="animation-delay: 4s;"></div>
+    
+    <div class="max-w-4xl mx-auto relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-20 h-20 glass rounded-full mb-6 shadow-2xl">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                </svg>
+            </div>
+            <h1 class="text-5xl font-bold text-white mb-4 drop-shadow-lg">Sponsorship Payment</h1>
+            <p class="text-white/90 text-xl mb-2">Complete your SMOPS-2026 sponsorship</p>
+            <p class="text-white/70 text-sm mb-4">April 8th-9th, 2026 • Bangalore, Karnataka</p>
+            <div class="secure-badge mx-auto">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                </svg>
+                Secure Payment
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Order Summary -->
+            <div class="lg:col-span-1">
+                <div class="glass rounded-3xl shadow-2xl p-6 mb-6">
+                    <h2 class="text-2xl font-semibold text-white mb-6">Order Summary</h2>
+                    
+                    <!-- Company Info -->
+                    <div class="mb-6 pb-6 border-b border-white/20">
+                        <h3 class="text-lg font-medium text-white/90 mb-3">Company Details</h3>
+                        <div class="space-y-2 text-sm text-white/70">
+                            <p><span class="font-medium text-white/90">Company:</span> <span id="summaryCompanyName">-</span></p>
+                            <p><span class="font-medium text-white/90">Contact:</span> <span id="summaryContactName">-</span></p>
+                            <p><span class="font-medium text-white/90">Email:</span> <span id="summaryContactEmail">-</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Sponsorship Package -->
+                    <div class="mb-6 pb-6 border-b border-white/20">
+                        <h3 class="text-lg font-medium text-white/90 mb-3">Sponsorship Package</h3>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="font-medium text-white" id="packageName">-</p>
+                                <p class="text-sm text-white/60" id="packageDescription">-</p>
+                            </div>
+                            <p class="text-xl font-bold text-blue-400" id="packagePrice">₹0</p>
+                        </div>
+                    </div>
+
+                    <!-- Additional Services -->
+                    <div class="mb-6 pb-6 border-b border-white/20">
+                        <h3 class="text-lg font-medium text-white/90 mb-3">Additional Services</h3>
+                        <div id="additionalServicesList" class="space-y-2">
+                            <!-- Additional services will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Total -->
+                    <div class="text-center">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-medium text-white">Total Amount:</span>
+                            <span class="text-2xl font-bold text-white" id="totalAmount">₹0</span>
+                        </div>
+                        <div class="mt-4 text-sm text-white/70">
+                            <p>✓ All prices include applicable taxes</p>
+                            <p>✓ Instant confirmation email</p>
+                            <p>✓ Secure encrypted payment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Form -->
+            <div class="lg:col-span-2">
+                <div class="glass rounded-3xl shadow-2xl p-8">
+                    <h2 class="text-3xl font-semibold text-white mb-8">Payment Details</h2>
+                    
+                    <!-- Payment Method Selection -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-medium text-white/90 mb-4">Select Payment Method</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <label class="payment-card p-4 rounded-xl cursor-pointer transition duration-300">
+                                <input type="radio" name="paymentMethod" value="card" class="sr-only" checked>
+                                <div class="text-center">
+                                    <svg class="w-8 h-8 mx-auto mb-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+                                    </svg>
+                                    <p class="text-white font-medium">Credit/Debit Card</p>
+                                </div>
+                            </label>
+                            
+                            <label class="payment-card p-4 rounded-xl cursor-pointer transition duration-300">
+                                <input type="radio" name="paymentMethod" value="upi" class="sr-only">
+                                <div class="text-center">
+                                    <svg class="w-8 h-8 mx-auto mb-2 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                    <p class="text-white font-medium">UPI</p>
+                                </div>
+                            </label>
+                            
+                            <label class="payment-card p-4 rounded-xl cursor-pointer transition duration-300">
+                                <input type="radio" name="paymentMethod" value="netbanking" class="sr-only">
+                                <div class="text-center">
+                                    <svg class="w-8 h-8 mx-auto mb-2 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm0 2h12v8H4V6z"></path>
+                                    </svg>
+                                    <p class="text-white font-medium">Net Banking</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <form id="paymentForm" class="space-y-6">
+                        <!-- Card Payment Details -->
+                        <div id="cardPaymentSection" class="space-y-6">
+                            <div>
+                                <label for="cardNumber" class="block text-sm font-medium text-white/90 mb-2">Card Number</label>
+                                <input type="text" id="cardNumber" name="cardNumber" required
+                                    placeholder="1234 5678 9012 3456" maxlength="19"
+                                    class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="expiryDate" class="block text-sm font-medium text-white/90 mb-2">Expiry Date</label>
+                                    <input type="text" id="expiryDate" name="expiryDate" required
+                                        placeholder="MM/YY" maxlength="5"
+                                        class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                                </div>
+                                <div>
+                                    <label for="cvv" class="block text-sm font-medium text-white/90 mb-2">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" required
+                                        placeholder="123" maxlength="4"
+                                        class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="cardName" class="block text-sm font-medium text-white/90 mb-2">Cardholder Name</label>
+                                <input type="text" id="cardName" name="cardName" required
+                                    placeholder="Name as on card"
+                                    class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                            </div>
+                        </div>
+
+                        <!-- UPI Payment Details -->
+                        <div id="upiPaymentSection" class="space-y-6 hidden">
+                            <div>
+                                <label for="upiId" class="block text-sm font-medium text-white/90 mb-2">UPI ID</label>
+                                <input type="text" id="upiId" name="upiId"
+                                    placeholder="yourname@upi"
+                                    class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                            </div>
+                            <div class="text-center">
+                                <div class="inline-block p-4 bg-white rounded-lg">
+                                    <div class="w-32 h-32 bg-black flex items-center justify-center text-white text-xs">
+                                        QR Code<br>Placeholder
+                                    </div>
+                                </div>
+                                <p class="text-white/70 mt-2">Scan QR code with your UPI app</p>
+                            </div>
+                        </div>
+
+                        <!-- Net Banking Payment Details -->
+                        <div id="netbankingPaymentSection" class="space-y-6 hidden">
+                            <div>
+                                <label for="bankSelect" class="block text-sm font-medium text-white/90 mb-2">Select Your Bank</label>
+                                <select id="bankSelect" name="bankSelect"
+                                    class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                                    <option value="" class="bg-gray-800 text-white">Choose your bank</option>
+                                    <option value="sbi" class="bg-gray-800 text-white">State Bank of India</option>
+                                    <option value="hdfc" class="bg-gray-800 text-white">HDFC Bank</option>
+                                    <option value="icici" class="bg-gray-800 text-white">ICICI Bank</option>
+                                    <option value="axis" class="bg-gray-800 text-white">Axis Bank</option>
+                                    <option value="kotak" class="bg-gray-800 text-white">Kotak Mahindra Bank</option>
+                                    <option value="pnb" class="bg-gray-800 text-white">Punjab National Bank</option>
+                                    <option value="canara" class="bg-gray-800 text-white">Canara Bank</option>
+                                    <option value="bob" class="bg-gray-800 text-white">Bank of Baroda</option>
+                                    <option value="union" class="bg-gray-800 text-white">Union Bank of India</option>
+                                    <option value="yes" class="bg-gray-800 text-white">Yes Bank</option>
+                                    <option value="idbi" class="bg-gray-800 text-white">IDBI Bank</option>
+                                    <option value="indian" class="bg-gray-800 text-white">Indian Bank</option>
+                                    <option value="other" class="bg-gray-800 text-white">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Pay Button -->
+                        <div class="mt-8 space-y-6">
+                            <div class="glass rounded-xl p-4">
+                                <h4 class="font-semibold text-white mb-2">Payment Terms</h4>
+                                <ul class="text-sm text-white/70 space-y-1">
+                                    <li>• Payment is processed securely through our encrypted gateway</li>
+                                    <li>• Sponsorship confirmation will be sent within 24 hours</li>
+                                    <li>• Refund policy applies as per sponsorship agreement</li>
+                                    <li>• All transactions are subject to verification</li>
+                                </ul>
+                            </div>
+
+                            <div class="flex items-start">
+                                <input type="checkbox" id="agreeTerms" name="agreeTerms" required
+                                    class="mt-1 text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                                <label for="agreeTerms" class="ml-3 text-sm text-white/90">
+                                    I agree to the <a href="#" class="text-blue-400 hover:text-blue-300 underline">Terms and Conditions</a> and 
+                                    <a href="#" class="text-blue-400 hover:text-blue-300 underline">Privacy Policy</a>
+                                </label>
+                            </div>
+
+                            <button type="submit" id="payButton"
+                                class="w-full glass-button text-white font-bold py-4 px-6 rounded-xl transition duration-300 ease-in-out shadow-2xl text-lg">
+                                <span class="flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                    </svg>
+                                    Pay Now - ₹<span id="payButtonAmount">0</span>
+                                </span>
+                            </button>
+
+                            <div class="text-center text-sm text-white/70">
+                                <p>🔒 Your payment information is encrypted and secure</p>
+                                <p>Questions? Contact us at <a href="mailto:payment@smops2026.org" class="text-blue-400 hover:text-blue-300">payment@smops2026.org</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Info -->
+        <div class="mt-8 text-center">
+            <div class="glass rounded-lg p-4 inline-block">
+                <div class="flex items-center justify-center space-x-4 text-sm text-white/70">
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>SSL Secured</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>PCI Compliant</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Bank Grade Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get data from URL parameters or localStorage
+        function loadSponsorshipData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const storedData = localStorage.getItem('sponsorshipData');
+            
+            if (storedData) {
+                const data = JSON.parse(storedData);
+                populateOrderSummary(data);
+            } else {
+                // Default data for testing
+                populateOrderSummary({
+                    companyName: 'Sample Company',
+                    contactName: 'John Doe',
+                    contactEmail: 'john@example.com',
+                    sponsorshipLevel: 'gold',
+                    additionalServices: []
+                });
+            }
+        }
+
+        function populateOrderSummary(data) {
+            // Company details
+            document.getElementById('summaryCompanyName').textContent = data.companyName || '-';
+            document.getElementById('summaryContactName').textContent = data.contactName || '-';
+            document.getElementById('summaryContactEmail').textContent = data.contactEmail || '-';
+
+            // Sponsorship package
+            const packages = {
+                'platinum': { name: 'Platinum Sponsorship', price: 800000, description: 'Premium Tier' },
+                'gold': { name: 'Gold Sponsorship', price: 500000, description: 'Popular Choice' },
+                'silver': { name: 'Silver Sponsorship', price: 250000, description: 'Great Value' },
+                'bronze': { name: 'Bronze Sponsorship', price: 100000, description: 'Entry Level' }
+            };
+
+            const selectedPackage = packages[data.sponsorshipLevel] || packages['gold'];
+            document.getElementById('packageName').textContent = selectedPackage.name;
+            document.getElementById('packageDescription').textContent = selectedPackage.description;
+            document.getElementById('packagePrice').textContent = `₹${selectedPackage.price.toLocaleString()}`;
+
+            // Additional services
+            const services = {
+                'custom-booth': { name: 'Custom Booth Design', price: 50000 },
+                'branded-lanyards': { name: 'Branded Lanyards', price: 20000 },
+                'lunch-sponsor': { name: 'Lunch Sponsorship', price: 15000 },
+                'coffee-sponsor': { name: 'Coffee Break Sponsorship', price: 8000 },
+                'mobile-app': { name: 'Mobile App Banner', price: 3000 },
+                'live-stream': { name: 'Live Stream Sponsorship', price: 10000 }
+            };
+
+            const additionalServicesList = document.getElementById('additionalServicesList');
+            let additionalTotal = 0;
+
+            if (data.additionalServices && data.additionalServices.length > 0) {
+                additionalServicesList.innerHTML = '';
+                data.additionalServices.forEach(serviceKey => {
+                    const service = services[serviceKey];
+                    if (service) {
+                        additionalTotal += service.price;
+                        const serviceDiv = document.createElement('div');
+                        serviceDiv.className = 'flex justify-between items-center text-sm';
+                        serviceDiv.innerHTML = `
+                            <span class="text-white/70">${service.name}</span>
+                            <span class="text-white">₹${service.price.toLocaleString()}</span>
+                        `;
+                        additionalServicesList.appendChild(serviceDiv);
+                    }
+                });
+            } else {
+                additionalServicesList.innerHTML = '<p class="text-white/60 text-sm">No additional services selected</p>';
+            }
+
+            // Total amount
+            const totalAmount = selectedPackage.price + additionalTotal;
+            document.getElementById('totalAmount').textContent = `₹${totalAmount.toLocaleString()}`;
+            document.getElementById('payButtonAmount').textContent = totalAmount.toLocaleString();
+        }
+
+        // Payment method switching
+        function setupPaymentMethodSwitching() {
+            const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+            const cardSection = document.getElementById('cardPaymentSection');
+            const upiSection = document.getElementById('upiPaymentSection');
+            const netbankingSection = document.getElementById('netbankingPaymentSection');
+            
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', function() {
+                    // Hide all sections
+                    cardSection.classList.add('hidden');
+                    upiSection.classList.add('hidden');
+                    netbankingSection.classList.add('hidden');
+                    
+                    // Reset all requirements
+                    document.getElementById('cardNumber').required = false;
+                    document.getElementById('cardName').required = false;
+                    document.getElementById('expiryDate').required = false;
+                    document.getElementById('cvv').required = false;
+                    document.getElementById('upiId').required = false;
+                    document.getElementById('bankSelect').required = false;
+                    
+                    // Show selected section
+                    switch(this.value) {
+                        case 'card':
+                            cardSection.classList.remove('hidden');
+                            document.getElementById('cardNumber').required = true;
+                            document.getElementById('cardName').required = true;
+                            document.getElementById('expiryDate').required = true;
+                            document.getElementById('cvv').required = true;
+                            break;
+                        case 'upi':
+                            upiSection.classList.remove('hidden');
+                            document.getElementById('upiId').required = true;
+                            break;
+                        case 'netbanking':
+                            netbankingSection.classList.remove('hidden');
+                            document.getElementById('bankSelect').required = true;
+                            break;
+                    }
+                    
+                    // Update parent styling
+                    paymentMethods.forEach(pm => {
+                        pm.closest('label').style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        pm.closest('label').style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                    });
+                    this.closest('label').style.borderColor = 'rgba(59, 130, 246, 0.5)';
+                    this.closest('label').style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+                });
+            });
+        }
+
+        // Input formatting
+        function setupInputFormatting() {
+            const cardNumber = document.getElementById('cardNumber');
+            const expiryDate = document.getElementById('expiryDate');
+            const cvv = document.getElementById('cvv');
+            
+            // Card number formatting
+            cardNumber.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\s/g, '');
+                let formattedValue = '';
+                for (let i = 0; i < value.length; i++) {
+                    if (i > 0 && i % 4 === 0) {
+                        formattedValue += ' ';
+                    }
+                    formattedValue += value[i];
+                }
+                e.target.value = formattedValue;
+            });
+            
+            // Expiry date formatting
+            expiryDate.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                }
+                e.target.value = value;
+            });
+            
+            // CVV numeric only
+            cvv.addEventListener('input', function(e) {
+                e.target.value = e.target.value.replace(/\D/g, '');
+            });
+        }
+
+        // Form validation and submission
+        function setupFormSubmission() {
+            const payButton = document.getElementById('payButton');
+            
+            payButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                const termsAccepted = document.getElementById('agreeTerms').checked;
+                if (!termsAccepted) {
+                    alert('Please accept the terms and conditions to continue.');
+                    return;
+                }
+                
+                let isValid = true;
+                const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+                
+                if (paymentMethod === 'card') {
+                    const cardFields = ['cardNumber', 'cardName', 'expiryDate', 'cvv'];
+                    cardFields.forEach(field => {
+                        const input = document.getElementById(field);
+                        if (!input.value.trim()) {
+                            isValid = false;
+                            input.classList.add('border-red-500');
+                        } else {
+                            input.classList.remove('border-red-500');
+                        }
+                    });
+                } else if (paymentMethod === 'upi') {
+                    const upiInput = document.getElementById('upiId');
+                    if (!upiInput.value.trim()) {
+                        isValid = false;
+                        upiInput.classList.add('border-red-500');
+                    } else {
+                        upiInput.classList.remove('border-red-500');
+                    }
+                } else if (paymentMethod === 'netbanking') {
+                    const bankSelect = document.getElementById('bankSelect');
+                    if (!bankSelect.value) {
+                        isValid = false;
+                        bankSelect.classList.add('border-red-500');
+                    } else {
+                        bankSelect.classList.remove('border-red-500');
+                    }
+                }
+                
+                if (!isValid) {
+                    alert('Please fill in all required fields correctly.');
+                    return;
+                }
+                
+                // Show loading state
+                const originalText = payButton.innerHTML;
+                payButton.innerHTML = `
+                    <span class="flex items-center justify-center">
+                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Processing Payment...
+                    </span>
+                `;
+                payButton.disabled = true;
+                
+                // Simulate payment processing
+                setTimeout(() => {
+                    alert('Payment successful! Your sponsorship has been confirmed. You will receive a confirmation email shortly with all the details.');
+                    payButton.innerHTML = originalText;
+                    payButton.disabled = false;
+                    // Clear stored data
+                    localStorage.removeItem('sponsorshipData');
+                    // Redirect to success page or back to main site
+                    window.location.href = '../../index.html';
+                }, 3000);
+            });
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSponsorshipData();
+            setupPaymentMethodSwitching();
+            setupInputFormatting();
+            setupFormSubmission();
+            
+            // Set initial payment method styling
+            document.querySelector('input[name="paymentMethod"]:checked').dispatchEvent(new Event('change'));
+        });
+
+        // Load data on page load
+        loadSponsorshipData();
+    </script>
+</body>
+</html>

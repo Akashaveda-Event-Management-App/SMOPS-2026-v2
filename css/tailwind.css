@@ -1,0 +1,31 @@
+/* Tailwind CSS Configuration */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom component styles */
+@layer components {
+  .nav-link {
+    @apply text-sm font-medium text-white hover:text-white/80 transition-colors duration-300;
+  }
+  
+  .mobile-menu-content {
+    @apply py-8 px-6;
+  }
+  
+  .mobile-submenu {
+    @apply opacity-0 max-h-0 overflow-hidden transition-all duration-300;
+  }
+  
+  .mobile-submenu.active {
+    @apply opacity-100 max-h-96;
+  }
+  
+  .submenu-toggle {
+    @apply transition-transform duration-200;
+  }
+  
+  .submenu-toggle.active {
+    @apply rotate-180;
+  }
+}

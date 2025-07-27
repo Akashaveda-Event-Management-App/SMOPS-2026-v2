@@ -1,0 +1,9 @@
+# Single Page Application redirects
+/*    /index.html   200
+
+# Redirect specific pages
+/callforpaper    /src/pages/callforpaper.html    200
+/registration    /src/pages/IndividualReg.html   200
+/sponsorship     /src/pages/SponsersReg.html     200
+/payment         /src/pages/payment.html         200
+/sponsor-payment /src/pages/sponsor-payment.html 200
