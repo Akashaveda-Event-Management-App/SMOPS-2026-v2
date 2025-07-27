@@ -33,7 +33,6 @@ function initScrollAnimations() {
 
 // Navbar scroll behavior
 function initNavbarScroll() {
-  let lastScroll = 0;
   const navbar = document.querySelector("nav");
 
   window.addEventListener("scroll", () => {
@@ -41,20 +40,12 @@ function initNavbarScroll() {
 
     if (currentScroll <= 0) {
       navbar.classList.remove("shadow-md");
-      navbar.style.transform = "translateY(0)";
-      return;
-    }
-
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      // Scrolling down
-      navbar.style.transform = "translateY(-100%)";
     } else {
-      // Scrolling up
-      navbar.style.transform = "translateY(0)";
       navbar.classList.add("shadow-md");
     }
 
-    lastScroll = currentScroll;
+    // Keep navbar always visible (sticky)
+    navbar.style.transform = "translateY(0)";
   });
 }
 

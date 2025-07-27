@@ -99,11 +99,11 @@ function initSmoothScroll() {
       const targetElement = document.querySelector(targetId);
 
       if (targetElement) {
-        const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
-
-        window.scrollTo({
-          top: offsetTop,
+        // Use scrollIntoView with block: 'start' to work with scroll-margin-top CSS
+        targetElement.scrollIntoView({
           behavior: "smooth",
+          block: "start",
+          inline: "nearest",
         });
 
         // Close mobile menu if open
@@ -118,7 +118,6 @@ function initSmoothScroll() {
 
 // Navbar scroll behavior (simplified version for main.js)
 function initNavbarScroll() {
-  let lastScroll = 0;
   const navbar = document.querySelector("nav");
 
   window.addEventListener("scroll", () => {
@@ -126,18 +125,12 @@ function initNavbarScroll() {
 
     if (currentScroll <= 0) {
       navbar.classList.remove("shadow-md");
-      navbar.style.transform = "translateY(0)";
-      return;
-    }
-
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      navbar.style.transform = "translateY(-100%)";
     } else {
-      navbar.style.transform = "translateY(0)";
       navbar.classList.add("shadow-md");
     }
 
-    lastScroll = currentScroll;
+    // Keep navbar always visible (sticky)
+    navbar.style.transform = "translateY(0)";
   });
 }
 
