@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://smops2026.org/sitemap.xml
+
+# Disallow crawling of admin or backend areas (if any)
+Disallow: /admin/
+Disallow: /backend/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Allow crawling of important conference pages
+Allow: /call-for-papers.html
+Allow: /submit-paper.html
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+
+# Crawl-delay (optional, adjust as needed)
+Crawl-delay: 1

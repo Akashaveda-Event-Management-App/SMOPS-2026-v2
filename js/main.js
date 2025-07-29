@@ -134,29 +134,102 @@ function initNavbarScroll() {
   });
 }
 
-// Enhanced countdown timer with better formatting
+// Enhanced countdown timer with better formatting and status tracking
 function initCountdown() {
-  function updateCountdown() {
-    const conferenceDate = new Date("2026-04-08T00:00:00+05:30"); // Updated to 2026 date
+  function getCurrentStatus() {
     const now = new Date();
-    const diff = conferenceDate - now;
+    
+    // Key dates
+    const abstractSubmissionOpen = new Date("2025-07-30T00:00:00+05:30");
+    const abstractDeadline = new Date("2025-09-10T23:59:59+05:30");
+    const registrationOpen = new Date("2025-12-20T00:00:00+05:30");
+    const earlyBirdDeadline = new Date("2026-01-30T23:59:59+05:30");
+    const registrationDeadline = new Date("2026-03-01T23:59:59+05:30");
+    const conferenceStart = new Date("2026-04-08T00:00:00+05:30");
+    
+    // Determine current phase and countdown target
+    if (now >= conferenceStart) {
+      return {
+        phase: "conference",
+        message: "Conference is Live!",
+        color: "green",
+        targetDate: null,
+        targetEvent: null,
+        registrationStatus: "closed"
+      };
+    } else if (now >= registrationDeadline) {
+      return {
+        phase: "pre-conference",
+        message: "Registration Closed",
+        color: "orange",
+        targetDate: conferenceStart,
+        targetEvent: "Conference",
+        registrationStatus: "closed"
+      };
+    } else if (now >= earlyBirdDeadline) {
+      return {
+        phase: "regular-registration",
+        message: "Regular Registration Active",
+        color: "yellow",
+        targetDate: registrationDeadline,
+        targetEvent: "Registration Deadline",
+        registrationStatus: "regular"
+      };
+    } else if (now >= registrationOpen) {
+      return {
+        phase: "early-bird",
+        message: "Early Bird Registration Active",
+        color: "blue",
+        targetDate: earlyBirdDeadline,
+        targetEvent: "Early Bird Ends",
+        registrationStatus: "early-bird"
+      };
+    } else if (now >= abstractSubmissionOpen) {
+      return {
+        phase: "abstract-active",
+        message: "Abstract Submission Open",
+        color: "green",
+        targetDate: registrationOpen,
+        targetEvent: "Registration Opens",
+        registrationStatus: "coming-soon"
+      };
+    } else {
+      return {
+        phase: "pre-abstract",
+        message: "Abstract Submission Opens Soon",
+        color: "gray",
+        targetDate: abstractSubmissionOpen,
+        targetEvent: "Abstract Submission",
+        registrationStatus: "coming-soon"
+      };
+    }
+  }
+  
+  function updateCountdown() {
+    const status = getCurrentStatus();
+    const now = new Date();
+    
+    // Default to conference date if no specific target
+    const targetDate = status.targetDate || new Date("2026-04-08T00:00:00+05:30");
+    const diff = targetDate - now;
 
-    if (diff <= 0) {
+    if (diff <= 0 && status.phase === "conference") {
       const countdownElement = document.getElementById("countdown");
       if (countdownElement) {
         countdownElement.innerHTML = `
           <div class="flex items-center space-x-2">
-            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-neon"></span>
-            <span class="text-lg font-bold">Conference has started!</span>
+            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+            <span class="text-lg font-bold">Conference is Live!</span>
           </div>`;
       }
+      updateStatusDisplay(status);
       return;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const days = Math.floor(Math.abs(diff) / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((Math.abs(diff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((Math.abs(diff) % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((Math.abs(diff) % (1000 * 60)) / 1000);
 
     const daysElement = document.getElementById("days");
     const hoursElement = document.getElementById("hours");
@@ -164,12 +237,151 @@ function initCountdown() {
     const secondsElement = document.getElementById("seconds");
 
     if (daysElement) daysElement.textContent = days.toString().padStart(3, "0");
-    if (hoursElement)
-      hoursElement.textContent = hours.toString().padStart(2, "0");
-    if (minutesElement)
-      minutesElement.textContent = minutes.toString().padStart(2, "0");
-    if (secondsElement)
-      secondsElement.textContent = seconds.toString().padStart(2, "0");
+    if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, "0");
+    if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, "0");
+    if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, "0");
+    
+    updateStatusDisplay(status);
+  }
+  
+  function updateStatusDisplay(status) {
+    let statusElement = document.getElementById("conference-status");
+    
+    if (!statusElement) {
+      const countdownElement = document.getElementById("countdown");
+      if (countdownElement && countdownElement.parentNode) {
+        statusElement = document.createElement("div");
+        statusElement.id = "conference-status";
+        statusElement.className = "mt-6 text-center";
+        countdownElement.parentNode.insertBefore(statusElement, countdownElement.nextSibling);
+      }
+    }
+    
+    if (statusElement) {
+      const colorClasses = {
+        green: "bg-green-500/20 border-green-400/50 text-green-200",
+        blue: "bg-blue-500/20 border-blue-400/50 text-blue-200", 
+        yellow: "bg-yellow-500/20 border-yellow-400/50 text-yellow-200",
+        orange: "bg-orange-500/20 border-orange-400/50 text-orange-200",
+        gray: "bg-gray-500/20 border-gray-400/50 text-gray-200"
+      };
+      
+      const statusColor = colorClasses[status.color] || colorClasses.gray;
+      
+      statusElement.innerHTML = `
+        <div class="space-y-4">
+          <!-- Current Status -->
+          <div class="inline-flex items-center space-x-3 px-6 py-3 rounded-full backdrop-blur-xl border ${statusColor} transition-all duration-300">
+            <div class="w-2 h-2 bg-current rounded-full animate-pulse"></div>
+            <span class="font-semibold text-sm sm:text-base">${status.message}</span>
+          </div>
+          
+          ${status.targetEvent ? `
+            <div class="text-xs sm:text-sm text-white/70">
+              Counting down to: <span class="font-semibold text-white/90">${status.targetEvent}</span>
+            </div>
+          ` : ''}
+          
+          <!-- Registration Button -->
+          <div class="mt-4">
+            ${getRegistrationButton(status.registrationStatus)}
+          </div>
+        </div>
+      `;
+    }
+    
+    // Update hero registration button
+    updateHeroRegistrationButton(status.registrationStatus);
+  }
+  
+  function getRegistrationButton(registrationStatus) {
+    switch(registrationStatus) {
+      case "coming-soon":
+        return `
+          <button class="px-6 py-3 bg-gray-600/30 border border-gray-500/50 text-gray-300 rounded-full text-sm cursor-not-allowed opacity-70">
+            Registration Coming Soon
+          </button>
+        `;
+        
+      case "early-bird":
+        return `
+          <a href="#Registration" class="px-6 py-3 bg-blue-600/30 border border-blue-500/50 text-blue-200 rounded-full text-sm hover:bg-blue-600/50 transition-all duration-300">
+            Early Bird Registration
+          </a>
+        `;
+        
+      case "regular":
+        return `
+          <a href="#Registration" class="px-6 py-3 bg-yellow-600/30 border border-yellow-500/50 text-yellow-200 rounded-full text-sm hover:bg-yellow-600/50 transition-all duration-300">
+            Register Now
+          </a>
+        `;
+        
+      case "closed":
+        return `
+          <button class="px-6 py-3 bg-red-600/30 border border-red-500/50 text-red-200 rounded-full text-sm cursor-not-allowed opacity-70">
+            Registration Closed
+          </button>
+        `;
+        
+      default:
+        return '';
+    }
+  }
+  
+  function updateHeroRegistrationButton(registrationStatus) {
+    const heroButtonContainer = document.getElementById("hero-registration-button");
+    if (!heroButtonContainer) return;
+    
+    switch(registrationStatus) {
+      case "coming-soon":
+        heroButtonContainer.innerHTML = `
+          <div class="absolute -inset-1 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-600 rounded-full blur opacity-75"></div>
+          <button class="relative px-8 py-4 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-600 text-gray-300 rounded-full font-bold text-lg shadow-2xl transition-all duration-300 flex items-center space-x-3 cursor-not-allowed opacity-70">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+            <span>Registration Coming Soon</span>
+          </button>
+        `;
+        break;
+        
+      case "early-bird":
+        heroButtonContainer.innerHTML = `
+          <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-full blur opacity-75 group-hover:opacity-100"></div>
+          <a href="#Registration" class="relative px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white rounded-full font-bold text-lg shadow-2xl hover:shadow-glow-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 flex items-center space-x-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+            <span>Early Bird Registration</span>
+          </a>
+        `;
+        break;
+        
+      case "regular":
+        heroButtonContainer.innerHTML = `
+          <div class="absolute -inset-1 bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 rounded-full blur opacity-75 group-hover:opacity-100"></div>
+          <a href="#Registration" class="relative px-8 py-4 bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 text-white rounded-full font-bold text-lg shadow-2xl hover:shadow-glow-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-500 hover:via-orange-500 hover:to-red-500 flex items-center space-x-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+            <span>Register Now</span>
+          </a>
+        `;
+        break;
+        
+      case "closed":
+        heroButtonContainer.innerHTML = `
+          <div class="absolute -inset-1 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-full blur opacity-75"></div>
+          <button class="relative px-8 py-4 bg-gradient-to-r from-red-600 via-red-700 to-red-600 text-red-200 rounded-full font-bold text-lg shadow-2xl transition-all duration-300 flex items-center space-x-3 cursor-not-allowed opacity-70">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+            <span>Registration Closed</span>
+          </button>
+        `;
+        break;
+    }
   }
 
   updateCountdown();
