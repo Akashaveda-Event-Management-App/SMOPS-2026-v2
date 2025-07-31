@@ -214,7 +214,7 @@
     <!-- JavaScript -->
     <script>
         // Both Call for Papers and Submit Paper redirect to the same Planyt portal
-        const PLANYT_PORTAL_URL = "https://app.planyt.in/signup?redirect=abstract-submission&event=smops2025&source=smops";
+        const PLANYT_PORTAL_URL = "https://app.planyt.in/signup?redirect=abstract-submission&event=smops2026&source=smops";
         
         document.getElementById('continue-button').addEventListener('click', function(e) {
             e.preventDefault();
@@ -227,10 +227,14 @@
                 </svg>
             `;
             
-            // Redirect after a short delay
-            setTimeout(() => {
-                window.open(PLANYT_PORTAL_URL, '_blank');
-            }, 1000);
+            // Redirect immediately for better user experience
+            try {
+                window.open(PLANYT_PORTAL_URL, '_blank', 'noopener,noreferrer');
+            } catch (error) {
+                console.error('Redirect failed:', error);
+                // Fallback: redirect in the same tab
+                window.location.href = PLANYT_PORTAL_URL;
+            }
         });
 
         // Add some interactive animations
