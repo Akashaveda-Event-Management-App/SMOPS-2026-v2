@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
+    <!-- Prevent caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
     <!-- Basic Meta Tags -->
     <meta charset="UTF-8" />
     <meta
@@ -196,27 +201,33 @@
 
     <!-- JavaScript -->
     <script>
-        // Both Call for Papers and Submit Paper redirect to the same Planyt portal
-        const PLANYT_PORTAL_URL = "https://app.planyt.in/signup?redirect=abstract-submission&event=smops2026&source=smops";
+        // Clear any cached data
+        if ('caches' in window) {
+            caches.keys().then(function(names) {
+                for (let name of names) caches.delete(name);
+            });
+        }
         
-        document.getElementById('continue-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Add a small delay for user experience
-            this.innerHTML = `
-                <span>Redirecting...</span>
-                <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                </svg>
-            `;
-            
-            // Redirect immediately for better user experience
-            try {
-                window.open(PLANYT_PORTAL_URL, '_blank', 'noopener,noreferrer');
-            } catch (error) {
-                console.error('Redirect failed:', error);
-                // Fallback: redirect in the same tab
-                window.location.href = PLANYT_PORTAL_URL;
+        // Force reload URL with timestamp to prevent caching
+        const timestamp = Date.now();
+        const PLANYT_URL = `https://app.planyt.in/Login?redirect=abstract-submission&event=smops2026&source=smops&t=${timestamp}`;
+        
+        console.log('Fresh Planyt URL (no cache):', PLANYT_URL);
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.getElementById('continue-button');
+            if (button) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    console.log('Redirecting to fresh URL:', PLANYT_URL);
+                    
+                    // Show loading state
+                    this.innerHTML = '<span>Redirecting to Planyt Portal...</span>';
+                    
+                    // Force immediate redirect
+                    window.location.href = PLANYT_URL;
+                });
             }
         });
 

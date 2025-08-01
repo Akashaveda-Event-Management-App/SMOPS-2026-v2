@@ -138,7 +138,7 @@ function initNavbarScroll() {
 function initCountdown() {
   function getCurrentStatus() {
     const now = new Date();
-    
+
     // Key dates
     const abstractSubmissionOpen = new Date("2025-07-30T00:00:00+05:30");
     const abstractDeadline = new Date("2025-09-10T23:59:59+05:30");
@@ -146,7 +146,7 @@ function initCountdown() {
     const earlyBirdDeadline = new Date("2026-01-30T23:59:59+05:30");
     const registrationDeadline = new Date("2026-03-01T23:59:59+05:30");
     const conferenceStart = new Date("2026-04-08T00:00:00+05:30");
-    
+
     // Determine current phase and countdown target
     if (now >= conferenceStart) {
       return {
@@ -155,7 +155,7 @@ function initCountdown() {
         color: "green",
         targetDate: null,
         targetEvent: null,
-        registrationStatus: "closed"
+        registrationStatus: "closed",
       };
     } else if (now >= registrationDeadline) {
       return {
@@ -164,7 +164,7 @@ function initCountdown() {
         color: "orange",
         targetDate: conferenceStart,
         targetEvent: "Conference",
-        registrationStatus: "closed"
+        registrationStatus: "closed",
       };
     } else if (now >= earlyBirdDeadline) {
       return {
@@ -173,7 +173,7 @@ function initCountdown() {
         color: "yellow",
         targetDate: registrationDeadline,
         targetEvent: "Registration Deadline",
-        registrationStatus: "regular"
+        registrationStatus: "regular",
       };
     } else if (now >= registrationOpen) {
       return {
@@ -182,16 +182,25 @@ function initCountdown() {
         color: "blue",
         targetDate: earlyBirdDeadline,
         targetEvent: "Early Bird Ends",
-        registrationStatus: "early-bird"
+        registrationStatus: "early-bird",
       };
-    } else if (now >= abstractSubmissionOpen) {
+    } else if (now >= abstractSubmissionOpen && now < abstractDeadline) {
       return {
         phase: "abstract-active",
         message: "Abstract Submission Open",
         color: "green",
+        targetDate: abstractDeadline,
+        targetEvent: "Abstract Submission Deadline",
+        registrationStatus: "coming-soon",
+      };
+    } else if (now >= abstractDeadline) {
+      return {
+        phase: "post-abstract",
+        message: "Abstract Submission Closed",
+        color: "orange",
         targetDate: registrationOpen,
         targetEvent: "Registration Opens",
-        registrationStatus: "coming-soon"
+        registrationStatus: "coming-soon",
       };
     } else {
       return {
@@ -200,17 +209,18 @@ function initCountdown() {
         color: "gray",
         targetDate: abstractSubmissionOpen,
         targetEvent: "Abstract Submission",
-        registrationStatus: "coming-soon"
+        registrationStatus: "coming-soon",
       };
     }
   }
-  
+
   function updateCountdown() {
     const status = getCurrentStatus();
     const now = new Date();
-    
+
     // Default to conference date if no specific target
-    const targetDate = status.targetDate || new Date("2026-04-08T00:00:00+05:30");
+    const targetDate =
+      status.targetDate || new Date("2026-04-08T00:00:00+05:30");
     const diff = targetDate - now;
 
     if (diff <= 0 && status.phase === "conference") {
@@ -227,8 +237,12 @@ function initCountdown() {
     }
 
     const days = Math.floor(Math.abs(diff) / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((Math.abs(diff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((Math.abs(diff) % (1000 * 60 * 60)) / (1000 * 60));
+    const hours = Math.floor(
+      (Math.abs(diff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor(
+      (Math.abs(diff) % (1000 * 60 * 60)) / (1000 * 60)
+    );
     const seconds = Math.floor((Math.abs(diff) % (1000 * 60)) / 1000);
 
     const daysElement = document.getElementById("days");
@@ -237,59 +251,53 @@ function initCountdown() {
     const secondsElement = document.getElementById("seconds");
 
     if (daysElement) daysElement.textContent = days.toString().padStart(3, "0");
-    if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, "0");
-    if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, "0");
-    if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, "0");
-    
+    if (hoursElement)
+      hoursElement.textContent = hours.toString().padStart(2, "0");
+    if (minutesElement)
+      minutesElement.textContent = minutes.toString().padStart(2, "0");
+    if (secondsElement)
+      secondsElement.textContent = seconds.toString().padStart(2, "0");
+
     updateStatusDisplay(status);
   }
-  
+
   function updateStatusDisplay(status) {
-    let statusElement = document.getElementById("conference-status");
-    
-    if (!statusElement) {
-      const countdownElement = document.getElementById("countdown");
-      if (countdownElement && countdownElement.parentNode) {
-        statusElement = document.createElement("div");
-        statusElement.id = "conference-status";
-        statusElement.className = "mt-6 text-center";
-        countdownElement.parentNode.insertBefore(statusElement, countdownElement.nextSibling);
+    // Update the status indicator in the hero section
+    const statusIndicator = document.querySelector(
+      ".inline-flex.items-center.space-x-3.px-6.py-3.rounded-full.backdrop-blur-xl"
+    );
+    const countdownMessage = document.querySelector(
+      ".text-xs.sm\\:text-sm .font-semibold.text-white\\/90"
+    );
+
+    if (statusIndicator) {
+      const colorClasses = {
+        green:
+          "bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border-emerald-400/50 text-emerald-200",
+        blue: "bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border-blue-400/50 text-blue-200",
+        yellow:
+          "bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border-yellow-400/50 text-yellow-200",
+        orange:
+          "bg-gradient-to-r from-orange-500/20 to-red-500/20 border-orange-400/50 text-orange-200",
+        gray: "bg-gradient-to-r from-gray-500/20 to-gray-600/20 border-gray-400/50 text-gray-200",
+      };
+
+      const statusColor = colorClasses[status.color] || colorClasses.gray;
+
+      statusIndicator.className = `inline-flex items-center space-x-3 px-6 py-3 rounded-full backdrop-blur-xl ${statusColor} transition-all duration-300`;
+
+      // Update the status message
+      const statusSpan = statusIndicator.querySelector("span");
+      if (statusSpan) {
+        statusSpan.textContent = `• ${status.message}`;
       }
     }
-    
-    if (statusElement) {
-      const colorClasses = {
-        green: "bg-green-500/20 border-green-400/50 text-green-200",
-        blue: "bg-blue-500/20 border-blue-400/50 text-blue-200", 
-        yellow: "bg-yellow-500/20 border-yellow-400/50 text-yellow-200",
-        orange: "bg-orange-500/20 border-orange-400/50 text-orange-200",
-        gray: "bg-gray-500/20 border-gray-400/50 text-gray-200"
-      };
-      
-      const statusColor = colorClasses[status.color] || colorClasses.gray;
-      
-      statusElement.innerHTML = `
-        <div class="space-y-4">
-          <!-- Current Status -->
-          <div class="inline-flex items-center space-x-3 px-6 py-3 rounded-full backdrop-blur-xl border ${statusColor} transition-all duration-300">
-            <div class="w-2 h-2 bg-current rounded-full animate-pulse"></div>
-            <span class="font-semibold text-sm sm:text-base">${status.message}</span>
-          </div>
-          
-          ${status.targetEvent ? `
-            <div class="text-xs sm:text-sm text-white/70">
-              Counting down to: <span class="font-semibold text-white/90">${status.targetEvent}</span>
-            </div>
-          ` : ''}
-          
-          <!-- Registration Button -->
-          <div class="mt-4">
-            ${getRegistrationButton(status.registrationStatus)}
-          </div>
-        </div>
-      `;
+
+    // Update the countdown target message
+    if (countdownMessage && status.targetEvent) {
+      countdownMessage.textContent = status.targetEvent;
     }
-    
+
     // Update hero registration button
     updateHeroRegistrationButton(status.registrationStatus);
   }
