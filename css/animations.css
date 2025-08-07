@@ -1,0 +1,38 @@
+/* Add animation for animated meteor effects in footer */
+.animate-meteor {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  height: 2px;
+  width: 30px;
+  background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.8));
+  animation: meteorAnimation 5s linear infinite;
+}
+
+@keyframes meteorAnimation {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100vw) translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Add animation for slow spin */
+.animate-spin-slow {
+  animation: spin 30s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

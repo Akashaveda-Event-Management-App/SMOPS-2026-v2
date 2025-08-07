@@ -92,13 +92,16 @@ function toggleAccordion(id) {
 
 // Enhanced smooth scroll for navigation links
 function initSmoothScroll() {
+  // Handle internal anchor links (smooth scroll)
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
-      e.preventDefault();
       const targetId = this.getAttribute("href");
       const targetElement = document.querySelector(targetId);
 
+      // Only prevent default and apply smooth scroll if target element exists on this page
       if (targetElement) {
+        e.preventDefault();
+        
         // Use scrollIntoView with block: 'start' to work with scroll-margin-top CSS
         targetElement.scrollIntoView({
           behavior: "smooth",
@@ -111,6 +114,24 @@ function initSmoothScroll() {
         if (!mobileMenu.classList.contains("hidden")) {
           toggleMobileMenu();
         }
+      }
+      // If target element doesn't exist, let the default link behavior happen
+    });
+  });
+
+  // Handle external links (ensure immediate navigation)
+  document.querySelectorAll('a[href$=".html"], a[href*=".html"]').forEach((link) => {
+    link.addEventListener("click", function (e) {
+      // Ensure the link is not prevented by any other handlers
+      e.stopImmediatePropagation();
+      
+      // For external links, we want immediate navigation
+      const href = this.getAttribute("href");
+      if (href && !href.startsWith("#")) {
+        // Small delay to ensure the click is processed
+        setTimeout(() => {
+          window.location.href = href;
+        }, 0);
       }
     });
   });
@@ -134,20 +155,26 @@ function initNavbarScroll() {
   });
 }
 
-// Enhanced countdown timer with better formatting and status tracking
+// Countdown timer showing conference date with current status based on important dates
 function initCountdown() {
+  // Get the current status based on important dates
   function getCurrentStatus() {
     const now = new Date();
-
-    // Key dates
-    const abstractSubmissionOpen = new Date("2025-07-30T00:00:00+05:30");
-    const abstractDeadline = new Date("2025-09-10T23:59:59+05:30");
-    const registrationOpen = new Date("2025-12-20T00:00:00+05:30");
-    const earlyBirdDeadline = new Date("2026-01-30T23:59:59+05:30");
-    const registrationDeadline = new Date("2026-03-01T23:59:59+05:30");
+    
+    // Main event date - April 8, 2026 (IST)
     const conferenceStart = new Date("2026-04-08T00:00:00+05:30");
-
-    // Determine current phase and countdown target
+    
+    // Important dates for the conference
+    const abstractSubmissionOpens = new Date("2025-07-30T00:00:00+05:30");
+    const abstractSubmissionDeadline = new Date("2025-09-10T00:00:00+05:30");
+    const acceptanceNotification = new Date("2025-09-20T00:00:00+05:30");
+    const finalPaperSubmissionStart = new Date("2025-09-30T00:00:00+05:30");
+    const finalPaperSubmissionEnd = new Date("2025-12-20T00:00:00+05:30");
+    const earlyBirdRegistrationOpens = new Date("2025-12-20T00:00:00+05:30");
+    const earlyBirdRegistrationEnds = new Date("2026-01-30T00:00:00+05:30");
+    const registrationDeadline = new Date("2026-03-01T00:00:00+05:30");
+    
+    // Check if conference has started
     if (now >= conferenceStart) {
       return {
         phase: "conference",
@@ -156,95 +183,185 @@ function initCountdown() {
         targetDate: null,
         targetEvent: null,
         registrationStatus: "closed",
+        currentStatus: "Conference is Live"
       };
     } else if (now >= registrationDeadline) {
       return {
-        phase: "pre-conference",
-        message: "Registration Closed",
+        phase: "countdown",
+        message: "Countdown to SMOPS 2026",
+        color: "red",
+        targetDate: conferenceStart,
+        targetEvent: "Conference Start",
+        registrationStatus: "closed",
+        currentStatus: "Registration Closed"
+      };
+    } else if (now >= earlyBirdRegistrationEnds) {
+      return {
+        phase: "countdown",
+        message: "Countdown to SMOPS 2026",
+        color: "yellow",
+        targetDate: conferenceStart,
+        targetEvent: "Conference Start",
+        registrationStatus: "regular",
+        currentStatus: "Regular Registration Open"
+      };
+    } else if (now >= earlyBirdRegistrationOpens) {
+      return {
+        phase: "countdown",
+        message: "Countdown to SMOPS 2026",
+        color: "blue",
+        targetDate: conferenceStart,
+        targetEvent: "Conference Start",
+        registrationStatus: "early-bird",
+        currentStatus: "Early Bird Registration Open"
+      };
+    } else if (now >= finalPaperSubmissionStart) {
+      return {
+        phase: "countdown",
+        message: "Countdown to SMOPS 2026",
         color: "orange",
         targetDate: conferenceStart,
-        targetEvent: "Conference",
-        registrationStatus: "closed",
+        targetEvent: "Conference Start",
+        registrationStatus: "coming-soon",
+        currentStatus: "Paper Submission Phase"
       };
-    } else if (now >= earlyBirdDeadline) {
+    } else if (now >= acceptanceNotification) {
       return {
-        phase: "regular-registration",
-        message: "Regular Registration Active",
-        color: "yellow",
-        targetDate: registrationDeadline,
-        targetEvent: "Registration Deadline",
-        registrationStatus: "regular",
-      };
-    } else if (now >= registrationOpen) {
-      return {
-        phase: "early-bird",
-        message: "Early Bird Registration Active",
-        color: "blue",
-        targetDate: earlyBirdDeadline,
-        targetEvent: "Early Bird Ends",
-        registrationStatus: "early-bird",
-      };
-    } else if (now >= abstractSubmissionOpen && now < abstractDeadline) {
-      return {
-        phase: "abstract-active",
-        message: "Abstract Submission Open",
+        phase: "countdown",
+        message: "Countdown to SMOPS 2026",
         color: "green",
-        targetDate: abstractDeadline,
-        targetEvent: "Abstract Submission Deadline",
+        targetDate: conferenceStart,
+        targetEvent: "Conference Start",
         registrationStatus: "coming-soon",
+        currentStatus: "Acceptance Notification Sent"
       };
-    } else if (now >= abstractDeadline) {
+    } else if (now >= abstractSubmissionDeadline) {
       return {
-        phase: "post-abstract",
-        message: "Abstract Submission Closed",
-        color: "orange",
-        targetDate: registrationOpen,
-        targetEvent: "Registration Opens",
+        phase: "countdown",
+        message: "Countdown to SMOPS 2026",
+        color: "pink",
+        targetDate: conferenceStart,
+        targetEvent: "Conference Start",
         registrationStatus: "coming-soon",
+        currentStatus: "Abstract Review Phase"
+      };
+    } else if (now >= abstractSubmissionOpens) {
+      return {
+        phase: "countdown",
+        message: "Countdown to SMOPS 2026",
+        color: "purple",
+        targetDate: conferenceStart,
+        targetEvent: "Conference Start",
+        registrationStatus: "coming-soon",
+        currentStatus: "Abstract Submission Open"
       };
     } else {
       return {
-        phase: "pre-abstract",
-        message: "Abstract Submission Opens Soon",
-        color: "gray",
-        targetDate: abstractSubmissionOpen,
-        targetEvent: "Abstract Submission",
+        phase: "countdown",
+        message: "Countdown to SMOPS 2026",
+        color: "blue",
+        targetDate: conferenceStart,
+        targetEvent: "Conference Start",
         registrationStatus: "coming-soon",
+        currentStatus: "Upcoming Conference"
       };
     }
   }
 
+  function updateStatusIndicator(status) {
+    // Get status indicator in the hero section below countdown
+    const statusIndicator = document.querySelector(
+      ".inline-flex.items-center.space-x-3.px-6.py-3.rounded-full.backdrop-blur-xl"
+    );
+    
+    if (statusIndicator) {
+      // Set color based on current status
+      let statusColor;
+      
+      switch(status.color) {
+        case "green":
+          statusColor = "bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/50 text-green-200";
+          break;
+        case "yellow":
+          statusColor = "bg-gradient-to-r from-yellow-500/20 to-amber-500/20 border border-yellow-400/50 text-yellow-200";
+          break;
+        case "orange":
+          statusColor = "bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-400/50 text-orange-200";
+          break;
+        case "red":
+          statusColor = "bg-gradient-to-r from-red-500/20 to-rose-500/20 border border-red-400/50 text-red-200";
+          break;
+        case "purple":
+          statusColor = "bg-gradient-to-r from-purple-500/20 to-violet-500/20 border border-purple-400/50 text-purple-200";
+          break;
+        case "pink":
+          statusColor = "bg-gradient-to-r from-pink-500/20 to-fuchsia-500/20 border border-pink-400/50 text-pink-200";
+          break;
+        default:
+          statusColor = "bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/50 text-blue-200";
+      }
+
+      statusIndicator.className = `inline-flex items-center space-x-3 px-6 py-3 rounded-full backdrop-blur-xl ${statusColor} transition-all duration-300`;
+
+      // Update the dot color based on status color
+      const dot = statusIndicator.querySelector("div");
+      if (dot) {
+        dot.className = `w-2 h-2 ${status.color === "green" ? "bg-green-400" : 
+                                    status.color === "yellow" ? "bg-yellow-400" : 
+                                    status.color === "orange" ? "bg-orange-400" :
+                                    status.color === "red" ? "bg-red-400" :
+                                    status.color === "purple" ? "bg-purple-400" :
+                                    status.color === "pink" ? "bg-pink-400" :
+                                    "bg-blue-400"} rounded-full animate-pulse`;
+      }
+
+      // Update the status message
+      const statusSpan = statusIndicator.querySelector("span");
+      if (statusSpan) {
+        statusSpan.textContent = `• ${status.currentStatus}`;
+      }
+    }
+
+    // Update the "Counting down to" message
+    const countdownMessage = document.querySelector(".text-xs.sm\\:text-sm.text-white\\/70 span");
+    if (countdownMessage) {
+      countdownMessage.textContent = "Conference Start (April 8, 2026)";
+    }
+  }
+  
   function updateCountdown() {
     const status = getCurrentStatus();
     const now = new Date();
 
-    // Default to conference date if no specific target
-    const targetDate =
-      status.targetDate || new Date("2026-04-08T00:00:00+05:30");
-    const diff = targetDate - now;
+    // Always target the main conference date
+    const eventDate = new Date("2026-04-08T00:00:00+05:30");
+    const diff = eventDate - now;
 
-    if (diff <= 0 && status.phase === "conference") {
+    if (diff <= 0) {
       const countdownElement = document.getElementById("countdown");
       if (countdownElement) {
         countdownElement.innerHTML = `
           <div class="flex items-center space-x-2">
             <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-            <span class="text-lg font-bold">Conference is Live!</span>
+            <span class="text-lg font-bold">SMOPS 2026 is Live!</span>
           </div>`;
       }
+      updateStatusIndicator(status);
       updateStatusDisplay(status);
       return;
     }
 
-    const days = Math.floor(Math.abs(diff) / (1000 * 60 * 60 * 24));
+    // Calculate time units
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
-      (Math.abs(diff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
     const minutes = Math.floor(
-      (Math.abs(diff) % (1000 * 60 * 60)) / (1000 * 60)
+      (diff % (1000 * 60 * 60)) / (1000 * 60)
     );
-    const seconds = Math.floor((Math.abs(diff) % (1000 * 60)) / 1000);
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
+    // Update countdown display elements
     const daysElement = document.getElementById("days");
     const hoursElement = document.getElementById("hours");
     const minutesElement = document.getElementById("minutes");
@@ -258,47 +375,22 @@ function initCountdown() {
     if (secondsElement)
       secondsElement.textContent = seconds.toString().padStart(2, "0");
 
+    updateStatusIndicator(status);
     updateStatusDisplay(status);
   }
 
   function updateStatusDisplay(status) {
-    // Update the status indicator in the hero section
-    const statusIndicator = document.querySelector(
-      ".inline-flex.items-center.space-x-3.px-6.py-3.rounded-full.backdrop-blur-xl"
-    );
+    // Now this function only updates the header status and registration button
     const countdownMessage = document.querySelector(
       ".text-xs.sm\\:text-sm .font-semibold.text-white\\/90"
     );
-
-    if (statusIndicator) {
-      const colorClasses = {
-        green:
-          "bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border-emerald-400/50 text-emerald-200",
-        blue: "bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border-blue-400/50 text-blue-200",
-        yellow:
-          "bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border-yellow-400/50 text-yellow-200",
-        orange:
-          "bg-gradient-to-r from-orange-500/20 to-red-500/20 border-orange-400/50 text-orange-200",
-        gray: "bg-gradient-to-r from-gray-500/20 to-gray-600/20 border-gray-400/50 text-gray-200",
-      };
-
-      const statusColor = colorClasses[status.color] || colorClasses.gray;
-
-      statusIndicator.className = `inline-flex items-center space-x-3 px-6 py-3 rounded-full backdrop-blur-xl ${statusColor} transition-all duration-300`;
-
-      // Update the status message
-      const statusSpan = statusIndicator.querySelector("span");
-      if (statusSpan) {
-        statusSpan.textContent = `• ${status.message}`;
-      }
+    
+    // Display countdown message with conference date
+    if (countdownMessage) {
+      countdownMessage.textContent = "April 8, 2026 (IST)";
     }
 
-    // Update the countdown target message
-    if (countdownMessage && status.targetEvent) {
-      countdownMessage.textContent = status.targetEvent;
-    }
-
-    // Update hero registration button
+    // Update hero registration button based on registration status
     updateHeroRegistrationButton(status.registrationStatus);
   }
   
@@ -378,6 +470,18 @@ function initCountdown() {
         `;
         break;
         
+      case "active":
+        heroButtonContainer.innerHTML = `
+          <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-full blur opacity-75 group-hover:opacity-100"></div>
+          <a href="#Registration" class="relative px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white rounded-full font-bold text-lg shadow-2xl hover:shadow-glow-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 flex items-center space-x-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+            <span>Register Now</span>
+          </a>
+        `;
+        break;
+      
       case "closed":
         heroButtonContainer.innerHTML = `
           <div class="absolute -inset-1 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-full blur opacity-75"></div>
@@ -1015,6 +1119,34 @@ function scrollToTop() {
   }, 500);
 }
 
+// Fix CTA button click behavior
+function fixCTAButtons() {
+  // Ensure all external links work properly
+  document.querySelectorAll('a[href$=".html"], a[href*=".html"]').forEach((link) => {
+    // Remove any existing conflicting event listeners
+    link.removeEventListener("click", arguments.callee);
+    
+    // Add a high-priority click handler
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      if (href && !href.startsWith("#") && !href.startsWith("javascript:")) {
+        // Prevent any interference from other handlers
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+        
+        // Immediate navigation
+        window.location.href = href;
+        return false;
+      }
+    }, { capture: true, passive: false });
+    
+    // Ensure proper styling
+    link.style.pointerEvents = 'auto';
+    link.style.zIndex = '10';
+    link.style.position = 'relative';
+  });
+}
+
 // Initialize all functionality when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize responsive features first
@@ -1027,6 +1159,9 @@ document.addEventListener("DOMContentLoaded", function () {
   initAccessibility();
   initErrorHandling();
   initScrollToTop();
+  
+  // Fix CTA button behavior
+  fixCTAButtons();
 
   // Initialize scroll animations (from scroll-animations.js)
   if (typeof initScrollAnimations === "function") {

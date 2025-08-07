@@ -33,6 +33,12 @@ class SpaceBackground {
 
     if (this.container) {
       this.container.appendChild(this.renderer.domElement);
+      // Ensure canvas doesn't interfere with clicks
+      this.renderer.domElement.style.pointerEvents = "none";
+      this.renderer.domElement.style.position = "fixed";
+      this.renderer.domElement.style.top = "0";
+      this.renderer.domElement.style.left = "0";
+      this.renderer.domElement.style.zIndex = "-1";
     }
 
     // Create stars
