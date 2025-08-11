@@ -47,14 +47,22 @@
     <!-- Title -->
     <title>Call for Papers - SMOPS-2026: Submit Your Research</title>
 
-    <!-- Preload important resources -->
-    <link rel="preload" href="css/styles.css" as="style" />
-    <link rel="preload" href="js/main.js" as="script" />
+    <!-- Preload important resources with cache busting -->
+    <script>
+      const cssTimestamp = Date.now();
+      // Create and append CSS links with cache busting
+      const stylesLink = document.createElement('link');
+      stylesLink.rel = 'stylesheet';
+      stylesLink.href = 'css/styles.css?v=' + cssTimestamp;
+      document.head.appendChild(stylesLink);
+      
+      const themeScript = document.createElement('script');
+      themeScript.src = 'js/theme-config.js?v=' + cssTimestamp;
+      document.head.appendChild(themeScript);
+    </script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/theme-config.js"></script>
     
     <!-- Enable dark mode -->
     <script>
