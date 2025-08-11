@@ -1,5 +1,5 @@
-// Service Worker for SMOPS-2026 with Force Update
-const CACHE_NAME = `smops-2026-v${Date.now()}`; // Dynamic cache name with timestamp
+// Service Worker for SMOPS-2026
+const CACHE_NAME = 'smops-2026-v1.0.0';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -20,62 +20,33 @@ const urlsToCache = [
   '/manifest.json'
 ];
 
-// Install event - skip waiting to force immediate update
+// Install event
 self.addEventListener('install', function(event) {
-  console.log('Service Worker: Installing with cache name:', CACHE_NAME);
-  self.skipWaiting(); // Force immediate activation
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
-        console.log('Service Worker: Opened cache');
+        console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
-      .catch(function(error) {
-        console.log('Service Worker: Cache failed', error);
-      })
   );
 });
 
-// Fetch event - Network first strategy for better cache busting
+// Fetch event
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    fetch(event.request)
+    caches.match(event.request)
       .then(function(response) {
-        // Clone the response
-        const responseClone = response.clone();
-        
-        // Cache the response
-        caches.open(CACHE_NAME)
-          .then(function(cache) {
-            cache.put(event.request, responseClone);
-          });
-        
-        return response;
-      })
-      .catch(function() {
-        // Fallback to cache if network fails
-        return caches.match(event.request);
-      })
+        // Return cached version or fetch from network
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
   );
 });
 
-// Activate event - Clean up old caches
-self.addEventListener('activate', function(event) {
-  console.log('Service Worker: Activating with cache name:', CACHE_NAME);
-  self.clients.claim(); // Take control of all clients immediately
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.map(function(cacheName) {
-          if (cacheName !== CACHE_NAME) {
-            console.log('Service Worker: Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
+// Activate event
 self.addEventListener('activate', function(event) {
   event.waitUntil(
     caches.keys().then(function(cacheNames) {

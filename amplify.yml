@@ -7,10 +7,8 @@ frontend:
         - echo "Pre-build phase completed"
     build:
       commands:
-        - echo "Build phase - copying static files and cache busting"
+        - echo "Build phase - copying static files"
         - npm run build
-        - echo "Adding deployment timestamp for cache busting"
-        - echo "DEPLOY_TIME=$(date +%s)" > deploy.env
         - echo "Build completed successfully"
   artifacts:
     baseDirectory: /
