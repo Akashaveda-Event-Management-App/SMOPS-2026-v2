@@ -1147,47 +1147,65 @@ function fixCTAButtons() {
   });
 }
 
-// Initialize all functionality when DOM is loaded
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize responsive features first
-  initAllResponsiveFeatures();
+function startSmopsApp() {
+  try {
+    // Initialize responsive features first
+    initAllResponsiveFeatures();
 
-  // Initialize core functionality
-  initSmoothScroll();
-  initNavbarScroll();
-  initDOMEnhancements();
-  initAccessibility();
-  initErrorHandling();
-  initScrollToTop();
-  
-  // Fix CTA button behavior
-  fixCTAButtons();
+    // Core functionality
+    initSmoothScroll();
+    initNavbarScroll();
+    initDOMEnhancements(); // calls initCountdown internally
+    initAccessibility();
+    initErrorHandling();
+    initScrollToTop();
+    fixCTAButtons();
 
-  // Initialize scroll animations (from scroll-animations.js)
-  if (typeof initScrollAnimations === "function") {
-    initScrollAnimations();
-    initParallaxEffects();
-    initSectionTransitions();
-    initCardHoverEffects();
-    initFloatingElements();
-    initNebulaEffects();
+    // Optional modules
+    if (typeof initScrollAnimations === "function") {
+      initScrollAnimations();
+      initParallaxEffects();
+      initSectionTransitions();
+      initCardHoverEffects();
+      initFloatingElements();
+      initNebulaEffects();
+    }
+    if (typeof initSpaceScene === "function") {
+      initSpaceScene();
+    }
+
+    if (window.location.hostname !== "localhost") {
+      initPerformanceMonitoring();
+    }
+
+    document.body.classList.add("loaded");
+
+    // Safeguard: ensure countdown numbers not stuck at defaults
+    const daysEl = document.getElementById("days");
+    if (
+      typeof initCountdown === "function" &&
+      daysEl &&
+      /^0+$/.test(daysEl.textContent.trim())
+    ) {
+      try {
+        initCountdown();
+      } catch (e) {
+        console.warn("Countdown fallback init failed", e);
+      }
+    }
+
+    console.log("SMOPS 2026 website initialized successfully (startSmopsApp)");
+  } catch (e) {
+    console.error("Initialization error:", e);
   }
+}
 
-  // Initialize space scene (from space-scene.js)
-  if (typeof initSpaceScene === "function") {
-    initSpaceScene();
-  }
-
-  // Initialize performance monitoring in production
-  if (window.location.hostname !== "localhost") {
-    initPerformanceMonitoring();
-  }
-
-  // Add loading complete class
-  document.body.classList.add("loaded");
-
-  console.log("SMOPS 2026 website initialized successfully");
-});
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startSmopsApp, { once: true });
+} else {
+  // DOM already parsed (e.g., script injected dynamically after load)
+  startSmopsApp();
+}
 
 // Export functions for external use
 window.SMOPS = {
