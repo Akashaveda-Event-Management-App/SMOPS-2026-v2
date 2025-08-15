@@ -246,35 +246,77 @@ class TopicManager {
     generateTopicCard(topic, index) {
         const delay = (index + 1) * 0.1;
         return `
-            <div class="topic-card glassmorphic-bg p-8 rounded-3xl border border-white/20 hover:border-${topic.color}-400/60 cursor-pointer group hover:shadow-2xl hover:shadow-${topic.color}-500/20 animate-fade-in-up" style="animation-delay: ${delay}s" onclick="openTopicModal('${topic.id}')">
-                <div class="flex flex-col lg:flex-row items-center gap-8">
+            <div class="topic-card glassmorphic-bg p-4 sm:p-6 lg:p-8 rounded-3xl border border-white/20 hover:border-${
+              topic.color
+            }-400/60 cursor-pointer group hover:shadow-2xl hover:shadow-${
+          topic.color
+        }-500/20 animate-fade-in-up" style="animation-delay: ${delay}s" onclick="openTopicModal('${
+          topic.id
+        }')">
+                <div class="flex flex-col lg:flex-row items-center gap-4 sm:gap-6 lg:gap-8">
                     <!-- Icon and Topic Number -->
-                    <div class="flex items-center gap-6 flex-shrink-0">
-                        <div class="w-20 h-20 bg-gradient-to-br from-${topic.gradientFrom} via-${topic.gradientVia} to-${topic.gradientTo} rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-${topic.color}-500/30 group-hover:shadow-${topic.color}-400/50">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center gap-3 sm:gap-4 lg:gap-6 flex-shrink-0">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-${
+                          topic.gradientFrom
+                        } via-${topic.gradientVia} to-${
+          topic.gradientTo
+        } rounded-xl lg:rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-${
+          topic.color
+        }-500/30 group-hover:shadow-${topic.color}-400/50">
+                            <svg class="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 ${this.getIcon(topic.icon)}
                             </svg>
                         </div>
                         <div class="text-left">
-                            <div class="text-lg font-bold text-${topic.color}-400 uppercase tracking-widest mb-2 group-hover:text-${topic.color}-300 transition-colors duration-300">Topic ${topic.number}</div>
-                            <div class="w-16 h-1 bg-gradient-to-r from-${topic.color}-400 to-${topic.gradientTo} rounded-full group-hover:w-24 transition-all duration-300"></div>
+                            <div class="text-sm sm:text-base lg:text-lg font-bold text-${
+                              topic.color
+                            }-400 uppercase tracking-widest mb-1 sm:mb-2 group-hover:text-${
+          topic.color
+        }-300 transition-colors duration-300">Topic ${topic.number}</div>
+                            <div class="w-12 sm:w-14 lg:w-16 h-1 bg-gradient-to-r from-${
+                              topic.color
+                            }-400 to-${
+          topic.gradientTo
+        } rounded-full group-hover:w-16 sm:group-hover:w-20 lg:group-hover:w-24 transition-all duration-300"></div>
                         </div>
                     </div>
                     
                     <!-- Title -->
-                    <div class="flex-1 text-center lg:text-left lg:px-8">
-                        <h3 class="text-2xl lg:text-3xl font-bold text-white group-hover:text-${topic.color}-300 transition-colors duration-300 leading-tight">
+                    <div class="flex-1 text-left lg:px-8">
+                        <h3 class="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-white group-hover:text-${
+                          topic.color
+                        }-300 transition-colors duration-300 leading-tight">
                             ${topic.title}
                         </h3>
                     </div>
                     
                     <!-- Subtopics Counter -->
                     <div class="flex-shrink-0">
-                        <div class="bg-gradient-to-r from-${topic.color}-500/10 to-${topic.gradientTo}/10 rounded-2xl p-6 border border-${topic.color}-400/20 group-hover:border-${topic.color}-400/40 transition-all duration-300 min-w-[180px]">
-                            <div class="flex items-center justify-between gap-4">
-                                <div class="text-2xl font-semibold text-${topic.color}-200 group-hover:text-${topic.color}-100 transition-colors duration-300">${topic.subtopics.length} Subtopics</div>
-                                <div class="w-12 h-12 bg-${topic.color}-400/20 rounded-full flex items-center justify-center group-hover:bg-${topic.color}-400/30 group-hover:rotate-12 transform transition-all duration-300">
-                                    <svg class="w-6 h-6 text-${topic.color}-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="bg-gradient-to-r from-${
+                          topic.color
+                        }-500/10 to-${
+          topic.gradientTo
+        }/10 rounded-xl lg:rounded-2xl p-3 sm:p-4 lg:p-6 border border-${
+          topic.color
+        }-400/20 group-hover:border-${
+          topic.color
+        }-400/40 transition-all duration-300 min-w-[140px] sm:min-w-[160px] lg:min-w-[180px]">
+                            <div class="flex items-center justify-between gap-2 sm:gap-3 lg:gap-4">
+                                <div class="text-lg sm:text-xl lg:text-2xl font-semibold text-${
+                                  topic.color
+                                }-200 group-hover:text-${
+          topic.color
+        }-100 transition-colors duration-300">${
+          topic.subtopics.length
+        } Subtopics</div>
+                                <div class="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-${
+                                  topic.color
+                                }-400/20 rounded-full flex items-center justify-center group-hover:bg-${
+          topic.color
+        }-400/30 group-hover:rotate-12 transform transition-all duration-300">
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-${
+                                      topic.color
+                                    }-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                                     </svg>
                                 </div>

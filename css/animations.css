@@ -1,6 +1,6 @@
 /* Add animation for animated meteor effects in footer */
 .animate-meteor {
-  position: absolute;
+  position: fixed;
   top: -10px;
   right: 0;
   height: 2px;
@@ -35,4 +35,122 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Float animation for cosmic particles */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-5px);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-30px) translateX(15px);
+    opacity: 0.9;
+  }
+}
+
+/* Static star field - no animations */
+.star-bg {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Add some immediate visible stars via CSS */
+.star-bg::before {
+  content: '';
+  position: fixed;
+  top: 10%;
+  left: 15%;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 
+    20px 30px 0 0 white,
+    40px 70px 0 0 white,
+    70px 40px 0 0 white,
+    90px 20px 0 0 white,
+    120px 60px 0 0 white,
+    150px 10px 0 0 white,
+    180px 80px 0 0 white,
+    210px 35px 0 0 white,
+    240px 65px 0 0 white,
+    270px 15px 0 0 white,
+    300px 45px 0 0 white,
+    330px 75px 0 0 white,
+    360px 25px 0 0 white,
+    390px 55px 0 0 white,
+    420px 85px 0 0 white,
+    450px 5px 0 0 white,
+    480px 95px 0 0 white,
+    510px 50px 0 0 white,
+    540px 90px 0 0 white,
+    570px 30px 0 0 white;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.star {
+  position: fixed;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  z-index: 2;
+  /* Ensure no animations are applied */
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Different star layers for parallax depth - all static */
+.star.layer-1 {
+  opacity: 1;
+  z-index: 5;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+  animation: none !important;
+  transform: none !important;
+}
+
+.star.layer-2 {
+  opacity: 0.7;
+  z-index: 4;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+  animation: none !important;
+  transform: none !important;
+}
+
+.star.layer-3 {
+  opacity: 0.4;
+  z-index: 3;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Cosmic particles container */
+.cosmic-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cosmic-particle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.4;
 }

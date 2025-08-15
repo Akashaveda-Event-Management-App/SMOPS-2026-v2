@@ -28,7 +28,7 @@
     <meta property="og:description" content="Submit your research on spacecraft mission operations for SMOPS-2026 conference" />
     <meta property="og:url" content="https://smops2026.org/call-for-papers.html" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://smops2026.org/assets/images/smops-2026_final.png" />
+    <meta property="og:image" content="https://smops2026.org/assets/images/smops-2026_final.webp" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
@@ -47,22 +47,12 @@
     <!-- Title -->
     <title>Call for Papers - SMOPS-2026: Submit Your Research</title>
 
-    <!-- Preload important resources with cache busting -->
-    <script>
-      const cssTimestamp = Date.now();
-      // Create and append CSS links with cache busting
-      const stylesLink = document.createElement('link');
-      stylesLink.rel = 'stylesheet';
-      stylesLink.href = 'css/styles.css?v=' + cssTimestamp;
-      document.head.appendChild(stylesLink);
-      
-      const themeScript = document.createElement('script');
-      themeScript.src = 'js/theme-config.js?v=' + cssTimestamp;
-      document.head.appendChild(themeScript);
-    </script>
-
-    <!-- Styles -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts & Built Tailwind CSS (CLI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css?v=20250815c" />
+    <script defer src="js/theme-config.js?v=20250815c"></script>
     
     <!-- Enable dark mode -->
     <script>
@@ -80,7 +70,10 @@
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
                     <div class="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
-                        <img src="./assets/images/smops-2026_final.png" alt="">
+                        <picture>
+                          <source srcset="./assets/images/smops-2026_final.webp" type="image/webp">
+                          <img src="./assets/images/smops-2026_final.png" alt="SMOPS-2026 logo">
+                        </picture>
                     </div>
                     <div class="hidden sm:block">
                         <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
@@ -225,7 +218,7 @@
     </section>
 
     <!-- Loading Modal -->
-    <div id="loadingModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm">
+    <div id="loadingModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
         <div class="bg-gradient-to-br from-space-900 via-blue-900/90 to-purple-900/90 backdrop-blur-xl border border-white/20 rounded-3xl p-8 max-w-md mx-4 text-center shadow-2xl">
             <!-- Loading Animation -->
             <div class="relative mb-6">

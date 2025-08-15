@@ -2,6 +2,7 @@
 export default {
   content: [
     "./index.html",
+    "./*.html",
     "./src/**/*.{js,ts,jsx,tsx,html}",
     "./js/**/*.js",
     "./css/**/*.css",
@@ -48,6 +49,8 @@ export default {
         shimmer: "shimmer 2s ease-in-out infinite",
         typewriter: "typewriter 3s steps(40) 1s forwards",
         blink: "blink 1s ease-in-out infinite",
+        meteor: "meteorAnimation 5s linear infinite",
+        "spin-slow": "spin 30s linear infinite",
       },
       keyframes: {
         fadeIn: {
@@ -108,6 +111,14 @@ export default {
         },
         blink: {
           "50%": { opacity: "0" },
+        },
+        meteorAnimation: {
+          "0%": { transform: "translateX(0) translateY(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "translateX(-100vw) translateY(100vh)",
+            opacity: "0",
+          },
         },
       },
       spacing: {

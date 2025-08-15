@@ -92,49 +92,8 @@ function toggleAccordion(id) {
 
 // Enhanced smooth scroll for navigation links
 function initSmoothScroll() {
-  // Handle internal anchor links (smooth scroll)
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      const targetId = this.getAttribute("href");
-      const targetElement = document.querySelector(targetId);
-
-      // Only prevent default and apply smooth scroll if target element exists on this page
-      if (targetElement) {
-        e.preventDefault();
-        
-        // Use scrollIntoView with block: 'start' to work with scroll-margin-top CSS
-        targetElement.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest",
-        });
-
-        // Close mobile menu if open
-        const mobileMenu = document.getElementById("mobile-menu");
-        if (!mobileMenu.classList.contains("hidden")) {
-          toggleMobileMenu();
-        }
-      }
-      // If target element doesn't exist, let the default link behavior happen
-    });
-  });
-
-  // Handle external links (ensure immediate navigation)
-  document.querySelectorAll('a[href$=".html"], a[href*=".html"]').forEach((link) => {
-    link.addEventListener("click", function (e) {
-      // Ensure the link is not prevented by any other handlers
-      e.stopImmediatePropagation();
-      
-      // For external links, we want immediate navigation
-      const href = this.getAttribute("href");
-      if (href && !href.startsWith("#")) {
-        // Small delay to ensure the click is processed
-        setTimeout(() => {
-          window.location.href = href;
-        }, 0);
-      }
-    });
-  });
+  // Smooth scroll disabled intentionally to fix unintended partial scroll on button clicks.
+  // If smooth scrolling is needed for specific anchors later, implement opt-in here.
 }
 
 // Navbar scroll behavior (simplified version for main.js)
@@ -160,10 +119,10 @@ function initCountdown() {
   // Get the current status based on important dates
   function getCurrentStatus() {
     const now = new Date();
-    
+
     // Main event date - April 8, 2026 (IST)
     const conferenceStart = new Date("2026-04-08T00:00:00+05:30");
-    
+
     // Important dates for the conference
     const abstractSubmissionOpens = new Date("2025-07-30T00:00:00+05:30");
     const abstractSubmissionDeadline = new Date("2025-09-10T00:00:00+05:30");
@@ -173,7 +132,7 @@ function initCountdown() {
     const earlyBirdRegistrationOpens = new Date("2025-12-20T00:00:00+05:30");
     const earlyBirdRegistrationEnds = new Date("2026-01-30T00:00:00+05:30");
     const registrationDeadline = new Date("2026-03-01T00:00:00+05:30");
-    
+
     // Check if conference has started
     if (now >= conferenceStart) {
       return {
@@ -183,7 +142,7 @@ function initCountdown() {
         targetDate: null,
         targetEvent: null,
         registrationStatus: "closed",
-        currentStatus: "Conference is Live"
+        currentStatus: "Conference is Live",
       };
     } else if (now >= registrationDeadline) {
       return {
@@ -193,7 +152,7 @@ function initCountdown() {
         targetDate: conferenceStart,
         targetEvent: "Conference Start",
         registrationStatus: "closed",
-        currentStatus: "Registration Closed"
+        currentStatus: "Registration Closed",
       };
     } else if (now >= earlyBirdRegistrationEnds) {
       return {
@@ -203,7 +162,7 @@ function initCountdown() {
         targetDate: conferenceStart,
         targetEvent: "Conference Start",
         registrationStatus: "regular",
-        currentStatus: "Regular Registration Open"
+        currentStatus: "Regular Registration Open",
       };
     } else if (now >= earlyBirdRegistrationOpens) {
       return {
@@ -213,7 +172,7 @@ function initCountdown() {
         targetDate: conferenceStart,
         targetEvent: "Conference Start",
         registrationStatus: "early-bird",
-        currentStatus: "Early Bird Registration Open"
+        currentStatus: "Early Bird Registration Open",
       };
     } else if (now >= finalPaperSubmissionStart) {
       return {
@@ -223,7 +182,7 @@ function initCountdown() {
         targetDate: conferenceStart,
         targetEvent: "Conference Start",
         registrationStatus: "coming-soon",
-        currentStatus: "Paper Submission Phase"
+        currentStatus: "Paper Submission Phase",
       };
     } else if (now >= acceptanceNotification) {
       return {
@@ -233,7 +192,7 @@ function initCountdown() {
         targetDate: conferenceStart,
         targetEvent: "Conference Start",
         registrationStatus: "coming-soon",
-        currentStatus: "Acceptance Notification Sent"
+        currentStatus: "Acceptance Notification Sent",
       };
     } else if (now >= abstractSubmissionDeadline) {
       return {
@@ -243,7 +202,7 @@ function initCountdown() {
         targetDate: conferenceStart,
         targetEvent: "Conference Start",
         registrationStatus: "coming-soon",
-        currentStatus: "Abstract Review Phase"
+        currentStatus: "Abstract Review Phase",
       };
     } else if (now >= abstractSubmissionOpens) {
       return {
@@ -253,7 +212,7 @@ function initCountdown() {
         targetDate: conferenceStart,
         targetEvent: "Conference Start",
         registrationStatus: "coming-soon",
-        currentStatus: "Abstract Submission Open"
+        currentStatus: "Abstract Submission Open",
       };
     } else {
       return {
@@ -263,7 +222,7 @@ function initCountdown() {
         targetDate: conferenceStart,
         targetEvent: "Conference Start",
         registrationStatus: "coming-soon",
-        currentStatus: "Upcoming Conference"
+        currentStatus: "Upcoming Conference",
       };
     }
   }
@@ -273,32 +232,39 @@ function initCountdown() {
     const statusIndicator = document.querySelector(
       ".inline-flex.items-center.space-x-3.px-6.py-3.rounded-full.backdrop-blur-xl"
     );
-    
+
     if (statusIndicator) {
       // Set color based on current status
       let statusColor;
-      
-      switch(status.color) {
+
+      switch (status.color) {
         case "green":
-          statusColor = "bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/50 text-green-200";
+          statusColor =
+            "bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/50 text-green-200";
           break;
         case "yellow":
-          statusColor = "bg-gradient-to-r from-yellow-500/20 to-amber-500/20 border border-yellow-400/50 text-yellow-200";
+          statusColor =
+            "bg-gradient-to-r from-yellow-500/20 to-amber-500/20 border border-yellow-400/50 text-yellow-200";
           break;
         case "orange":
-          statusColor = "bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-400/50 text-orange-200";
+          statusColor =
+            "bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-400/50 text-orange-200";
           break;
         case "red":
-          statusColor = "bg-gradient-to-r from-red-500/20 to-rose-500/20 border border-red-400/50 text-red-200";
+          statusColor =
+            "bg-gradient-to-r from-red-500/20 to-rose-500/20 border border-red-400/50 text-red-200";
           break;
         case "purple":
-          statusColor = "bg-gradient-to-r from-purple-500/20 to-violet-500/20 border border-purple-400/50 text-purple-200";
+          statusColor =
+            "bg-gradient-to-r from-purple-500/20 to-violet-500/20 border border-purple-400/50 text-purple-200";
           break;
         case "pink":
-          statusColor = "bg-gradient-to-r from-pink-500/20 to-fuchsia-500/20 border border-pink-400/50 text-pink-200";
+          statusColor =
+            "bg-gradient-to-r from-pink-500/20 to-fuchsia-500/20 border border-pink-400/50 text-pink-200";
           break;
         default:
-          statusColor = "bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/50 text-blue-200";
+          statusColor =
+            "bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/50 text-blue-200";
       }
 
       statusIndicator.className = `inline-flex items-center space-x-3 px-6 py-3 rounded-full backdrop-blur-xl ${statusColor} transition-all duration-300`;
@@ -306,13 +272,21 @@ function initCountdown() {
       // Update the dot color based on status color
       const dot = statusIndicator.querySelector("div");
       if (dot) {
-        dot.className = `w-2 h-2 ${status.color === "green" ? "bg-green-400" : 
-                                    status.color === "yellow" ? "bg-yellow-400" : 
-                                    status.color === "orange" ? "bg-orange-400" :
-                                    status.color === "red" ? "bg-red-400" :
-                                    status.color === "purple" ? "bg-purple-400" :
-                                    status.color === "pink" ? "bg-pink-400" :
-                                    "bg-blue-400"} rounded-full animate-pulse`;
+        dot.className = `w-2 h-2 ${
+          status.color === "green"
+            ? "bg-green-400"
+            : status.color === "yellow"
+            ? "bg-yellow-400"
+            : status.color === "orange"
+            ? "bg-orange-400"
+            : status.color === "red"
+            ? "bg-red-400"
+            : status.color === "purple"
+            ? "bg-purple-400"
+            : status.color === "pink"
+            ? "bg-pink-400"
+            : "bg-blue-400"
+        } rounded-full animate-pulse`;
       }
 
       // Update the status message
@@ -323,12 +297,14 @@ function initCountdown() {
     }
 
     // Update the "Counting down to" message
-    const countdownMessage = document.querySelector(".text-xs.sm\\:text-sm.text-white\\/70 span");
+    const countdownMessage = document.querySelector(
+      ".text-xs.sm\\:text-sm.text-white\\/70 span"
+    );
     if (countdownMessage) {
       countdownMessage.textContent = "Conference Start (April 8, 2026)";
     }
   }
-  
+
   function updateCountdown() {
     const status = getCurrentStatus();
     const now = new Date();
@@ -353,12 +329,8 @@ function initCountdown() {
 
     // Calculate time units
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor(
-      (diff % (1000 * 60 * 60)) / (1000 * 60)
-    );
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
     // Update countdown display elements
@@ -384,7 +356,7 @@ function initCountdown() {
     const countdownMessage = document.querySelector(
       ".text-xs.sm\\:text-sm .font-semibold.text-white\\/90"
     );
-    
+
     // Display countdown message with conference date
     if (countdownMessage) {
       countdownMessage.textContent = "April 8, 2026 (IST)";
@@ -393,47 +365,49 @@ function initCountdown() {
     // Update hero registration button based on registration status
     updateHeroRegistrationButton(status.registrationStatus);
   }
-  
+
   function getRegistrationButton(registrationStatus) {
-    switch(registrationStatus) {
+    switch (registrationStatus) {
       case "coming-soon":
         return `
           <button class="px-6 py-3 bg-gray-600/30 border border-gray-500/50 text-gray-300 rounded-full text-sm cursor-not-allowed opacity-70">
             Registration Coming Soon
           </button>
         `;
-        
+
       case "early-bird":
         return `
           <a href="#Registration" class="px-6 py-3 bg-blue-600/30 border border-blue-500/50 text-blue-200 rounded-full text-sm hover:bg-blue-600/50 transition-all duration-300">
             Early Bird Registration
           </a>
         `;
-        
+
       case "regular":
         return `
           <a href="#Registration" class="px-6 py-3 bg-yellow-600/30 border border-yellow-500/50 text-yellow-200 rounded-full text-sm hover:bg-yellow-600/50 transition-all duration-300">
             Register Now
           </a>
         `;
-        
+
       case "closed":
         return `
           <button class="px-6 py-3 bg-red-600/30 border border-red-500/50 text-red-200 rounded-full text-sm cursor-not-allowed opacity-70">
             Registration Closed
           </button>
         `;
-        
+
       default:
-        return '';
+        return "";
     }
   }
-  
+
   function updateHeroRegistrationButton(registrationStatus) {
-    const heroButtonContainer = document.getElementById("hero-registration-button");
+    const heroButtonContainer = document.getElementById(
+      "hero-registration-button"
+    );
     if (!heroButtonContainer) return;
-    
-    switch(registrationStatus) {
+
+    switch (registrationStatus) {
       case "coming-soon":
         heroButtonContainer.innerHTML = `
           <div class="absolute -inset-1 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-600 rounded-full blur opacity-75"></div>
@@ -445,7 +419,7 @@ function initCountdown() {
           </button>
         `;
         break;
-        
+
       case "early-bird":
         heroButtonContainer.innerHTML = `
           <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-full blur opacity-75 group-hover:opacity-100"></div>
@@ -457,7 +431,7 @@ function initCountdown() {
           </a>
         `;
         break;
-        
+
       case "regular":
         heroButtonContainer.innerHTML = `
           <div class="absolute -inset-1 bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 rounded-full blur opacity-75 group-hover:opacity-100"></div>
@@ -469,7 +443,7 @@ function initCountdown() {
           </a>
         `;
         break;
-        
+
       case "active":
         heroButtonContainer.innerHTML = `
           <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-full blur opacity-75 group-hover:opacity-100"></div>
@@ -481,7 +455,7 @@ function initCountdown() {
           </a>
         `;
         break;
-      
+
       case "closed":
         heroButtonContainer.innerHTML = `
           <div class="absolute -inset-1 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-full blur opacity-75"></div>
@@ -653,35 +627,66 @@ function initErrorHandling() {
 
 // Performance monitoring
 function initPerformanceMonitoring() {
-  // Enhanced performance monitoring (optional)
+  // Modern navigation timing (guards against negatives / legacy API)
   if ("performance" in window) {
     window.addEventListener("load", function () {
-      const loadTime =
-        performance.timing.loadEventEnd - performance.timing.navigationStart;
-      console.log(`Page loaded in ${loadTime}ms`);
+      let navEntry = performance.getEntriesByType("navigation")[0];
+      // Safari < 15 fallback
+      if (!navEntry && performance.timing) {
+        const t = performance.timing;
+        // Guard if values are 0 (still being populated)
+        if (t.loadEventEnd === 0) {
+          // defer a tick
+          setTimeout(() => {
+            const t2 = performance.timing;
+            const legacyLoad = Math.max(
+              0,
+              t2.loadEventEnd - t2.navigationStart
+            );
+            console.log(`Page load (legacy timing): ${legacyLoad}ms`);
+          }, 0);
+        } else {
+          const legacyLoad = Math.max(0, t.loadEventEnd - t.navigationStart);
+          console.log(`Page load (legacy timing): ${legacyLoad}ms`);
+        }
+      }
+      if (navEntry) {
+        const total = Math.max(0, navEntry.loadEventEnd - navEntry.startTime);
+        console.log(`Page load (navigation entry): ${total}ms`);
+        const domInteractive = Math.max(
+          0,
+          navEntry.domInteractive - navEntry.startTime
+        );
+        console.log(`DOM interactive: ${domInteractive}ms`);
+      }
     });
   }
 
-  // Monitor Core Web Vitals
-  if ("web-vital" in window) {
-    import("web-vitals").then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(console.log);
-      getFID(console.log);
-      getFCP(console.log);
-      getLCP(console.log);
-      getTTFB(console.log);
-    });
+  // Core Web Vitals (optional – can be removed in production if size sensitive)
+  // Dynamically import only if connection is good.
+  if (
+    navigator.connection
+      ? navigator.connection.effectiveType !== "slow-2g"
+      : true
+  ) {
+    try {
+      import("https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js")
+        .then(() => {
+          if (window.webVitals) {
+            const { getCLS, getFID, getFCP, getLCP, getTTFB } =
+              window.webVitals;
+            [getCLS, getFID, getFCP, getLCP, getTTFB].forEach((fn) =>
+              fn((m) => console.log("[WebVital]", m.name, m.value))
+            );
+          }
+        })
+        .catch(() => {
+          /* ignore */
+        });
+    } catch (e) {
+      /* noop */
+    }
   }
-
-  // Monitor page load performance
-  window.addEventListener("load", () => {
-    const perfData = performance.getEntriesByType("navigation")[0];
-    console.log(
-      "Page load time:",
-      perfData.loadEventEnd - perfData.loadEventStart,
-      "ms"
-    );
-  });
 }
 
 // Enhanced mobile menu toggle with better animations
@@ -1010,11 +1015,7 @@ function initMobileAccessibility() {
     'a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
   );
 
-  focusableElements.forEach((element) => {
-    element.addEventListener("focus", () => {
-      element.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
-  });
+  // Removed automatic scrollIntoView on focus to prevent unwanted page shifting when clicking buttons.
 
   // Enhanced touch targets
   const touchTargets = document.querySelectorAll("button, a, input");
@@ -1044,36 +1045,36 @@ function initAllResponsiveFeatures() {
 
 // Scroll to Top Button Functionality
 function initScrollToTop() {
-  const scrollToTopBtn = document.getElementById('scrollToTop');
-  
+  const scrollToTopBtn = document.getElementById("scrollToTop");
+
   if (!scrollToTopBtn) return;
-  
+
   // Show/hide button based on scroll position
   function toggleScrollToTopButton() {
     const scrollThreshold = 300; // Show button after scrolling 300px
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
     if (scrollTop > scrollThreshold) {
-      scrollToTopBtn.classList.add('show');
+      scrollToTopBtn.classList.add("show");
     } else {
-      scrollToTopBtn.classList.remove('show');
+      scrollToTopBtn.classList.remove("show");
     }
   }
-  
+
   // Add pulse animation when button first appears
   let hasAddedPulse = false;
   function addPulseAnimation() {
-    if (!hasAddedPulse && scrollToTopBtn.classList.contains('show')) {
-      scrollToTopBtn.classList.add('pulse');
+    if (!hasAddedPulse && scrollToTopBtn.classList.contains("show")) {
+      scrollToTopBtn.classList.add("pulse");
       hasAddedPulse = true;
-      
+
       // Remove pulse after 3 seconds
       setTimeout(() => {
-        scrollToTopBtn.classList.remove('pulse');
+        scrollToTopBtn.classList.remove("pulse");
       }, 3000);
     }
   }
-  
+
   // Throttle scroll events for better performance
   let ticking = false;
   function handleScroll() {
@@ -1086,35 +1087,35 @@ function initScrollToTop() {
       ticking = true;
     }
   }
-  
+
   // Listen for scroll events
-  window.addEventListener('scroll', handleScroll);
-  
+  window.addEventListener("scroll", handleScroll);
+
   // Initial check
   toggleScrollToTopButton();
 }
 
 // Smooth scroll to top function
 function scrollToTop() {
-  const scrollToTopBtn = document.getElementById('scrollToTop');
-  
+  const scrollToTopBtn = document.getElementById("scrollToTop");
+
   // Add loading state
   if (scrollToTopBtn) {
-    scrollToTopBtn.style.pointerEvents = 'none';
-    scrollToTopBtn.style.opacity = '0.7';
+    scrollToTopBtn.style.pointerEvents = "none";
+    scrollToTopBtn.style.opacity = "0.7";
   }
-  
+
   // Smooth scroll to top
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
-  
+
   // Reset button state after scroll
   setTimeout(() => {
     if (scrollToTopBtn) {
-      scrollToTopBtn.style.pointerEvents = 'auto';
-      scrollToTopBtn.style.opacity = '1';
+      scrollToTopBtn.style.pointerEvents = "auto";
+      scrollToTopBtn.style.opacity = "1";
     }
   }, 500);
 }
@@ -1122,29 +1123,39 @@ function scrollToTop() {
 // Fix CTA button click behavior
 function fixCTAButtons() {
   // Ensure all external links work properly
-  document.querySelectorAll('a[href$=".html"], a[href*=".html"]').forEach((link) => {
-    // Remove any existing conflicting event listeners
-    link.removeEventListener("click", arguments.callee);
-    
-    // Add a high-priority click handler
-    link.addEventListener("click", function(e) {
-      const href = this.getAttribute("href");
-      if (href && !href.startsWith("#") && !href.startsWith("javascript:")) {
-        // Prevent any interference from other handlers
-        e.stopImmediatePropagation();
-        e.stopPropagation();
-        
-        // Immediate navigation
-        window.location.href = href;
-        return false;
-      }
-    }, { capture: true, passive: false });
-    
-    // Ensure proper styling
-    link.style.pointerEvents = 'auto';
-    link.style.zIndex = '10';
-    link.style.position = 'relative';
-  });
+  document
+    .querySelectorAll('a[href$=".html"], a[href*=".html"]')
+    .forEach((link) => {
+      // Remove any existing conflicting event listeners
+      link.removeEventListener("click", arguments.callee);
+
+      // Add a high-priority click handler
+      link.addEventListener(
+        "click",
+        function (e) {
+          const href = this.getAttribute("href");
+          if (
+            href &&
+            !href.startsWith("#") &&
+            !href.startsWith("javascript:")
+          ) {
+            // Prevent any interference from other handlers
+            e.stopImmediatePropagation();
+            e.stopPropagation();
+
+            // Immediate navigation
+            window.location.href = href;
+            return false;
+          }
+        },
+        { capture: true, passive: false }
+      );
+
+      // Ensure proper styling
+      link.style.pointerEvents = "auto";
+      link.style.zIndex = "10";
+      link.style.position = "relative";
+    });
 }
 
 function startSmopsApp() {
@@ -1153,7 +1164,7 @@ function startSmopsApp() {
     initAllResponsiveFeatures();
 
     // Core functionality
-    initSmoothScroll();
+    // initSmoothScroll disabled (removed unwanted auto scrolling)
     initNavbarScroll();
     initDOMEnhancements(); // calls initCountdown internally
     initAccessibility();
@@ -1172,6 +1183,53 @@ function startSmopsApp() {
     }
     if (typeof initSpaceScene === "function") {
       initSpaceScene();
+    } else {
+      // Fallback static star creation if space-scene.js doesn't load
+      setTimeout(() => {
+        const starFields = document.querySelectorAll(".star-bg");
+        starFields.forEach((starField) => {
+          if (starField.children.length === 0) {
+            for (let i = 0; i < 50; i++) {
+              const star = document.createElement("div");
+              const layer = Math.floor(Math.random() * 3) + 1;
+              let size, opacity;
+
+              switch (layer) {
+                case 1:
+                  size = Math.random() * 2 + 2;
+                  opacity = Math.random() * 0.3 + 0.7;
+                  break;
+                case 2:
+                  size = Math.random() * 1.5 + 1;
+                  opacity = Math.random() * 0.3 + 0.4;
+                  break;
+                case 3:
+                  size = Math.random() * 1 + 0.5;
+                  opacity = Math.random() * 0.3 + 0.1;
+                  break;
+              }
+
+              star.style.position = "absolute";
+              star.style.width = size + "px";
+              star.style.height = size + "px";
+              star.style.backgroundColor = "white";
+              star.style.borderRadius = "50%";
+              star.style.left = Math.random() * 100 + "%";
+              star.style.top = Math.random() * 100 + "%";
+              star.style.opacity = opacity;
+              star.style.pointerEvents = "none";
+              star.style.boxShadow = `0 0 ${size * 2}px rgba(255, 255, 255, ${
+                opacity * 0.5
+              })`;
+              // Ensure completely static
+              star.style.animation = "none";
+              star.style.transform = "none";
+              star.style.transition = "none";
+              starField.appendChild(star);
+            }
+          }
+        });
+      }, 500);
     }
 
     if (window.location.hostname !== "localhost") {
