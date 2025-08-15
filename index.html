@@ -67,12 +67,10 @@
     <meta name="mobile-web-app-capable" content="yes" />
     
     <!-- Favicon and Icons -->
-    <link rel="icon" type="image/png" href="assets/images/smops-2026_final.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/smops-2026_final.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/smops-2026_final.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/smops-2026_final.png" />
-    <link rel="mask-icon" href="assets/images/smops-2026_final.png" color="#0f172a" />
-    <link rel="shortcut icon" href="assets/images/smops-2026_final.png" />
+  <!-- Use single WebP favicon (modern browsers). Provide SVG if needed; PNG removed to reduce weight -->
+  <link rel="icon" type="image/webp" href="assets/images/smops-2026_final.webp" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/smops-2026_final.webp" />
+  <link rel="shortcut icon" href="assets/images/smops-2026_final.webp" />
     
     <!-- Web App Manifest -->
     <link rel="manifest" href="manifest.json" />
@@ -88,6 +86,8 @@
   <!-- Font & Tailwind (built locally via CLI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Preload critical hero logo image -->
+  <link rel="preload" as="image" href="assets/images/smops-2026_final.webp" imagesrcset="assets/images/smops-2026_final.webp 1x" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css?v=20250815c" />
   <script src="js/theme-config.js?v=20250815c" defer></script>    <!-- Structured Data -->
@@ -472,7 +472,7 @@
                     <a href="#Hero">
                         <picture>
                           <source srcset="assets/images/smops-2026_final.webp" type="image/webp">
-                          <img src="assets/images/smops-2026_final.png" alt="SMOPS-2026 logo" class="h-16 w-auto" loading="lazy" decoding="async" width="160" height="64" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                          <img src="assets/images/smops-2026_final.webp" alt="SMOPS-2026 logo" class="h-16 w-auto" loading="lazy" decoding="async" width="160" height="64" />
                         </picture>
                         <div style="display:none" class="h-16 w-16 bg-red-500 rounded flex items-center justify-center text-white text-xs">ASI</div>
                     </a>
@@ -3505,7 +3505,7 @@
                 <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center p-1 shadow-lg shadow-blue-500/20">
                   <picture>
                     <source srcset="assets/images/smops-2026_final.webp" type="image/webp">
-                    <img src="assets/images/smops-2026_final.png" alt="SMOPS-2026 logo" class="h-16 w-auto object-contain" />
+                    <img src="assets/images/smops-2026_final.webp" alt="SMOPS-2026 logo" class="h-16 w-auto object-contain" />
                   </picture>
                 </div>
                 <div>
@@ -3785,8 +3785,7 @@
     </button>
 
   <!-- Deferred Core Scripts (static for better parsing & HTTP/2 multiplexing) -->
-  <script src="js/scroll-animations.js?v=20250815c" defer></script>
-  <script src="js/space-scene.js?v=20250815c" defer></script>
+  <!-- Optional effects (scroll animations & dynamic space scene) now loaded lazily via main.js -->
   <script src="js/topic-manager.js?v=20250815c" defer></script>
   <script src="js/main.js?v=20250815c" defer></script>
     

@@ -1172,65 +1172,59 @@ function startSmopsApp() {
     initScrollToTop();
     fixCTAButtons();
 
-    // Optional modules
-    if (typeof initScrollAnimations === "function") {
-      initScrollAnimations();
-      initParallaxEffects();
-      initSectionTransitions();
-      initCardHoverEffects();
-      initFloatingElements();
-      initNebulaEffects();
-    }
-    if (typeof initSpaceScene === "function") {
-      initSpaceScene();
-    } else {
-      // Fallback static star creation if space-scene.js doesn't load
-      setTimeout(() => {
-        const starFields = document.querySelectorAll(".star-bg");
-        starFields.forEach((starField) => {
-          if (starField.children.length === 0) {
-            for (let i = 0; i < 50; i++) {
-              const star = document.createElement("div");
-              const layer = Math.floor(Math.random() * 3) + 1;
-              let size, opacity;
-
-              switch (layer) {
-                case 1:
-                  size = Math.random() * 2 + 2;
-                  opacity = Math.random() * 0.3 + 0.7;
-                  break;
-                case 2:
-                  size = Math.random() * 1.5 + 1;
-                  opacity = Math.random() * 0.3 + 0.4;
-                  break;
-                case 3:
-                  size = Math.random() * 1 + 0.5;
-                  opacity = Math.random() * 0.3 + 0.1;
-                  break;
-              }
-
-              star.style.position = "absolute";
-              star.style.width = size + "px";
-              star.style.height = size + "px";
-              star.style.backgroundColor = "white";
-              star.style.borderRadius = "50%";
-              star.style.left = Math.random() * 100 + "%";
-              star.style.top = Math.random() * 100 + "%";
-              star.style.opacity = opacity;
-              star.style.pointerEvents = "none";
-              star.style.boxShadow = `0 0 ${size * 2}px rgba(255, 255, 255, ${
-                opacity * 0.5
-              })`;
-              // Ensure completely static
-              star.style.animation = "none";
-              star.style.transform = "none";
-              star.style.transition = "none";
-              starField.appendChild(star);
+    // Lazy-load optional visual effects after initial paint
+    const loadOptionalEffects = () => {
+      // Dynamically import scroll animations & space scene only if user scrolls or after idle
+      const importEffects = () => {
+        if (window.__effectsLoaded) return;
+        window.__effectsLoaded = true;
+        // Attempt dynamic imports (will be separate requests if modules exist)
+        const promises = [];
+        // Legacy non-module scripts: fall back to injecting script tags
+        const injectScript = (src) => {
+          return new Promise((resolve) => {
+            const s = document.createElement('script');
+            s.src = src + '?v=' + (window.ASSET_VERSION||'');
+            s.defer = true;
+            s.onload = resolve;
+            s.onerror = resolve; // fail silently
+            document.head.appendChild(s);
+          });
+        };
+        promises.push(injectScript('js/scroll-animations.js'));
+        // Only load space scene if a non-skipped star-bg needs dynamic stars
+        if (document.querySelector('.star-bg:not([data-skip-stars="true"])')) {
+          promises.push(injectScript('js/space-scene.js'));
+        }
+        Promise.all(promises).then(() => {
+          try {
+            if (typeof initScrollAnimations === 'function') {
+              initScrollAnimations();
+              initParallaxEffects && initParallaxEffects();
+              initSectionTransitions && initSectionTransitions();
+              initCardHoverEffects && initCardHoverEffects();
+              initFloatingElements && initFloatingElements();
+              initNebulaEffects && initNebulaEffects();
             }
+            if (typeof initSpaceScene === 'function') {
+              initSpaceScene();
+            }
+          } catch(e){
+            console.warn('Optional effects failed', e);
           }
         });
-      }, 500);
-    }
+      };
+      // Load after first user interaction or idle
+      ['scroll','mousemove','touchstart'].forEach(evt => {
+        window.addEventListener(evt, importEffects, { once: true, passive: true });
+      });
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(importEffects, { timeout: 4000 });
+      } else {
+        setTimeout(importEffects, 3000);
+      }
+    };
+    loadOptionalEffects();
 
     if (window.location.hostname !== "localhost") {
       initPerformanceMonitoring();
