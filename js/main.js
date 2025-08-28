@@ -125,12 +125,12 @@ function initCountdown() {
 
     // Important dates for the conference
     const abstractSubmissionOpens = new Date("2025-07-30T00:00:00+05:30");
-    const abstractSubmissionDeadline = new Date("2025-09-10T00:00:00+05:30");
-    const acceptanceNotification = new Date("2025-09-20T00:00:00+05:30");
-    const finalPaperSubmissionStart = new Date("2025-09-30T00:00:00+05:30");
+    const abstractSubmissionDeadline = new Date("2025-09-25T00:00:00+05:30");
+    const acceptanceNotification = new Date("2025-10-10T00:00:00+05:30");
+    const finalPaperSubmissionStart = new Date("2025-10-20T00:00:00+05:30");
     const finalPaperSubmissionEnd = new Date("2025-12-20T00:00:00+05:30");
     const earlyBirdRegistrationOpens = new Date("2025-12-20T00:00:00+05:30");
-    const earlyBirdRegistrationEnds = new Date("2026-01-30T00:00:00+05:30");
+    const earlyBirdRegistrationEnds = new Date("2026-03-1T00:00:00+05:30");
     const registrationDeadline = new Date("2026-03-01T00:00:00+05:30");
 
     // Check if conference has started
