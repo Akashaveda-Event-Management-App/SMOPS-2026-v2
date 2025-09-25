@@ -255,7 +255,7 @@
         
         // Force reload URL with timestamp to prevent caching
         const timestamp = Date.now();
-        const PLANYT_URL = `https://app.planyt.in/Login?redirect=abstract-submission&event=smops2026&source=smops&t=${timestamp}`;
+        const PLANYT_URL = `https://app.planyt.in/Login?t=${timestamp}`;
         
         console.log('Fresh Planyt URL (no cache):', PLANYT_URL);
         
