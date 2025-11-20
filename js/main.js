@@ -182,7 +182,7 @@ function initCountdown() {
         targetDate: conferenceStart,
         targetEvent: "Conference Start",
         registrationStatus: "coming-soon",
-        currentStatus: "Paper Submission Phase",
+        currentStatus: "Full Paper Submission Phase",
       };
     } else if (now >= acceptanceNotification) {
       return {
