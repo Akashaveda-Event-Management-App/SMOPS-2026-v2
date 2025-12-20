@@ -127,9 +127,9 @@ function initCountdown() {
     const abstractSubmissionOpens = new Date("2025-07-30T00:00:00+05:30");
     const abstractSubmissionDeadline = new Date("2025-10-25T00:00:00+05:30");
     const acceptanceNotification = new Date("2025-11-10T00:00:00+05:30");
-    const finalPaperSubmissionStart = new Date("2025-11-20T00:00:00+05:30");
+    const finalPaperSubmissionStart = new Date("2025-11-25T00:00:00+05:30");
     const finalPaperSubmissionEnd = new Date("2025-12-20T00:00:00+05:30");
-    const earlyBirdRegistrationOpens = new Date("2025-12-20T00:00:00+05:30");
+    const earlyBirdRegistrationOpens = new Date("2025-12-25T00:00:00+05:30");
     const earlyBirdRegistrationEnds = new Date("2026-01-30T00:00:00+05:30");
     const registrationDeadline = new Date("2026-03-01T00:00:00+05:30");
 
