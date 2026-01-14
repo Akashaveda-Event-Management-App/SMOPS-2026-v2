@@ -90,6 +90,49 @@ function toggleAccordion(id) {
   }
 }
 
+// Committee section collapsible toggle functionality
+function toggleCommitteeSection(id) {
+  const content = document.getElementById(id);
+  const icon = document.getElementById("icon-" + id);
+  const button = icon?.closest("button");
+  const hintText = button?.querySelector("span");
+
+  if (!content || !icon) return;
+
+  if (content.classList.contains("hidden")) {
+    // Expand the section
+    content.classList.remove("hidden");
+    content.style.maxHeight = "0";
+    content.style.opacity = "0";
+
+    requestAnimationFrame(() => {
+      content.style.transition = "max-height 0.5s ease-out, opacity 0.4s ease-out";
+      content.style.maxHeight = content.scrollHeight + "px";
+      content.style.opacity = "1";
+    });
+
+    icon.classList.add("rotate-180");
+    if (hintText) hintText.textContent = "Click to collapse";
+  } else {
+    // Collapse the section
+    content.style.transition = "max-height 0.4s ease-in, opacity 0.3s ease-in";
+    content.style.maxHeight = "0";
+    content.style.opacity = "0";
+
+    setTimeout(() => {
+      content.classList.add("hidden");
+      content.style.transition = "";
+      content.style.maxHeight = "";
+    }, 400);
+
+    icon.classList.remove("rotate-180");
+    if (hintText) hintText.textContent = "Click to expand";
+  }
+}
+
+// Expose toggleCommitteeSection immediately for inline onclick handlers
+window.toggleCommitteeSection = toggleCommitteeSection;
+
 // Enhanced smooth scroll for navigation links
 function initSmoothScroll() {
   // Smooth scroll disabled intentionally to fix unintended partial scroll on button clicks.
@@ -1264,4 +1307,8 @@ window.SMOPS = {
   toggleMobileMenu,
   toggleSubmenu,
   toggleAccordion,
+  toggleCommitteeSection,
 };
+
+// Also expose toggleCommitteeSection directly on window for onclick handlers
+window.toggleCommitteeSection = toggleCommitteeSection;

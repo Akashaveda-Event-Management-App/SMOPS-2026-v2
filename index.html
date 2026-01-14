@@ -83,6 +83,39 @@
 
   <!-- Asset Version (bump manually on deploy to invalidate caches) -->
   <script>window.ASSET_VERSION='20250815c';</script>
+  <!-- Committee section toggle function (must be available before onclick handlers) -->
+  <script>
+    window.toggleCommitteeSection = function(id) {
+      var content = document.getElementById(id);
+      var icon = document.getElementById("icon-" + id);
+      if (!content || !icon) return;
+      var button = icon.closest("button");
+      var hintText = button ? button.querySelector("span") : null;
+      if (content.classList.contains("hidden")) {
+        content.classList.remove("hidden");
+        content.style.maxHeight = "0";
+        content.style.opacity = "0";
+        requestAnimationFrame(function() {
+          content.style.transition = "max-height 0.5s ease-out, opacity 0.4s ease-out";
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.style.opacity = "1";
+        });
+        icon.classList.add("rotate-180");
+        if (hintText) hintText.textContent = "Click to collapse";
+      } else {
+        content.style.transition = "max-height 0.4s ease-in, opacity 0.3s ease-in";
+        content.style.maxHeight = "0";
+        content.style.opacity = "0";
+        setTimeout(function() {
+          content.classList.add("hidden");
+          content.style.transition = "";
+          content.style.maxHeight = "";
+        }, 400);
+        icon.classList.remove("rotate-180");
+        if (hintText) hintText.textContent = "Click to expand";
+      }
+    };
+  </script>
   <!-- Font & Tailwind (built locally via CLI) -->
   <!-- Preload hero logo (LCP candidate) -->
   <link rel="preload" as="image" href="assets/images/smops-2026_final.webp" />
@@ -1782,9 +1815,9 @@
         </div>
 
         <!-- Advisory Committee -->
-        <div class="mb-16 sm:mb-20">
-          <div class="glassmorphic-bg p-8 sm:p-10 rounded-3xl border border-white/10 hover:border-blue-400/50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.2s">
-            <div class="flex items-center justify-center mb-8">
+        <div class="mb-6 sm:mb-8">
+          <div class="glassmorphic-bg p-4 sm:p-6 rounded-2xl border border-white/10 hover:border-blue-400/50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.2s">
+            <button onclick="toggleCommitteeSection('advisory-committee')" class="w-full flex items-center justify-between cursor-pointer group">
               <div class="flex items-center space-x-4">
                 <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center transition-all duration-300">
                   <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1793,9 +1826,16 @@
                 </div>
                 <h3 class="text-2xl sm:text-3xl font-bold text-white">Advisory Committee</h3>
               </div>
-            </div>
+              <div class="flex items-center space-x-2">
+                <span class="text-sm text-blue-300/70 group-hover:text-blue-300 transition-colors">Click to expand</span>
+                <svg id="icon-advisory-committee" class="w-6 h-6 text-blue-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </button>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+            <div id="advisory-committee" class="hidden overflow-hidden" style="max-height: 0; opacity: 0;">
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 mt-6">
               <!-- Chairman -->
               <div class="xl:col-span-3 glassmorphic-bg p-4 sm:p-6 rounded-2xl border-2 border-blue-400/50 hover:border-blue-400/70 transition-all duration-300 bg-gradient-to-r from-blue-600/20 to-purple-600/20">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
@@ -1956,13 +1996,201 @@
                 </div>
               </div>
             </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- International Coordination Committee -->
+        <div class="mb-6 sm:mb-8">
+          <div class="glassmorphic-bg p-4 sm:p-6 rounded-2xl border border-white/10 hover:border-blue-400/50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.2s">
+            <button onclick="toggleCommitteeSection('international-committee')" class="w-full flex items-center justify-between cursor-pointer group">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center transition-all duration-300">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-bold text-white">International Coordination Committee</h3>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="text-sm text-blue-300/70 group-hover:text-blue-300 transition-colors">Click to expand</span>
+                <svg id="icon-international-committee" class="w-6 h-6 text-blue-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </button>
+            
+            <div id="international-committee" class="hidden overflow-hidden" style="max-height: 0; opacity: 0;">
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 mt-6">
+              <!-- Chairman -->
+              <div class="xl:col-span-3 glassmorphic-bg p-4 sm:p-6 rounded-2xl border-2 border-blue-400/50 hover:border-blue-400/70 transition-all duration-300 bg-gradient-to-r from-blue-600/20 to-purple-600/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0 animate-pulse">
+                    <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-1 sm:mb-2">
+                      <h4 class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white truncate">Dr. Dinesh Kumar Singh</h4>
+                      <span class="px-2 sm:px-3 py-1 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full border border-blue-400/50 text-blue-200 text-xs sm:text-sm md:text-base font-semibold self-start sm:self-center">
+                        Chairman
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-sm md:text-base text-blue-200/80">Director, HSFC</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Member 1 -->
+              <div class="glassmorphic-bg p-4 sm:p-5 rounded-2xl border border-white/10 hover:border-green-400/30 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm sm:text-sm md:text-base lg:text-lg font-semibold text-white">Shri Siva Kumar R</h4>
+                    <p class="text-xs sm:text-xs md:text-sm text-green-300">ISRO, HQ</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Member 2 -->
+              <div class="glassmorphic-bg p-4 sm:p-5 rounded-2xl border border-white/10 hover:border-indigo-400/30 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm sm:text-sm md:text-base lg:text-lg font-semibold text-white">Shri Brijesh Kumar Soni</h4>
+                    <p class="text-xs sm:text-xs md:text-sm text-green-300">IN-SPACe</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Member 3 -->
+              <div class="glassmorphic-bg p-4 sm:p-5 rounded-2xl border border-white/10 hover:border-orange-400/30 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm sm:text-sm md:text-base lg:text-lg font-semibold text-white">Shri Jitendra Singh</h4>
+                    <p class="text-xs sm:text-xs md:text-sm text-orange-300">Former Scientist DRDO & NAL</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Member 4 -->
+              <div class="glassmorphic-bg p-4 sm:p-5 rounded-2xl border border-white/10 hover:border-yellow-400/30 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm sm:text-sm md:text-base lg:text-lg font-semibold text-white">Shri Anoop kumar Srivastava</h4>
+                    <p class="text-xs sm:text-xs md:text-sm text-yellow-300">ITLO, Russia</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Member 5 -->
+              <div class="glassmorphic-bg p-4 sm:p-5 rounded-2xl border border-white/10 hover:border-sky-400/30 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-sky-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm sm:text-sm md:text-base lg:text-lg font-semibold text-white">Shri Lakshmi Narasimhan</h4>
+                    <p class="text-xs sm:text-xs md:text-sm text-sky-300">ITLO, Washington</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Member 6 -->
+              <div class="glassmorphic-bg p-4 sm:p-5 rounded-2xl border border-white/10 hover:border-cyan-400/30 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm sm:text-sm md:text-base lg:text-lg font-semibold text-white">Shri Amit Sachdeva</h4>
+                    <p class="text-xs sm:text-xs md:text-sm text-cyan-300">ITLO, Paris</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Member 7 -->
+              <div class="glassmorphic-bg p-4 sm:p-5 rounded-2xl border border-white/10 hover:border-teal-400/30 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-teal-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm sm:text-sm md:text-base lg:text-lg font-semibold text-white">Shri Abhijeet Kibe</h4>
+                    <p class="text-xs sm:text-xs md:text-sm text-teal-300">HSFC</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Member 8 -->
+              <div class="glassmorphic-bg p-4 sm:p-5 rounded-2xl border border-white/10 hover:border-purple-400/30 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm sm:text-sm md:text-base lg:text-lg font-semibold text-white">Smt M V Roopa</h4>
+                    <p class="text-xs sm:text-xs md:text-sm text-purple-300">ISTRAC</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Member Secretary -->
+              <div class="xl:col-span-3 glassmorphic-bg p-4 sm:p-6 rounded-2xl border-2 border-purple-400/50 hover:border-purple-400/70 transition-all duration-300 bg-gradient-to-r from-purple-600/20 to-pink-600/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                  <div class="w-12 h-12 sm:w-12 sm:h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 animate-pulse">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-1 sm:mb-1">
+                      <h4 class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white truncate">Shri Leo Jackson John</h4>
+                      <span class="px-2 sm:px-3 py-1 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full border border-purple-400/50 text-purple-200 text-xs sm:text-sm md:text-base font-semibold self-start sm:self-center">
+                        Convenor
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-sm md:text-base text-purple-300">ISTRAC</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
           </div>
         </div>
 
         <!-- Organizing Committee -->
-        <div class="mb-16 sm:mb-20">
-          <div class="glassmorphic-bg p-8 sm:p-10 rounded-3xl border border-white/10 hover:border-green-400/50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.4s">
-            <div class="flex items-center justify-center mb-8">
+        <div class="mb-6 sm:mb-8">
+          <div class="glassmorphic-bg p-4 sm:p-6 rounded-2xl border border-white/10 hover:border-green-400/50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.4s">
+            <button onclick="toggleCommitteeSection('organizing-committee')" class="w-full flex items-center justify-between cursor-pointer group">
               <div class="flex items-center space-x-4">
                 <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center transition-all duration-300">
                   <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1971,8 +2199,16 @@
                 </div>
                 <h3 class="text-2xl sm:text-3xl font-bold text-white">Organizing Committee</h3>
               </div>
-            </div>
+              <div class="flex items-center space-x-2">
+                <span class="text-sm text-green-300/70 group-hover:text-green-300 transition-colors">Click to expand</span>
+                <svg id="icon-organizing-committee" class="w-6 h-6 text-green-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </button>
             
+            <div id="organizing-committee" class="hidden overflow-hidden" style="max-height: 0; opacity: 0;">
+            <div class="mt-6">
             <!-- Chairperson -->
             <div class="mb-6 sm:mb-8">
               <div class="glassmorphic-bg p-4 sm:p-6 rounded-2xl border-2 border-green-400/50 hover:border-green-400/70 transition-all duration-300 bg-gradient-to-r from-green-600/20 to-teal-600/20">
@@ -2214,10 +2450,7 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-                   
+            </div>
             </div>
           </div>
         </div>
@@ -3455,7 +3688,7 @@
                   <div class="flex-1">
                     <div class="text-xs text-pink-300/80 font-medium uppercase tracking-wide mb-1">Conference Venue</div>
                     <div class="text-sm text-blue-100/90 font-medium leading-relaxed">
-                      Bengaluru, Karnataka - India<br>
+                      Taj Yeshwantpur, Bengaluru, Karnataka - India<br>
                     </div>
                   </div>
                 </div>
