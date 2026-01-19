@@ -51,6 +51,7 @@ export default {
         blink: "blink 1s ease-in-out infinite",
         meteor: "meteorAnimation 5s linear infinite",
         "spin-slow": "spin 30s linear infinite",
+        marquee: "marquee 25s linear infinite",
       },
       keyframes: {
         fadeIn: {
@@ -112,6 +113,11 @@ export default {
         blink: {
           "50%": { opacity: "0" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+
         meteorAnimation: {
           "0%": { transform: "translateX(0) translateY(0)", opacity: "1" },
           "70%": { opacity: "1" },
