@@ -156,8 +156,8 @@
 
                         <p class="text-lg text-gray-300 leading-relaxed">
                             The submission window for SMOPS-2026 is now <span
-                                class="text-red-400 font-bold">CLOSED</span>.
-                            Thank you for your overwhelming response.
+                                class="text-emerald-400 font-bold">OPEN</span>.
+                            Submit your full paper before the deadline.
                         </p>
 
                         <div
@@ -236,15 +236,23 @@
 
                 <!-- Action Buttons -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mt-12">
-                    <!-- Continue Button (Disabled) -->
-                    <div class="relative group opacity-50 cursor-not-allowed">
-                        <div class="absolute -inset-1 bg-gray-600 rounded-full blur opacity-0"></div>
-                        <a href="#"
-                            class="relative px-8 py-4 bg-gray-800 text-gray-400 border border-gray-600 rounded-full font-bold text-lg shadow-none flex items-center space-x-3 cursor-not-allowed pointer-events-none">
-                            <span>Submission Closed</span>
+                    <!-- Continue Button (Enabled) -->
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 rounded-full blur opacity-50 group-hover:opacity-75">
+                        </div>
+                        <a href="#" id="continue-button"
+                            class="relative px-8 py-4 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 backdrop-blur-xl border-2 border-white/30 text-white rounded-full font-bold text-lg shadow-2xl transition-all duration-300 flex items-center space-x-3 group-hover:scale-105 group-hover:shadow-emerald-500/50 cursor-pointer">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                </path>
+                            </svg>
+                            <span>Submit Full Paper</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3">
                                 </path>
                             </svg>
                         </a>

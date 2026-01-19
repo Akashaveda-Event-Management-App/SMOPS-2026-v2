@@ -9,45 +9,35 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
-  "categories": ["education", "science", "conference"],
+  "categories": [
+    "education",
+    "science",
+    "conference"
+  ],
   "icons": [
     {
-      "src": "assets/images/smops-2026_final.png",
+      "src": "assets/images/smops-2026_final.webp",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any"
     },
     {
-      "src": "assets/images/smops-2026_final.png",
+      "src": "assets/images/smops-2026_final.webp",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any"
     },
     {
-      "src": "assets/images/smops-2026_final.png",
+      "src": "assets/images/smops-2026_final.webp",
       "sizes": "180x180",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any"
     },
     {
-      "src": "assets/images/smops-2026_final.png",
+      "src": "assets/images/smops-2026_final.webp",
       "sizes": "any",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "assets/images/screenshot-desktop.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "assets/images/screenshot-mobile.png",
-      "sizes": "375x667",
-      "type": "image/png",
-      "form_factor": "narrow"
     }
   ],
   "related_applications": [],

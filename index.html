@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
 <head>
@@ -911,7 +911,7 @@
                 </svg>
               </button>
               <div class="dropdown-menu">
-                <a href="#about" class="dropdown-item">
+                <a href="#about-us" class="dropdown-item">
                   <svg class="dropdown-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -961,15 +961,15 @@
             </button>
           </a>
 
-          <!-- Submit Paper Button (Disabled) -->
-          <a href="#" class="relative inline-block cursor-not-allowed opacity-50 pointer-events-none">
-            <button type="button" disabled
-              class="relative px-6 py-2 bg-gray-700 backdrop-blur-xl border-2 border-white/10 text-gray-400 rounded-full font-bold text-sm shadow-none flex items-center space-x-2 grayscale cursor-not-allowed">
+          <!-- Submit Paper Button (Open) -->
+          <a href="./call-for-papers.html" class="relative inline-block">
+            <button type="button"
+              class="relative px-6 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 backdrop-blur-xl border-2 border-white/30 text-white rounded-full font-bold text-sm transition-all duration-300 shadow-xl flex items-center space-x-2 group overflow-hidden hover:shadow-2xl hover:scale-105 cursor-pointer hover:shadow-emerald-500/25">
               <div class="relative z-10 flex items-center space-x-2">
-                <span>Submission Closed</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                <span>Submit Full Paper</span>
+                <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </div>
             </button>
@@ -1282,19 +1282,19 @@
                 <div
                   class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/20 border border-yellow-500/30 mb-4">
                   <span class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
-                  <span class="text-xs font-bold text-yellow-300 uppercase tracking-wide">Workshops Started</span>
+                  <span class="text-xs font-bold text-yellow-300 uppercase tracking-wide">Workshops</span>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Pre-Conference Workshop <span
-                    class="text-xs bg-orange-500/80 text-white px-2 py-0.5 rounded-full ml-2">Offline</span></h3>
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Pre-Conference Workshop</h3>
                 <div class="flex items-center gap-2 mb-3 text-yellow-200">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
-                  <span class="font-semibold">April 8, 2026</span>
+                  <span class="font-semibold">April 8, 2026</span><span class="text-gray-400"> (Registration
+                    Open)</span>
                 </div>
                 <p class="text-sm text-gray-400 leading-relaxed">
-                  Hands-on specialized sessions. <span class="text-yellow-400 font-semibold">Limited seats
+                  <span class="text-yellow-400 font-semibold">Limited seats
                     available.</span>
                 </p>
               </div>
@@ -1303,9 +1303,9 @@
 
           <div class="mt-4 max-w-md mx-auto">
             <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
-              <span class="text-gray-300 font-medium">Abstract & Full Paper Submission is now closed.</span>
+              <span class="text-emerald-300 font-medium">Full Paper Submission is now open!</span>
               <br class="hidden sm:block" />
-              Thank you for your overwhelming response.
+              Submit your full paper before the deadline.
             <h1><b><a class="text-blue-400 font-semibold hover:text-blue-300 transition-colors"
                   href="./assets/Full_paper_submission_template.doc"
                   download="Full_paper_submission_template.doc">Download Template for Reference</a></b></h1>
@@ -1335,16 +1335,17 @@
           </div>
           <div class="relative group">
             <div
-              class="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full blur opacity-50 group-hover:opacity-75">
+              class="absolute -inset-1 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 rounded-full blur opacity-50 group-hover:opacity-75">
             </div>
-            <a href="#" class="cursor-not-allowed">
-              <button type="button" disabled
-                class="relative px-8 py-4 border-2 border-white/10 bg-black/40 text-gray-400 rounded-full font-bold text-lg shadow-none flex items-center space-x-3 opacity-50 cursor-not-allowed">
+            <a href="./call-for-papers.html">
+              <button type="button"
+                class="relative px-8 py-4 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 backdrop-blur-xl border-2 border-white/30 text-white rounded-full font-bold text-lg shadow-2xl transition-all duration-300 flex items-center space-x-3 group-hover:scale-105 group-hover:shadow-emerald-500/50">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <span>Submission Closed</span>
+                <span>Submit Full Paper</span>
+                <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
               </button>
             </a>
           </div>
@@ -1363,23 +1364,47 @@
             if (!Array.isArray(imgs) || !imgs.length) return;
             var slider = document.getElementById('hero-slider');
             if (!slider) return;
+
+            // Create slides
             imgs.forEach(function (src, idx) {
               var slide = document.createElement('div');
               slide.className = 'hero-slide';
-              slide.style.backgroundImage = 'url("' + src + '")';
-              if (idx === 0) slide.classList.add('active');
+              // Only set background for the first slide initially
+              if (idx === 0) {
+                slide.style.backgroundImage = 'url("' + src + '")';
+                slide.classList.add('active');
+              } else {
+                slide.dataset.bg = src; // Store for lazy loading
+              }
               slider.appendChild(slide);
             });
 
             var slides = slider.querySelectorAll('.hero-slide');
             var current = 0;
             var interval = 4500;
+
+            // Helper to preload image
+            function preload(idx) {
+              idx = idx % slides.length;
+              if (slides[idx].dataset.bg) {
+                slides[idx].style.backgroundImage = 'url("' + slides[idx].dataset.bg + '")';
+                delete slides[idx].dataset.bg;
+              }
+            }
+
+            // Immediately preload the second image (index 1)
+            if (slides.length > 1) preload(1);
+
             var timer = setInterval(next, interval);
             function next() {
               slides[current].classList.remove('active');
               current = (current + 1) % slides.length;
               slides[current].classList.add('active');
+
+              // Preload the next upcoming slide
+              preload(current + 1);
             }
+
             slider.addEventListener('mouseenter', function () { clearInterval(timer); });
             slider.addEventListener('mouseleave', function () { timer = setInterval(next, interval); });
           }).catch(function (err) { console.warn('Hero slider manifest fetch failed', err); });
@@ -1454,10 +1479,10 @@
           <div class="space-y-8 sm:space-y-12">
 
             <!-- Content Block 1 - Content Left, Image Right -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
               <!-- Content Side -->
               <div
-                class="glassmorphic-bg p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-blue-400/30 transition-all duration-300 animate-fade-in-left h-full order-2 lg:order-1"
+                class="glassmorphic-bg p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-blue-400/30 transition-all duration-300 animate-fade-in-left h-full order-2 lg:order-2"
                 style="animation-delay: 0.2s">
                 <div class="flex items-center mb-4">
                   <div
@@ -1480,11 +1505,11 @@
 
               <!-- Image Side -->
               <div
-                class="rounded-2xl overflow-hidden border border-white/10 shadow-xl animate-fade-in-right order-1 lg:order-2"
+                class="rounded-2xl overflow-hidden border border-white/10 shadow-xl animate-fade-in-right order-1 lg:order-1"
                 style="animation-delay: 0.3s">
                 <div
-                  class="relative h-64 lg:h-80 bg-gradient-to-br from-blue-900/50 via-purple-900/50 to-indigo-900/50">
-                  <img src="./assets/images/collaborations.jpg" alt="Space agencies collaboration"
+                  class="relative h-64 lg:h-full bg-gradient-to-br from-blue-900/50 via-purple-900/50 to-indigo-900/50">
+                  <img src="./assets/images/colab.png" alt="Space agencies collaboration"
                     class="w-full h-full object-cover opacity-90"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                   <!-- Fallback if image doesn't exist -->
@@ -1509,12 +1534,13 @@
             </div>
 
             <!-- Content Block 2 - Image Left, Content Right (ALTERNATE) -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
               <!-- Image Side -->
-              <div class="rounded-2xl overflow-hidden border border-white/10 shadow-xl animate-fade-in-left order-1"
+              <div
+                class="rounded-2xl overflow-hidden border border-white/10 shadow-xl animate-fade-in-left order-1 lg:order-2"
                 style="animation-delay: 0.4s">
                 <div
-                  class="relative h-64 lg:h-80 bg-gradient-to-br from-purple-900/50 via-pink-900/50 to-fuchsia-900/50">
+                  class="relative h-64 lg:h-full bg-gradient-to-br from-purple-900/50 via-pink-900/50 to-fuchsia-900/50">
                   <img src="./assets/images/Innovation.png" alt="Space mission innovation"
                     class="w-full h-full object-cover opacity-90"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -1541,7 +1567,7 @@
 
               <!-- Content Side -->
               <div
-                class="glassmorphic-bg p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-purple-400/30 transition-all duration-300 animate-fade-in-right h-full order-2"
+                class="glassmorphic-bg p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-purple-400/30 transition-all duration-300 animate-fade-in-right h-full order-2 lg:order-1"
                 style="animation-delay: 0.5s">
                 <div class="flex items-center mb-4">
                   <div
@@ -1569,6 +1595,8 @@
       </div>
     </div>
   </section>
+
+
 
   <!-- Topics Section -->
   <section id="topics" class="py-8 sm:py-10 relative overflow-hidden scroll-mt-20">
@@ -3396,8 +3424,7 @@
           </span>
           <span class="text-2xl animate-bounce" style="animation-delay: 0.5s">🎁</span>
         </div>
-        <p class="text-blue-100/70 mt-3">Save big when you register for both conference and workshops! <span
-            class="text-orange-300 font-medium">(Offline Mode)</span></p>
+        <p class="text-blue-100/70 mt-3">Save big when you register for both conference and workshops!</p>
       </div>
 
       <!-- Bundle Cards Grid - THICK BORDERS FOR EMPHASIS -->
@@ -3423,7 +3450,7 @@
                 </svg>
               </div>
               <h4 class="text-lg font-bold text-white mb-1">Students Bundle</h4>
-              <p class="text-sm text-slate-400 mb-4">Conference + Workshop (Offline)</p>
+              <p class="text-sm text-slate-400 mb-4">Conference + Workshop</p>
               <div class="mb-3">
                 <span class="text-slate-500 line-through text-sm">&#8377;9,500</span>
                 <span class="text-3xl font-bold text-green-400 ml-2">&#8377;6,000</span>
@@ -3453,7 +3480,7 @@
                 </svg>
               </div>
               <h4 class="text-lg font-bold text-white mb-1">Corporate Bundle</h4>
-              <p class="text-sm text-slate-400 mb-4">Conference + Workshop (Offline)</p>
+              <p class="text-sm text-slate-400 mb-4">Conference + Workshop</p>
               <div class="mb-3">
                 <span class="text-slate-500 line-through text-sm">&#8377;15,500</span>
                 <span class="text-3xl font-bold text-yellow-400 ml-2">&#8377;11,500</span>
@@ -3483,7 +3510,7 @@
                 </svg>
               </div>
               <h4 class="text-lg font-bold text-white mb-1">ASI Members Bundle</h4>
-              <p class="text-sm text-slate-400 mb-4">Conference + Workshop (Offline)</p>
+              <p class="text-sm text-slate-400 mb-4">Conference + Workshop</p>
               <div class="mb-3">
                 <span class="text-slate-500 line-through text-sm">&#8377;11,500</span>
                 <span class="text-3xl font-bold text-purple-400 ml-2">&#8377;8,000</span>
@@ -3512,7 +3539,7 @@
                 </svg>
               </div>
               <h4 class="text-lg font-bold text-white mb-1">International Bundle</h4>
-              <p class="text-sm text-slate-400 mb-4">Conference + Workshop (Offline)</p>
+              <p class="text-sm text-slate-400 mb-4">Conference + Workshop</p>
               <div class="mb-3">
                 <span class="text-slate-500 line-through text-sm">$230</span>
                 <span class="text-3xl font-bold text-cyan-400 ml-2">$170</span>
@@ -3782,8 +3809,7 @@
                     d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
                 </svg>
               </div>
-              <h4 class="text-xl font-bold text-white mb-1">International Workshop <span
-                  class="text-xs bg-orange-500/80 text-white px-2 py-0.5 rounded-full">Offline</span></h4>
+              <h4 class="text-xl font-bold text-white mb-1">International Deligates</h4>
               <p class="text-sm text-teal-200/70 mb-4">Workshop</p>
               <div class="text-3xl font-bold text-teal-300 mb-2">$50</div>
 
@@ -3808,8 +3834,7 @@
                     d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
                 </svg>
               </div>
-              <h4 class="text-xl font-bold text-white mb-1">Workshop <span
-                  class="text-xs bg-orange-500/80 text-white px-2 py-0.5 rounded-full">Offline</span></h4>
+              <h4 class="text-xl font-bold text-white mb-1">Indian Deligates</h4>
               <p class="text-sm text-teal-200/70 mb-4">Workshop</p>
               <div class="text-3xl font-bold text-teal-300 mb-2">&#8377;3,000</div>
 
@@ -4049,9 +4074,9 @@
                   <span class="text-white font-bold text-xl">2</span>
                 </div>
                 <div>
-                  <h4 class="text-lg lg:text-xl font-bold text-white mb-3">Submission Closed</h4>
-                  <p class="text-base lg:text-lg text-teal-100/80 leading-relaxed">The paper submission window is now
-                    closed. Thank you for your overwhelming response. Stay tuned for further updates.</p>
+                  <h4 class="text-lg lg:text-xl font-bold text-white mb-3">Submit on Planyt Portal</h4>
+                  <p class="text-base lg:text-lg text-teal-100/80 leading-relaxed">Click "Submit Full Paper" to be
+                    redirected to the Planyt portal. Login with your credentials and submit your full paper.</p>
                 </div>
               </div>
             </div>
@@ -4106,15 +4131,16 @@
 
             <!-- Action Button -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a href="#">
-                <button type="button" disabled
-                  class="group/btn inline-flex items-center px-12 py-5 bg-gray-700/50 text-gray-400 font-bold text-lg rounded-2xl shadow-xl transition-all duration-500 space-x-4 opacity-75 cursor-not-allowed pointer-events-none border border-white/10 grayscale">
+              <a href="./call-for-papers.html">
+                <button type="button"
+                  class="group/btn inline-flex items-center px-12 py-5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white font-bold text-lg rounded-2xl shadow-2xl transition-all duration-500 space-x-4 hover:scale-105 hover:shadow-emerald-500/50 border-2 border-white/30">
                   <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636">
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
                     </path>
                   </svg>
-                  <span>Submission Closed</span>
+                  <span>Submit Full Paper</span>
+                  <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                 </button></a>
             </div>
           </div>
@@ -4524,9 +4550,238 @@
 
 
 
-  <!-- Enhanced About Us Section -->
+  <!-- Organizers & Venue Section (Restored About Us) -->
+  <section id="about-us" class="py-16 sm:py-20 relative overflow-hidden scroll-mt-24">
+    <!-- Background -->
+    <div class="absolute inset-0 w-full h-full">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/40 to-slate-900"></div>
+      <div class="absolute inset-0 star-bg opacity-50"></div>
+    </div>
+
+    <div class="relative z-20 max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16 animate-fade-in-down">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-purple-300 drop-shadow-lg">
+            About Us
+          </span>
+        </h2>
+        <div class="h-1 w-24 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+        <p class="mt-4 text-lg text-blue-100/80">Leading organizations driving India's space odyssey</p>
+      </div>
+
+      <div class="space-y-8">
+
+        <!-- ISRO Card -->
+        <div
+          class="group relative bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-blue-400/30 transition-all duration-300 animate-fade-in-up">
+          <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-5/12 relative min-h-64">
+              <div class="absolute inset-0 overflow-hidden">
+                <img src="assets/images/mox-2_2.jpg" alt="ISRO Campus"
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
+                  loading="lazy">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/50">
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-center relative">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+              <div class="flex items-center gap-4 mb-6 relative z-10">
+                <div
+                  class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl p-2 flex items-center justify-center border border-white/10">
+                  <img src="assets/images/ISRO-logo.svg" alt="ISRO Logo" class="w-full h-full object-contain">
+                </div>
+                <div>
+                  <h3 class="text-2xl sm:text-3xl font-bold text-white">ISRO</h3>
+                  <p class="text-blue-300 text-sm sm:text-base">Indian Space Research Organisation</p>
+                </div>
+              </div>
+
+              <p class="text-slate-300 leading-relaxed mb-8 text-justify relative z-10">
+                The Indian Space Research Organisation (ISRO) is India's national space agency, established in 1969
+                under the Department of Space. Headquartered in Bengaluru, ISRO's mission is to harness space
+                technology for national development while pursuing planetary exploration. It has achieved milestones
+                like the Chandrayaan lunar missions, Mangalyaan (Mars Orbiter Mission), Aditya-L1 solar mission, and
+                Gaganyaan test missions of human spaceflight program.
+              </p>
+
+              <div class="relative z-10">
+                <a href="https://www.isro.gov.in/" target="_blank"
+                  class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300">
+                  <span class="font-semibold">Know More</span>
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IN-SPACe Card -->
+        <div
+          class="group relative bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-teal-400/30 transition-all duration-300 animate-fade-in-up"
+          style="animation-delay: 0.1s">
+          <div class="flex flex-col lg:flex-row-reverse">
+            <div class="lg:w-5/12 relative min-h-64">
+              <div class="absolute inset-0 overflow-hidden">
+                <img src="assets/images/IN-SPACe_img1.jpg" alt="IN-SPACe"
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
+                  loading="lazy">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent lg:bg-gradient-to-l lg:from-transparent lg:to-black/50">
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-center relative">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl"></div>
+
+              <div class="flex items-center gap-4 mb-6 relative z-10">
+                <div
+                  class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl p-2 flex items-center justify-center border border-white/10">
+                  <img src="assets/images/inspacelogo.png" alt="IN-SPACe Logo" class="w-full h-full object-contain"
+                    onerror="this.src='assets/images/inspacelogo1.png'">
+                </div>
+                <div>
+                  <h3 class="text-2xl sm:text-3xl font-bold text-white">IN-SPACe</h3>
+                  <p class="text-teal-300 text-sm sm:text-base">Indian National Space Promotion and Authorization
+                    Centre</p>
+                </div>
+              </div>
+
+              <p class="text-slate-300 leading-relaxed mb-8 text-justify relative z-10">
+                The Indian National Space Promotion and Authorization Centre (IN-SPACe) is an autonomous body under
+                the Department of Space, established in 2020 to promote, regulate, and authorize private sector
+                participation in India's space activities. Serving as a single-window interface between ISRO,
+                industry, startups, and academia, it facilitates access to space infrastructure, technology, and data.
+              </p>
+
+              <div class="relative z-10">
+                <a href="https://www.inspace.gov.in/" target="_blank"
+                  class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white rounded-xl shadow-lg hover:shadow-teal-500/25 hover:scale-105 transition-all duration-300">
+                  <span class="font-semibold">Know More</span>
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ASI Card -->
+        <div
+          class="group relative bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-purple-400/30 transition-all duration-300 animate-fade-in-up"
+          style="animation-delay: 0.2s">
+          <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-5/12 relative min-h-64">
+              <div class="absolute inset-0 overflow-hidden">
+                <img src="assets/images/aeronauticalsociety_cover.jpeg" alt="ASI"
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
+                  loading="lazy">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/50">
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-center relative">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl"></div>
+
+              <div class="flex items-center gap-4 mb-6 relative z-10">
+                <div
+                  class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl p-2 flex items-center justify-center border border-white/10">
+                  <img src="assets/images/ASI2.png" alt="ASI Logo" class="w-full h-full object-contain">
+                </div>
+                <div>
+                  <h3 class="text-2xl sm:text-3xl font-bold text-white">ASI</h3>
+                  <p class="text-purple-300 text-sm sm:text-base">Astronautical Society of India</p>
+                </div>
+              </div>
+
+              <p class="text-slate-300 leading-relaxed mb-8 text-justify relative z-10">
+                The Astronautical Society of India (ASI), established in 1990, is dedicated to fostering the
+                development of astronautics in India. ASI serves as a bridge between academia, industry, and space
+                agencies, promoting knowledge sharing and collaboration in space sciences. The society organizes
+                various technical events, including SMOPS, bringing together experts from around the world.
+              </p>
+
+              <div class="relative z-10">
+                <a href="https://www.asindia.org/" target="_blank"
+                  class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl shadow-lg hover:shadow-purple-500/25 hover:scale-105 transition-all duration-300">
+                  <span class="font-semibold">Know More</span>
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bengaluru Card -->
+        <div
+          class="group relative bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-orange-400/30 transition-all duration-300 animate-fade-in-up"
+          style="animation-delay: 0.3s">
+          <div class="flex flex-col lg:flex-row-reverse">
+            <div class="lg:w-5/12 relative min-h-64">
+              <div class="absolute inset-0 overflow-hidden">
+                <img src="assets/images/vidhana-soudha-bangalore-karnataka-hero.jpeg" alt="Bengaluru"
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
+                  loading="lazy">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent lg:bg-gradient-to-l lg:from-transparent lg:to-black/50">
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-center relative">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl"></div>
+
+              <div class="flex items-center gap-4 mb-6 relative z-10">
+                <div
+                  class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl p-2 flex items-center justify-center border border-white/10">
+                  <img src="assets/images/banglorelogo.jpg" alt="Bengaluru Logo"
+                    class="w-full h-full object-contain rounded-lg">
+                </div>
+                <div>
+                  <h3 class="text-2xl sm:text-3xl font-bold text-white">Bengaluru</h3>
+                  <p class="text-orange-300 text-sm sm:text-base">The Garden City of India</p>
+                </div>
+              </div>
+
+              <p class="text-slate-300 leading-relaxed mb-8 text-justify relative z-10">
+                Bengaluru, India's Silicon Valley and the "Garden City," is a perfect blend of technological
+                innovation and natural beauty. Home to ISRO headquarters, HAL, and numerous aerospace startups, it
+                serves as an ideal venue for SMOPS-2026. With its pleasant climate, world-class infrastructure, and
+                vibrant tech ecosystem, Bengaluru offers conference attendees the perfect blend of professional
+                networking opportunities and cultural experiences.
+              </p>
+
+              <div class="relative z-10">
+                <a href="https://bengaluruurban.nic.in/en/"
+                  class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl shadow-lg hover:shadow-orange-500/25 hover:scale-105 transition-all duration-300">
+                  <span class="font-semibold">Know More</span>
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
   <section id="Supporters" class="py-8 sm:py-10 relative overflow-hidden scroll-mt-20">
-    <div id="about" class="absolute top-0 left-0 w-full h-0"></div>
+
 
     <!-- Advanced Background -->
     <div class="absolute inset-0 w-full h-full">
@@ -4656,7 +4911,8 @@
                     class="w-full h-full object-contain relative z-10 drop-shadow-lg">
                 </div>
                 <h4 class="text-2xl font-bold text-white mb-2">IN-SPACe</h4>
-                <p class="text-sm text-blue-200/70 font-light">Indian National Space Promotion and Authorisation Centre
+                <p class="text-sm text-blue-200/70 font-light">Indian National Space Promotion and Authorisation
+                  Centre
                 </p>
               </div>
             </a>
@@ -4786,7 +5042,8 @@
                     class="w-full h-full object-contain relative z-10 drop-shadow-lg">
                 </div>
                 <h4 class="text-2xl font-bold text-white mb-2">IN-SPACe</h4>
-                <p class="text-sm text-blue-200/70 font-light">Indian National Space Promotion and Authorisation Centre
+                <p class="text-sm text-blue-200/70 font-light">Indian National Space Promotion and Authorisation
+                  Centre
                 </p>
               </div>
             </a>
@@ -5114,7 +5371,8 @@
                   </svg>
                 </div>
                 <div class="flex-1">
-                  <div class="text-xs text-purple-300/80 font-medium uppercase tracking-wide">Registration Support</div>
+                  <div class="text-xs text-purple-300/80 font-medium uppercase tracking-wide">Registration Support
+                  </div>
                   <a href="mailto:asi@ursc.gov.in"
                     class="text-white hover:text-purple-300 transition-colors duration-300 text-base font-semibold">
                     asi@ursc.gov.in
@@ -5181,7 +5439,8 @@
                   class="backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-4 py-2 flex items-center gap-2">
                   <svg class="w-4 h-4 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                    </path>
                   </svg>
                   <span class="text-white text-sm font-medium">8-10 April 2026</span>
                 </div>

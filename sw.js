@@ -11,7 +11,7 @@ const urlsToCache = [
   "/js/theme-config.js",
   "/assets/images/favicon.svg",
   "/assets/images/smops-2026_final.webp",
-  "/assets/images/smops-2026_final.png",
+
   "/assets/images/ISRO-logo.svg",
   "/assets/images/ASI2.png",
   "/assets/images/inspacelogo.png",
@@ -59,6 +59,7 @@ self.addEventListener("install", (event) => {
 
 // Fetch event with network-first strategy for HTML files
 self.addEventListener("fetch", function (event) {
+  if (!event.request.url.startsWith('http')) return;
   const requestUrl = new URL(event.request.url);
 
   // Check if it's an HTML file or root path
