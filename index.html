@@ -125,7 +125,7 @@
   <style>
     /* Critical base */
     html {
-      font-family: Inter, system-ui, sans-serif;
+      font-family: Inter, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
       background: #020617;
       color: #fff;
     }
@@ -5722,6 +5722,22 @@
           });
       });
     }
+  </script>
+  <!-- Twemoji: replace color emoji with consistent SVG images -->
+  <script>
+    (function () {
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/twemoji@14.0.2/twemoji.min.js';
+      s.async = true;
+      s.onload = function () {
+        try {
+          window.twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+        } catch (e) {
+          console.warn('Twemoji parse failed:', e);
+        }
+      };
+      document.body.appendChild(s);
+    })();
   </script>
 </body>
 
