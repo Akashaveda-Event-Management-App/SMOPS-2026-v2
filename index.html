@@ -962,18 +962,18 @@
           </a>
 
           <!-- Submit Paper Button (Open) -->
-          <a href="./call-for-papers.html" class="relative inline-block">
-            <button type="button"
-              class="relative px-6 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 backdrop-blur-xl border-2 border-white/30 text-white rounded-full font-bold text-sm transition-all duration-300 shadow-xl flex items-center space-x-2 group overflow-hidden hover:shadow-2xl hover:scale-105 cursor-pointer hover:shadow-emerald-500/25">
+          <div class="relative inline-block">
+            <button type="button" disabled
+              class="relative px-6 py-2 bg-gray-600/50 backdrop-blur-xl border-2 border-white/10 text-gray-400 rounded-full font-bold text-sm cursor-not-allowed flex items-center space-x-2 opacity-70">
               <div class="relative z-10 flex items-center space-x-2">
-                <span>Submit Full Paper</span>
-                <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <span>Submissions Closed</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
             </button>
-          </a>
+          </div>
         </div>
 
         <!-- Partner Logos (only on extra large screens) -->
@@ -1010,6 +1010,13 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
+        </div>
+
+        <!-- Mobile Logo (Right aligned) -->
+        <div class="flex items-center lg:hidden">
+          <a href="#Hero">
+            <img src="assets/images/smops-2026_final.webp" alt="SMOPS-2026 logo" class="h-10 w-auto" />
+          </a>
         </div>
       </div>
     </div>
@@ -1285,7 +1292,8 @@
                 <div
                   class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/20 border border-yellow-500/30 mb-4">
                   <span class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
-                  <span class="text-xs font-bold text-yellow-300 uppercase tracking-wide">Workshops</span>
+                  <span class="text-xs font-bold text-yellow-300 uppercase tracking-wide">Workshop Registration
+                    Open</span>
                 </div>
                 <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Pre-Conference Workshop</h3>
                 <div class="flex items-center gap-2 mb-3 text-yellow-200">
@@ -1293,9 +1301,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
-                  <span class="font-semibold">April 8, 2026</span><span class="text-gray-400"> (Registration
-                    Open)</span>
-                    
+                  <span class="font-semibold">April 8, 2026</span>
+
                 </div>
                 <p class="text-sm text-gray-400 leading-relaxed">
                   <span class="text-green-400 font-semibold">Venue: Taj Yeshwantpur, Bengaluru</span>
@@ -1310,9 +1317,9 @@
 
           <div class="mt-4 max-w-md mx-auto">
             <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
-              <span class="text-emerald-300 font-medium">Full Paper Submission is now open!</span>
+              <span class="text-red-400 font-medium">Full Paper Submission is Closed</span>
               <br class="hidden sm:block" />
-              Submit your full paper before the deadline.
+              Submission deadline has passed.
             <h1><b><a class="text-blue-400 font-semibold hover:text-blue-300 transition-colors"
                   href="./assets/Full_paper_submission_template.doc"
                   download="Full_paper_submission_template.doc">Download Template for Reference</a></b></h1>
@@ -1344,17 +1351,14 @@
             <div
               class="absolute -inset-1 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 rounded-full blur opacity-50 group-hover:opacity-75">
             </div>
-            <a href="./call-for-papers.html">
-              <button type="button"
-                class="relative px-8 py-4 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 backdrop-blur-xl border-2 border-white/30 text-white rounded-full font-bold text-lg shadow-2xl transition-all duration-300 flex items-center space-x-3 group-hover:scale-105 group-hover:shadow-emerald-500/50">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <span>Submit Full Paper</span>
-                <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-              </button>
-            </a>
+            <button type="button" disabled
+              class="relative px-8 py-4 bg-gray-600/50 backdrop-blur-xl border-2 border-white/10 text-gray-400 rounded-full font-bold text-lg cursor-not-allowed flex items-center space-x-3 opacity-70">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <span>Submissions Closed</span>
+            </button>
           </div>
         </div>
       </div>
@@ -2317,6 +2321,197 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Speakers Section -->
+  <section id="Speakers" class="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <!-- Enhanced Background -->
+    <div class="absolute inset-0 w-full h-full">
+      <!-- Cosmic layers -->
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-950 via-indigo-950 to-purple-950"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/80"></div>
+      <div class="absolute inset-0 star-bg opacity-40"></div>
+
+      <!-- Animated cosmic elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-spin-slow"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-spin-slow"
+          style="animation-delay: 2s; animation-direction: reverse;"></div>
+        <div class="absolute top-1/2 left-1/4 w-64 h-64 bg-indigo-500/5 rounded-full blur-2xl animate-spin-slow"
+          style="animation-delay: 4s;"></div>
+      </div>
+
+      <!-- Gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/70"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-16 lg:mb-20 animate-fade-in-up">
+        <div class="inline-flex items-center justify-center mb-8">
+          <div class="flex items-center gap-6">
+            <!-- Icon -->
+            <div
+              class="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-400 via-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-blue-500/50 animate-pulse-glow">
+              <svg class="w-8 h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
+                </path>
+              </svg>
+            </div>
+
+            <!-- Title -->
+            <div class="text-left">
+              <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 tracking-tight">
+                Featured Speakers
+              </h2>
+              <div class="w-24 h-1.5 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xl sm:text-2xl text-blue-100/80 max-w-4xl mx-auto leading-relaxed">
+          World-renowned experts shaping the future of aerospace and space operations
+        </p>
+      </div>
+
+      <!-- Speakers Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto">
+
+        <!-- Speaker 1: Holger Maas -->
+        <div
+          class="speaker-card glassmorphic-bg p-8 rounded-3xl border border-white/20 hover:border-blue-400/60 group animate-fade-in-up"
+          style="animation-delay: 0.1s">
+          <div class="text-center">
+            <!-- Profile Image -->
+            <div class="relative mb-6 animate-float">
+              <div
+                class="image-container w-40 h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border-4 border-blue-400/50 group-hover:border-blue-400 shadow-2xl group-hover:shadow-blue-500/50 transition-all duration-500">
+
+                <img src="./assets/images/HolgerMaass.jpg" alt="Holger Maas" class="w-full h-full object-cover"
+                  loading="lazy">
+
+              </div>
+
+              <!-- Organization Badge -->
+              <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
+                <div
+                  class="org-badge bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30">
+                  German Aerospace
+                </div>
+              </div>
+            </div>
+
+            <!-- Speaker Info -->
+            <div class="space-y-4 mt-8">
+              <h3
+                class="text-2xl lg:text-3xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300">
+                Holger Maas
+              </h3>
+              <p class="text-base lg:text-lg text-blue-200/80 leading-relaxed min-h-[3rem]">
+                German Aerospace Center
+              </p>
+            </div>
+
+            <!-- Decorative Line -->
+            <div class="mt-8 flex justify-center">
+              <div
+                class="w-16 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full group-hover:w-24 transition-all duration-300">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 2: T S Kelso -->
+        <div
+          class="speaker-card glassmorphic-bg p-8 rounded-3xl border border-white/20 hover:border-indigo-400/60 group animate-fade-in-up"
+          style="animation-delay: 0.2s">
+          <div class="text-center">
+            <!-- Profile Image -->
+            <div class="relative mb-6 animate-float" style="animation-delay: 1s">
+              <div
+                class="image-container w-40 h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border-4 border-indigo-400/50 group-hover:border-indigo-400 shadow-2xl group-hover:shadow-indigo-500/50 transition-all duration-500">
+
+                <img src="./assets/images/kelso.jpeg" alt="T S Kelso" class="w-full h-full object-cover" loading="lazy">
+
+              </div>
+
+              <!-- Organization Badge -->
+              <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
+                <div
+                  class="org-badge bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-indigo-500/30">
+                  CelesTrak
+                </div>
+              </div>
+            </div>
+
+            <!-- Speaker Info -->
+            <div class="space-y-4 mt-8">
+              <h3
+                class="text-2xl lg:text-3xl font-bold text-white group-hover:text-indigo-300 transition-colors duration-300">
+                T S Kelso
+              </h3>
+              <p class="text-base lg:text-lg text-indigo-200/80 leading-relaxed min-h-[3rem]">
+                CelesTrak
+              </p>
+            </div>
+
+            <!-- Decorative Line -->
+            <div class="mt-8 flex justify-center">
+              <div
+                class="w-16 h-1 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full group-hover:w-24 transition-all duration-300">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 3: Simon Plum -->
+        <div
+          class="speaker-card glassmorphic-bg p-8 rounded-3xl border border-white/20 hover:border-purple-400/60 group animate-fade-in-up md:col-span-2 lg:col-span-1 md:mx-auto md:max-w-md lg:max-w-none"
+          style="animation-delay: 0.3s">
+          <div class="text-center">
+            <!-- Profile Image -->
+            <div class="relative mb-6 animate-float" style="animation-delay: 2s">
+              <div
+                class="image-container w-40 h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border-4 border-purple-400/50 group-hover:border-purple-400 shadow-2xl group-hover:shadow-purple-500/50 transition-all duration-500">
+
+                <img src="./assets/images/SimonPlum.jpg" alt="Simon Plum" class="w-full h-full object-cover"
+                  loading="lazy">
+
+              </div>
+
+              <!-- Organization Badge -->
+              <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
+                <div
+                  class="org-badge bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-purple-500/30">
+                  ESA
+                </div>
+              </div>
+            </div>
+
+            <!-- Speaker Info -->
+            <div class="space-y-4 mt-8">
+              <h3
+                class="text-2xl lg:text-3xl font-bold text-white group-hover:text-purple-300 transition-colors duration-300">
+                Simon Plum
+              </h3>
+              <p class="text-base lg:text-lg text-purple-200/80 leading-relaxed min-h-[3rem]">
+                European Space Agency
+              </p>
+            </div>
+
+            <!-- Decorative Line -->
+            <div class="mt-8 flex justify-center">
+              <div
+                class="w-16 h-1 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full group-hover:w-24 transition-all duration-300">
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -4138,17 +4333,15 @@
 
             <!-- Action Button -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a href="./call-for-papers.html">
-                <button type="button"
-                  class="group/btn inline-flex items-center px-12 py-5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white font-bold text-lg rounded-2xl shadow-2xl transition-all duration-500 space-x-4 hover:scale-105 hover:shadow-emerald-500/50 border-2 border-white/30">
-                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                    </path>
-                  </svg>
-                  <span>Submit Full Paper</span>
-                  <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                </button></a>
+              <button type="button" disabled
+                class="group/btn inline-flex items-center px-12 py-5 bg-gray-600/50 text-gray-400 font-bold text-lg rounded-2xl shadow-xl space-x-4 cursor-not-allowed border-2 border-white/10 opacity-70">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                  </path>
+                </svg>
+                <span>Submissions Closed</span>
+              </button>
             </div>
           </div>
         </div>
