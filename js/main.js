@@ -174,7 +174,7 @@ function initCountdown() {
     const finalPaperSubmissionEnd = new Date("2025-12-20T00:00:00+05:30");
     const earlyBirdRegistrationOpens = new Date("2026-01-01T00:00:00+05:30");
     const earlyBirdRegistrationEnds = new Date("2026-01-30T00:00:00+05:30");
-    const registrationDeadline = new Date("2026-03-01T00:00:00+05:30");
+    const registrationDeadline = new Date("2026-04-01T00:00:00+05:30");
 
     // Check if conference has started
     if (now >= conferenceStart) {
@@ -315,21 +315,20 @@ function initCountdown() {
       // Update the dot color based on status color
       const dot = statusIndicator.querySelector("div");
       if (dot) {
-        dot.className = `w-2 h-2 ${
-          status.color === "green"
+        dot.className = `w-2 h-2 ${status.color === "green"
             ? "bg-green-400"
             : status.color === "yellow"
-            ? "bg-yellow-400"
-            : status.color === "orange"
-            ? "bg-orange-400"
-            : status.color === "red"
-            ? "bg-red-400"
-            : status.color === "purple"
-            ? "bg-purple-400"
-            : status.color === "pink"
-            ? "bg-pink-400"
-            : "bg-blue-400"
-        } rounded-full animate-pulse`;
+              ? "bg-yellow-400"
+              : status.color === "orange"
+                ? "bg-orange-400"
+                : status.color === "red"
+                  ? "bg-red-400"
+                  : status.color === "purple"
+                    ? "bg-purple-400"
+                    : status.color === "pink"
+                      ? "bg-pink-400"
+                      : "bg-blue-400"
+          } rounded-full animate-pulse`;
       }
 
       // Update the status message
@@ -1227,7 +1226,7 @@ function startSmopsApp() {
         const injectScript = (src) => {
           return new Promise((resolve) => {
             const s = document.createElement('script');
-            s.src = src + '?v=' + (window.ASSET_VERSION||'');
+            s.src = src + '?v=' + (window.ASSET_VERSION || '');
             s.defer = true;
             s.onload = resolve;
             s.onerror = resolve; // fail silently
@@ -1252,13 +1251,13 @@ function startSmopsApp() {
             if (typeof initSpaceScene === 'function') {
               initSpaceScene();
             }
-          } catch(e){
+          } catch (e) {
             console.warn('Optional effects failed', e);
           }
         });
       };
       // Load after first user interaction or idle
-      ['scroll','mousemove','touchstart'].forEach(evt => {
+      ['scroll', 'mousemove', 'touchstart'].forEach(evt => {
         window.addEventListener(evt, importEffects, { once: true, passive: true });
       });
       if ('requestIdleCallback' in window) {
