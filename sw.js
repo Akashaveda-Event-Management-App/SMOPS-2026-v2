@@ -1,5 +1,5 @@
 // Service Worker for SMOPS-2026 (stable versioned caches)
-const APP_VERSION = "1.0.2";
+const APP_VERSION = "1.0.3";
 const RUNTIME_CACHE = `smops-runtime-v${APP_VERSION}`;
 const STATIC_CACHE = `smops-static-v${APP_VERSION}`;
 const urlsToCache = [
@@ -15,6 +15,8 @@ const urlsToCache = [
   "/assets/images/ISRO-logo.svg",
   "/assets/images/ASI2.png",
   "/assets/images/inspacelogo.png",
+  "/css/schedule.css",
+  "/js/schedule-modal.js",
   "/manifest.json",
 ];
 
@@ -24,6 +26,8 @@ const htmlFiles = [
   "/index.html",
   "/call-for-papers.html",
   "/submit-paper.html",
+  "/workshop-schedule.html",
+  "/conference-schedule.html",
 ];
 
 // Install event (cache static assets)

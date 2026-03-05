@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop Schedule | SMOPS-2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/schedule.css">
+    <style>
+        body {
+            background-color: #020617;
+            color: white;
+        }
+
+        .star-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body class="font-sans overflow-x-hidden">
+    <!-- Star background -->
+    <div class="fixed inset-0 star-bg opacity-70 pointer-events-none z-0"></div>
+
+    <nav class="w-full z-50 bg-black/60 backdrop-blur-lg border-b border-white/10 fixed top-0 left-0 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="assets/images/smops-2026_final.webp" alt="SMOPS-2026" class="h-12 w-auto">
+                <span
+                    class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">SMOPS-2026</span>
+            </a>
+            <a href="index.html" class="text-white/80 hover:text-white transition-colors">Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h1
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
+                    Workshop Agenda and Schedule
+                </h1>
+                <p class="text-xl text-blue-200/80">10th April 2026 (Day 03 - Friday)</p>
+            </div>
+
+            <div class="schedule-container animate-fade-in-up">
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Event</th>
+                                <th>Topic</th>
+                                <th>Speakers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="schedule-time">08:30 to 09:00</td>
+                                <td colspan="3" class="text-center font-bold text-white">Workshop Registration</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">09:00 to 09:30</td>
+                                <td colspan="3" class="text-center font-bold text-purple-300">Opening Session</td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-time">09:30 to 10:00</td>
+                                <td colspan="3">High Tea</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">10:00 to 11:00</td>
+                                <td class="schedule-event">Technical Session 1</td>
+                                <td class="schedule-topic">Space Domain Awareness: Concepts, Capabilities, and
+                                    Applications</td>
+                                <td class="schedule-speaker">Dr. T.S. Kelso, Astrodynamicist, CelesTrak, US</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">11:15 to 12:15</td>
+                                <td class="schedule-event">Technical Session 2</td>
+                                <td class="schedule-topic">Human Space Mission Management and Challenges</td>
+                                <td class="schedule-speaker">Shri DK Singh, Director HSFC, ISRO</td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-time">12:30 to 13:30</td>
+                                <td colspan="3">Lunch</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">13:30 to 14:30</td>
+                                <td class="schedule-event">Technical Session 3</td>
+                                <td class="schedule-topic">Robotic Mission Operations on ISS</td>
+                                <td class="schedule-speaker">Dr. Akiko, JAXA</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">14:40 to 15:40</td>
+                                <td class="schedule-event">Technical Session 4</td>
+                                <td class="schedule-topic">Leveraging Space Applications</td>
+                                <td class="schedule-speaker">Dr. Prakash Chauhan, Director, NRSC, ISRO</td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-time">15:40 to 16:00</td>
+                                <td colspan="3">High Tea</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">16:00 to 17:00</td>
+                                <td class="schedule-event">Directors Panel</td>
+                                <td class="schedule-topic" colspan="2">Interactive Session with Participants</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-10 border-t border-white/10 text-center text-white/40">
+        <p>&copy; 2026 SMOPS Organizing Committee. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Starfield background generation if not handled by style
+        document.addEventListener('DOMContentLoaded', () => {
+            const starBg = document.querySelector('.star-bg');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'absolute bg-white rounded-full';
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.opacity = Math.random();
+                if (Math.random() > 0.8) star.classList.add('animate-pulse');
+                starBg.appendChild(star);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Schedule | SMOPS-2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/schedule.css">
+    <style>
+        body {
+            background-color: #020617;
+            color: white;
+        }
+
+        .star-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .day-header {
+            background: linear-gradient(90deg, #1e40af, #8b5cf6);
+            padding: 1rem;
+            margin-top: 2rem;
+            border-radius: 1rem 1rem 0 0;
+            font-weight: 700;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="font-sans overflow-x-hidden">
+    <div class="fixed inset-0 star-bg opacity-70 pointer-events-none z-0"></div>
+
+    <nav class="w-full z-50 bg-black/60 backdrop-blur-lg border-b border-white/10 fixed top-0 left-0 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="assets/images/smops-2026_final.webp" alt="SMOPS-2026" class="h-12 w-auto">
+                <span
+                    class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">SMOPS-2026</span>
+            </a>
+            <a href="index.html" class="text-white/80 hover:text-white transition-colors">Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h1
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
+                    Conference Schedule
+                </h1>
+                <p class="text-xl text-blue-200/80">Taj Yeshwantpur, Bengaluru | 8th - 10th April 2026</p>
+            </div>
+
+            <!-- Day 01 -->
+            <div class="day-header text-2xl">Day 01 - 8th April 2026</div>
+            <div class="schedule-container rounded-t-none mb-12">
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Timings</th>
+                                <th>Event / Session</th>
+                                <th>Details / Halls</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="schedule-time">08:00 to 09:30</td>
+                                <td class="schedule-event">Registration</td>
+                                <td class="schedule-topic">Welcome & Badge Collection</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">09:30 to 10:30</td>
+                                <td class="schedule-event" colspan="2">INAUGURAL FUNCTION</td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-time">10:30 to 11:00</td>
+                                <td colspan="2">High Tea</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">11:00 to 12:00</td>
+                                <td class="schedule-event">Plenary Session 1</td>
+                                <td class="schedule-topic">Plenary Talks</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">12:00 to 01:00</td>
+                                <td class="schedule-event">Plenary Session 2</td>
+                                <td class="schedule-topic">International Space Agency Leadership Forum</td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-time">01:00 to 02:00</td>
+                                <td colspan="2">Lunch</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">02:00 to 03:30</td>
+                                <td class="schedule-event">Technical Session 1</td>
+                                <td class="schedule-topic">
+                                    <div class="grid grid-cols-2 gap-2 text-sm">
+                                        <div class="p-2 bg-white/5 rounded">Hall 1: Paper-S1</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 2: Paper-S2</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 3: Paper-S3</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 4: Paper-S4</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-time">03:30 to 04:00</td>
+                                <td colspan="2">High Tea</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">04:00 to 05:00</td>
+                                <td class="schedule-event">Plenary Session 3</td>
+                                <td class="schedule-topic">Plenary Talks</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">05:00 to 06:00</td>
+                                <td class="schedule-event">Plenary Session 4</td>
+                                <td class="schedule-topic">Astronaut Panel</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">06:30 to 07:30</td>
+                                <td class="schedule-event">Cultural Events</td>
+                                <td class="schedule-topic">Cultural Program</td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-time">07:30 onwards</td>
+                                <td colspan="2">Gala Dinner</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Day 02 -->
+            <div class="day-header text-2xl">Day 02 - 9th April 2026</div>
+            <div class="schedule-container rounded-t-none">
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Timings</th>
+                                <th>Event / Session</th>
+                                <th>Details / Halls</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="schedule-time">09:00 to 10:00</td>
+                                <td class="schedule-event">Plenary Session 5</td>
+                                <td class="schedule-topic">Plenary Talks</td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-time">10:00 to 10:30</td>
+                                <td colspan="2">Tea Break</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">10:30 to 12:00</td>
+                                <td class="schedule-event">Technical Session 2</td>
+                                <td class="schedule-topic">
+                                    <div class="grid grid-cols-2 gap-2 text-sm">
+                                        <div class="p-2 bg-white/5 rounded">Hall 1: Paper-S5</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 2: Paper-S6</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 3: Paper-S7</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 4: Paper-S8</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">12:00 to 01:00</td>
+                                <td class="schedule-event">Technical Session 3</td>
+                                <td class="schedule-topic">
+                                    <div class="grid grid-cols-2 gap-2 text-sm">
+                                        <div class="p-2 bg-white/5 rounded">Hall 1: Paper-S9</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 2: Paper-S10</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 3: Paper-S11</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 4: Paper-S12</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-time">01:00 to 02:00</td>
+                                <td colspan="2">Lunch</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">02:00 to 03:30</td>
+                                <td class="schedule-event">Technical Session 4</td>
+                                <td class="schedule-topic">
+                                    <div class="grid grid-cols-2 gap-2 text-sm">
+                                        <div class="p-2 bg-white/5 rounded">Hall 1: Paper-S13</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 2: Paper-S14</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 3: Paper-S15</div>
+                                        <div class="p-2 bg-white/5 rounded">Hall 4: Paper-S16</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-time">03:30 to 04:00</td>
+                                <td colspan="2">High Tea</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">04:00 to 05:00</td>
+                                <td class="schedule-event">Plenary Session 6</td>
+                                <td class="schedule-topic">Plenary Talks</td>
+                            </tr>
+                            <tr>
+                                <td class="schedule-time">05:00 to 06:00</td>
+                                <td class="schedule-event" colspan="2">VALEDICTORY FUNCTION (Concluding Session)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="workshop-schedule.html"
+                    class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full font-bold hover:shadow-lg hover:shadow-purple-500/20 transition-all">
+                    View Day 03 Workshop Schedule
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-10 border-t border-white/10 text-center text-white/40">
+        <p>&copy; 2026 SMOPS Organizing Committee. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const starBg = document.querySelector('.star-bg');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'absolute bg-white rounded-full';
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.opacity = Math.random();
+                if (Math.random() > 0.8) star.classList.add('animate-pulse');
+                starBg.appendChild(star);
+            }
+        });
+    </script>
+</body>
+
+</html>
