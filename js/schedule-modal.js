@@ -175,46 +175,75 @@ class ScheduleModalManager {
                                     </div>
                                 </div>
 
-                                <div class="grid grid-cols-1 gap-4">
-                                     <!-- Card: WS 1 -->
+                                 <div class="grid grid-cols-1 gap-4">
+                                      <!-- Card: WS 1 -->
+                                      <div class="schedule-card card-pink">
+                                         <div class="schedule-time">
+                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                             10:00 - 11:00
+                                         </div>
+                                         <h4 class="schedule-title">Robotic Mission Operations on ISS</h4>
+                                         <p class="schedule-desc">Key technical session on robotic mission management in orbit.</p>
+                                         <div class="schedule-meta">
+                                             <div class="meta-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Dr. Akiko, JAXA</div>
+                                         </div>
+                                     </div>
+ 
+                                     <!-- Card: WS 2 -->
+                                     <div class="schedule-card card-amber">
+                                         <div class="schedule-time">
+                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                             11:15 - 12:15
+                                         </div>
+                                         <h4 class="schedule-title">Human Space Mission</h4>
+                                         <p class="schedule-desc">Gaganyaan operations and safety protocols for crewed missions.</p>
+                                         <div class="schedule-meta">
+                                             <div class="meta-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Dr. D K Singh, ISRO</div>
+                                         </div>
+                                     </div>
+ 
+                                     <div class="flex items-center gap-4 py-2 opacity-30">
+                                         <div class="h-px bg-white/20 grow"></div>
+                                         <span class="text-[10px] font-bold uppercase tracking-[0.2em] italic text-pink-300">Lunch Break | 12:30 - 01:30</span>
+                                         <div class="h-px bg-white/20 grow"></div>
+                                     </div>
+
+                                     <!-- Card: WS 3 -->
                                      <div class="schedule-card card-pink">
-                                        <div class="schedule-time">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                            10:00 - 11:00
-                                        </div>
-                                        <h4 class="schedule-title">Space Domain Awareness</h4>
-                                        <p class="schedule-desc">Advanced techniques in tracking and managing orbital assets.</p>
-                                        <div class="schedule-meta">
-                                            <div class="meta-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Dr. T.S. Kelso</div>
-                                        </div>
-                                    </div>
+                                         <div class="schedule-time">
+                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                             01:30 - 02:30
+                                         </div>
+                                         <h4 class="schedule-title">Space Domain Awareness</h4>
+                                         <p class="schedule-desc">Concepts, capabilities, and applications in orbital tracking.</p>
+                                         <div class="schedule-meta">
+                                             <div class="meta-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Dr. T.S. Kelso, CelesTrak</div>
+                                         </div>
+                                     </div>
 
-                                    <!-- Card: WS 2 -->
-                                    <div class="schedule-card card-amber">
-                                        <div class="schedule-time">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                            11:15 - 12:15
-                                        </div>
-                                        <h4 class="schedule-title">Human Space Mission</h4>
-                                        <p class="schedule-desc">Gaganyaan operations and safety protocols for crewed missions.</p>
-                                        <div class="schedule-meta">
-                                            <div class="meta-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Shri DK Singh</div>
-                                        </div>
-                                    </div>
+                                     <!-- Card: WS 4 -->
+                                     <div class="schedule-card card-blue">
+                                         <div class="schedule-time">
+                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                             02:40 - 03:40
+                                         </div>
+                                         <h4 class="schedule-title">Leveraging Space Applications</h4>
+                                         <p class="schedule-desc">Exploring the diverse range of space-based technology users.</p>
+                                         <div class="schedule-meta">
+                                             <div class="meta-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Dr. Prakash Chauhan, NRSC</div>
+                                         </div>
+                                     </div>
 
-                                    <!-- Card: WS 3 -->
-                                    <div class="schedule-card card-pink">
-                                        <div class="schedule-time">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                            01:30 - 02:30
-                                        </div>
-                                        <h4 class="schedule-title">Robotic Mission Operations</h4>
-                                        <p class="schedule-desc">Autonomous landing and re-entry algorithms for exploration.</p>
-                                        <div class="schedule-meta">
-                                            <div class="meta-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Dr. Akiko (JAXA)</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                     <!-- Card: Directors Panel -->
+                                     <div class="schedule-card card-emerald">
+                                         <div class="schedule-time">
+                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                             04:00 - 05:00
+                                         </div>
+                                         <h4 class="schedule-title">Directors Panel</h4>
+                                         <p class="schedule-desc">Interactive session with participants and space agency leaders.</p>
+                                     </div>
+                                 </div>
                              </div>
 
                              <div class="text-center">
