@@ -1,5 +1,5 @@
 // Service Worker for SMOPS-2026 (stable versioned caches)
-const APP_VERSION = "1.0.3";
+const APP_VERSION = "1.0.4";
 const RUNTIME_CACHE = `smops-runtime-v${APP_VERSION}`;
 const STATIC_CACHE = `smops-static-v${APP_VERSION}`;
 const urlsToCache = [

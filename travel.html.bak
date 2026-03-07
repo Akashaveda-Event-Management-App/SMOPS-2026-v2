@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Prevent caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Travel Information for SMOPS-2026: Plan your visit to Bengaluru for the International Conference on Spacecraft Mission Operations. Venue details, transport, and nearby attractions." />
+    <meta name="keywords"
+        content="SMOPS-2026 travel, conference venue, Taj Yeshwantpur, Bengaluru travel, spacecraft mission operations conference" />
+    <meta name="author" content="SMOPS-2026 Organizing Committee" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Plan Your Travel - SMOPS-2026" />
+    <meta property="og:description" content="Travel guide for SMOPS-2026 conference in Bengaluru" />
+    <meta property="og:url" content="https://smops2026.org/travel.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://smops2026.org/assets/images/smops-2026_final.webp" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Plan Your Travel - SMOPS-2026" />
+    <meta name="twitter:description" content="Travel guide for SMOPS-2026 conference in Bengaluru" />
+
+    <!-- Theme and App -->
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="assets/images/smops-2026_final.webp" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/smops-2026_final.webp" />
+
+    <!-- Title -->
+    <title>Plan Your Travel - SMOPS-2026</title>
+
+    <!-- Fonts & Built Tailwind CSS (CLI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css?v=20250815c" />
+    <script defer src="js/theme-config.js?v=20250815c"></script>
+
+    <!-- Enable dark mode -->
+    <script>
+        if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
+    <style>
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .animate-on-scroll.visible {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            background: rgba(15, 23, 42, 0.75);
+            transform: translateY(-6px);
+            box-shadow: 0 24px 48px -12px rgba(16, 185, 129, 0.3);
+        }
+
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(16, 185, 129, 0.3),
+                    transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .stat-badge {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.15));
+            border: 2px solid rgba(16, 185, 129, 0.25);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-badge:hover {
+            transform: scale(1.05);
+            border-color: rgba(16, 185, 129, 0.5);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .transport-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .transport-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #10b981, #06b6d4, #8b5cf6, #10b981);
+            background-size: 300% 300%;
+            border-radius: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .transport-card:hover::before {
+            opacity: 0.7;
+        }
+
+        .attraction-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+
+        .attraction-card img {
+            transition: transform 0.6s ease;
+        }
+
+        .attraction-card:hover img {
+            transform: scale(1.15);
+        }
+
+        .attraction-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+        }
+
+        .attraction-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            z-index: 10;
+        }
+
+        .dot-pattern {
+            background-image: radial-gradient(rgba(16, 185, 129, 0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981, #06b6d4, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .icon-wrapper {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .icon-wrapper:hover {
+            transform: rotate(-5deg) scale(1.1);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(6, 182, 212, 0.3));
+        }
+    </style>
+</head>
+
+<body class="dark:bg-space-900 bg-gray-50 text-gray-900 dark:text-white">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-space-900/95 border-b border-white/10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
+                        <picture>
+                            <source srcset="./assets/images/smops-2026_final.webp" type="image/webp">
+                            <img src="./assets/images/smops-2026_final.webp" alt="SMOPS-2026 logo"
+                                class="w-full h-full object-contain">
+                        </picture>
+                    </div>
+                    <div class="hidden sm:block">
+                        <h1
+                            class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                            SMOPS-2026
+                        </h1>
+                        <p class="text-xs text-gray-400">Spacecraft Mission Operations</p>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="hidden md:flex items-center space-x-6 text-sm">
+                    <a href="#venue"
+                        class="text-gray-300 hover:text-emerald-400 transition-colors font-medium">Venue</a>
+                    <a href="#transport"
+                        class="text-gray-300 hover:text-emerald-400 transition-colors font-medium">Transport</a>
+                    <a href="#attractions"
+                        class="text-gray-300 hover:text-emerald-400 transition-colors font-medium">Attractions</a>
+                </div>
+
+                <!-- Back Button -->
+                <a href="index.html"
+                    class="relative px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 backdrop-blur-xl text-white rounded-full font-bold text-sm transition-all duration-300 shadow-xl flex items-center space-x-2 group overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/30 hover:scale-105">
+                    <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    <span>Back to Home</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-space-900 via-blue-900/20 to-purple-900/20">
+            <div class="absolute inset-0 dot-pattern opacity-30"></div>
+            <div class="absolute top-20 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
+                style="animation: float 6s ease-in-out infinite;"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+                style="animation: float 8s ease-in-out infinite; animation-delay: 1s;"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="text-center lg:text-left space-y-8">
+                    <div class="inline-block">
+                        <span
+                            class="px-5 py-2.5 bg-emerald-500/15 border border-emerald-500/30 rounded-full text-emerald-400 text-sm font-bold backdrop-blur-sm inline-flex items-center space-x-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Bengaluru, India</span>
+                        </span>
+                    </div>
+
+                    <div>
+                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                            Plan Your Journey to
+                            <span class="block mt-2 gradient-text">SMOPS-2026</span>
+                        </h1>
+
+                        <p class="text-xl text-gray-300 leading-relaxed max-w-xl">
+                            Experience three days of innovation and collaboration at India's premier spacecraft
+                            mission operations conference in the heart of Bengaluru.
+                        </p>
+                    </div>
+
+                    <!-- Event Info -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="glass-card px-6 py-4 rounded-2xl flex items-center space-x-3">
+                            <div class="icon-wrapper">
+                                <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Event Dates</p>
+                                <p class="text-white font-bold text-lg">8-10 April 2026</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card px-6 py-4 rounded-2xl flex items-center space-x-3">
+                            <div class="icon-wrapper">
+                                <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Venue</p>
+                                <p class="text-white font-bold text-lg">Taj Yeshwantpur</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://maps.google.com/?q=Taj+Yeshwantpur+Bengaluru" target="_blank"
+                            class="group px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>View on Map</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                        <a href="#transport"
+                            class="px-8 py-4 glass-card text-white rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white/10 flex items-center justify-center space-x-2">
+                            <span>Explore Transport</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Image -->
+                <div class="relative" style="animation: slideInRight 1s ease-out;">
+                    <div class="hero-image relative rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10">
+                        <img src="assets/images/taj.jpg"
+                            onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop'"
+                            alt="Taj Yeshwantpur" class="w-full h-[550px] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-space-900/90 via-space-900/30 to-transparent">
+                        </div>
+
+                        <!-- Venue Badge -->
+                        <div class="absolute bottom-6 left-6 right-6 glass-card p-6 rounded-2xl">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-2xl font-bold text-white">Taj Yeshwantpur</h3>
+                                <div class="flex space-x-1">
+                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="text-emerald-400 font-semibold text-lg">Premium Conference Venue · Bengaluru</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating decorative elements -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-emerald-500/20 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="py-16 relative">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="stat-badge text-center animate-on-scroll">
+                    <div class="text-4xl font-black gradient-text mb-2">33 km</div>
+                    <p class="text-gray-400 text-sm font-medium">From Airport</p>
+                </div>
+                <div class="stat-badge text-center animate-on-scroll" style="animation-delay: 0.1s;">
+                    <div class="text-4xl font-black gradient-text mb-2">1 km</div>
+                    <p class="text-gray-400 text-sm font-medium">To Railway</p>
+                </div>
+                <div class="stat-badge text-center animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="text-4xl font-black gradient-text mb-2">200m</div>
+                    <p class="text-gray-400 text-sm font-medium">To Metro</p>
+                </div>
+                <div class="stat-badge text-center animate-on-scroll" style="animation-delay: 0.3s;">
+                    <div class="text-4xl font-black gradient-text mb-2">7+</div>
+                    <p class="text-gray-400 text-sm font-medium">Attractions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transport Section -->
+    <section id="transport" class="py-24 relative">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16 animate-on-scroll">
+                <div class="inline-block mb-4">
+                    <span
+                        class="px-5 py-2.5 bg-blue-500/15 border border-blue-500/30 rounded-full text-blue-400 text-sm font-bold backdrop-blur-sm">
+                        🚗 Transportation Guide
+                    </span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="gradient-text">How to Reach the Venue</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Multiple convenient options to get you there
+                </p>
+            </div>
+
+            <!-- Airport -->
+            <div class="mb-12 animate-on-scroll">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="icon-wrapper" style="animation: float 4s ease-in-out infinite;">
+                        <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white">Nearest Airport</h3>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="transport-card glass-card p-8 rounded-2xl">
+                        <div class="flex items-start justify-between mb-4">
+                            <span
+                                class="px-4 py-1.5 bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-lg text-xs font-bold">DOMESTIC</span>
+                            <div class="text-3xl">🛬</div>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Kempegowda International Airport</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Terminals 1 & 2</p>
+                        <div class="flex items-center space-x-2 text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-sm">Approx. 33 km from venue</span>
+                        </div>
+                    </div>
+
+                    <div class="transport-card glass-card p-8 rounded-2xl">
+                        <div class="flex items-start justify-between mb-4">
+                            <span
+                                class="px-4 py-1.5 bg-purple-500/20 border border-purple-500/30 text-purple-400 rounded-lg text-xs font-bold">INTERNATIONAL</span>
+                            <div class="text-3xl">✈️</div>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Kempegowda International Airport</h4>
+                        <p class="text-purple-400 font-semibold mb-3">Terminal 2</p>
+                        <div class="flex items-center space-x-2 text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-sm">Approx. 33 km from venue</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Railway -->
+            <div class="mb-12 animate-on-scroll">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="icon-wrapper" style="animation: float 5s ease-in-out infinite;">
+                        <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white">Nearest Railway Stations</h3>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="transport-card glass-card p-8 rounded-2xl">
+                        <div class="flex items-start justify-between mb-4">
+                            <span
+                                class="px-4 py-1.5 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 rounded-lg text-xs font-bold">CLOSEST</span>
+                            <div class="text-3xl">🚆</div>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Yesvantpur Railway Station</h4>
+                        <div class="flex items-center space-x-2 text-emerald-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-sm font-bold">Only 1 km from venue</span>
+                        </div>
+                    </div>
+
+                    <div class="transport-card glass-card p-8 rounded-2xl">
+                        <div class="flex items-start justify-between mb-4">
+                            <span
+                                class="px-4 py-1.5 bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-lg text-xs font-bold">ALTERNATIVE</span>
+                            <div class="text-3xl">🚄</div>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Majestic Railway Station</h4>
+                        <div class="flex items-center space-x-2 text-gray-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-sm">Approx. 9 km from venue</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Local Transport -->
+            <div class="animate-on-scroll">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="icon-wrapper" style="animation: float 6s ease-in-out infinite;">
+                        <svg class="w-7 h-7 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white">Local Transportation</h3>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="transport-card glass-card p-8 rounded-2xl">
+                        <div class="flex items-start justify-between mb-4">
+                            <span
+                                class="px-4 py-1.5 bg-green-500/30 border border-green-500/40 text-green-300 rounded-lg text-xs font-bold">GREEN
+                                LINE</span>
+                            <div class="text-3xl">🚇</div>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Metro Station</h4>
+                        <p class="text-emerald-400 font-semibold mb-3">Goraguntepalya Metro Station</p>
+                        <div class="flex items-center space-x-2 text-emerald-400 mb-3">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-sm font-bold">Just 200m walking distance</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Most convenient for city travel</p>
+                    </div>
+
+                    <div class="transport-card glass-card p-8 rounded-2xl">
+                        <div class="flex items-start justify-between mb-4">
+                            <span
+                                class="px-4 py-1.5 bg-yellow-500/20 border border-yellow-500/30 text-yellow-400 rounded-lg text-xs font-bold">24/7
+                                AVAILABLE</span>
+                            <div class="text-3xl">🚕</div>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Taxi Services</h4>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Airport counters and app-based services available throughout the city
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-400 font-medium">Uber</span>
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-400 font-medium">Ola</span>
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-400 font-medium">Rapido</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section id="attractions" class="py-24 relative">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16 animate-on-scroll">
+                <div class="inline-block mb-4">
+                    <span
+                        class="px-5 py-2.5 bg-purple-500/15 border border-purple-500/30 rounded-full text-purple-400 text-sm font-bold backdrop-blur-sm">
+                        🎯 Explore Bengaluru
+                    </span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="gradient-text">Nearby Attractions</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Discover cultural landmarks and natural wonders
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Attraction 1 -->
+                <div class="attraction-card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=400&fit=crop"
+                        alt="ISKCON Temple" class="w-full h-80 object-cover">
+                    <div class="attraction-content">
+                        <span
+                            class="px-3 py-1 bg-emerald-500/80 backdrop-blur-sm text-white rounded-lg text-xs font-bold mb-3 inline-block">
+                            15-20 min drive
+                        </span>
+                        <h3 class="text-2xl font-bold text-white mb-2">ISKCON Temple</h3>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-emerald-400 font-bold text-lg">4.5 km</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">Spiritual landmark with stunning architecture</p>
+                    </div>
+                </div>
+
+                <!-- Attraction 2 -->
+                <div class="attraction-card animate-on-scroll" style="animation-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1609619385002-f40274f9004e?w=600&h=400&fit=crop"
+                        alt="Bangalore Palace" class="w-full h-80 object-cover">
+                    <div class="attraction-content">
+                        <span
+                            class="px-3 py-1 bg-purple-500/80 backdrop-blur-sm text-white rounded-lg text-xs font-bold mb-3 inline-block">
+                            35-40 min drive
+                        </span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Bangalore Palace</h3>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-purple-400 font-bold text-lg">8.8 km</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">Historic Tudor-style architectural marvel</p>
+                    </div>
+                </div>
+
+                <!-- Attraction 3 -->
+                <div class="attraction-card animate-on-scroll" style="animation-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&h=400&fit=crop"
+                        alt="Lalbagh Gardens" class="w-full h-80 object-cover">
+                    <div class="attraction-content">
+                        <span
+                            class="px-3 py-1 bg-teal-500/80 backdrop-blur-sm text-white rounded-lg text-xs font-bold mb-3 inline-block">
+                            40-45 min drive
+                        </span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Lalbagh Gardens</h3>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-teal-400 font-bold text-lg">13 km</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">240-acre botanical paradise</p>
+                    </div>
+                </div>
+
+                <!-- Attraction 4 -->
+                <div class="attraction-card animate-on-scroll" style="animation-delay: 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=600&h=400&fit=crop"
+                        alt="Planetarium" class="w-full h-80 object-cover">
+                    <div class="attraction-content">
+                        <span
+                            class="px-3 py-1 bg-blue-500/80 backdrop-blur-sm text-white rounded-lg text-xs font-bold mb-3 inline-block">
+                            Science & Space
+                        </span>
+                        <h3 class="text-2xl font-bold text-white mb-2">JN Planetarium</h3>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-blue-400 font-bold text-lg">10 km</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">Perfect for astronomy enthusiasts</p>
+                    </div>
+                </div>
+
+                <!-- Attraction 5 -->
+                <div class="attraction-card animate-on-scroll" style="animation-delay: 0.4s;">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop"
+                        alt="Nandi Hills" class="w-full h-80 object-cover">
+                    <div class="attraction-content">
+                        <span
+                            class="px-3 py-1 bg-orange-500/80 backdrop-blur-sm text-white rounded-lg text-xs font-bold mb-3 inline-block">
+                            1.5 hr drive
+                        </span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Nandi Hills</h3>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-orange-400 font-bold text-lg">55 km</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">Breathtaking sunrise views</p>
+                    </div>
+                </div>
+
+                <!-- Attraction 6 -->
+                <div class="attraction-card animate-on-scroll" style="animation-delay: 0.5s;">
+                    <img src="https://images.unsplash.com/photo-1571482376259-fbc0469f8dcc?w=600&h=400&fit=crop"
+                        alt="Mysore Palace" class="w-full h-80 object-cover">
+                    <div class="attraction-content">
+                        <span
+                            class="px-3 py-1 bg-pink-500/80 backdrop-blur-sm text-white rounded-lg text-xs font-bold mb-3 inline-block">
+                            3-4 hr drive
+                        </span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Mysore Palace</h3>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                            </svg>
+                            <span class="text-pink-400 font-bold text-lg">150 km</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">Royal heritage destination</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-blue-500/10 to-purple-500/10"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="glass-card rounded-3xl p-12 text-center max-w-4xl mx-auto animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-black mb-6">
+                    Ready to Join <span class="gradient-text">SMOPS-2026?</span>
+                </h2>
+                <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Experience three transformative days of innovation, collaboration, and exploration in Bengaluru
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html"
+                        class="px-10 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105">
+                        Register for Conference
+                    </a>
+                    <a href="https://maps.google.com/?q=Taj+Yeshwantpur+Bengaluru" target="_blank"
+                        class="px-10 py-4 glass-card text-white rounded-2xl font-bold text-lg hover:bg-white/10 transition-all duration-300">
+                        Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-10 h-10 rounded-lg overflow-hidden">
+                    <picture>
+                        <source srcset="./assets/images/smops-2026_final.webp" type="image/webp">
+                        <img src="./assets/images/smops-2026_final.webp" alt="SMOPS-2026 logo"
+                            class="w-full h-full object-contain">
+                    </picture>
+                </div>
+                <h3 class="text-lg font-bold gradient-text">SMOPS-2026</h3>
+            </div>
+            <p class="text-sm text-gray-500 mb-2">
+                Managed by <span class="text-emerald-400 font-semibold">Planyt Conference Management</span>
+            </p>
+            <p class="text-xs text-gray-600">© 2026 SMOPS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button id="scrollTop"
+        class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 z-40 flex items-center justify-center">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll to top
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                scrollTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
