@@ -859,6 +859,14 @@
                   </svg>
                   Committee
                 </a>
+                <a href="#Speakers" class="dropdown-item">
+                  <svg class="dropdown-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                    </path>
+                  </svg>
+                  Speakers
+                </a>
                 <a href="javascript:void(0)" class="open-schedule-btn dropdown-item">
                   <svg class="dropdown-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1079,6 +1087,10 @@
           <a href="#Committee"
             class="mobile-menu-link text-lg font-medium text-white hover:text-emerald-500 transition-all duration-300 py-2 border-b border-white/10 hover:border-emerald-500">
             Committee
+          </a>
+          <a href="#Speakers"
+            class="mobile-menu-link text-lg font-medium text-white hover:text-emerald-500 transition-all duration-300 py-2 border-b border-white/10 hover:border-emerald-500">
+            Speakers
           </a>
           <a href="#Registration"
             class="mobile-menu-link text-lg font-medium text-white hover:text-emerald-500 transition-all duration-300 py-2 border-b border-white/10 hover:border-emerald-500">
@@ -1951,6 +1963,112 @@
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
+
+    /* Mission Control Speaker Cards */
+    .mission-control-card {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mission-control-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent);
+      z-index: 10;
+    }
+
+    .mission-control-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(30, 41, 59, 0.9);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.1);
+    }
+
+    .scanline {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom,
+          transparent 0%,
+          rgba(56, 189, 248, 0.05) 50%,
+          transparent 100%);
+      background-size: 100% 4px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .mission-control-card:hover .scanline {
+      opacity: 1;
+      animation: scan 4s linear infinite;
+    }
+
+    @keyframes scan {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 0 100%;
+      }
+    }
+
+    .radar-ring {
+      position: absolute;
+      inset: -8px;
+      border: 1px dashed rgba(56, 189, 248, 0.3);
+      border-radius: 50%;
+      animation: spin 10s linear infinite;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+      }
+    }
+
+    .card-accent-blue {
+      border-left: 4px solid #3b82f6;
+    }
+
+    .card-accent-indigo {
+      border-left: 4px solid #6366f1;
+    }
+
+    .card-accent-purple {
+      border-left: 4px solid #a855f7;
+    }
+
+    .card-accent-pink {
+      border-left: 4px solid #ec4899;
+    }
   </style>
 
   <!-- Timeline Section -->
@@ -2564,138 +2682,669 @@
       </div>
 
       <!-- Speakers Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto">
 
         <!-- Speaker 1: Holger Maas -->
-        <div
-          class="speaker-card glassmorphic-bg p-8 rounded-3xl border border-white/20 hover:border-blue-400/60 group animate-fade-in-up"
+        <div class="mission-control-card card-accent-indigo p-6 rounded-2xl group animate-fade-in-up"
           style="animation-delay: 0.1s">
-          <div class="text-center">
-            <!-- Profile Image -->
-            <div class="relative mb-6 animate-float">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
               <div
-                class="image-container w-40 h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border-4 border-blue-400/50 group-hover:border-blue-400 shadow-2xl group-hover:shadow-blue-500/50 transition-all duration-500">
-
-                <img src="./assets/images/HolgerMaass.jpg" alt="Holger Maas" class="w-full h-full object-cover"
-                  loading="lazy">
-
-              </div>
-
-              <!-- Organization Badge -->
-              <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
-                <div
-                  class="org-badge bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30">
-                  German Aerospace
-                </div>
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-blue-400/30 group-hover:border-blue-400 transition-colors duration-500 relative flex items-center justify-center bg-blue-900/20">
+                <img src="./assets/images/speakers/HolgerMaass.jpg" alt="Holger Maas" class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-blue-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
               </div>
             </div>
-
-            <!-- Speaker Info -->
-            <div class="space-y-4 mt-8">
-              <h3
-                class="text-2xl lg:text-3xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300">
-                Holger Maas
-              </h3>
-              <p class="text-base lg:text-lg text-blue-200/80 leading-relaxed min-h-[3rem]">
-                German Aerospace Center
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">Holger Maas</h3>
+              <p class="text-xs text-blue-200/60 uppercase tracking-widest font-semibold mb-3">German Aerospace Center
               </p>
-            </div>
-
-            <!-- Decorative Line -->
-            <div class="mt-8 flex justify-center">
-              <div
-                class="w-16 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full group-hover:w-24 transition-all duration-300">
-              </div>
             </div>
           </div>
         </div>
 
         <!-- Speaker 2: T S Kelso -->
-        <div
-          class="speaker-card glassmorphic-bg p-8 rounded-3xl border border-white/20 hover:border-indigo-400/60 group animate-fade-in-up"
+        <div class="mission-control-card card-accent-purple p-6 rounded-2xl group animate-fade-in-up"
           style="animation-delay: 0.2s">
-          <div class="text-center">
-            <!-- Profile Image -->
-            <div class="relative mb-6 animate-float" style="animation-delay: 1s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
               <div
-                class="image-container w-40 h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border-4 border-indigo-400/50 group-hover:border-indigo-400 shadow-2xl group-hover:shadow-indigo-500/50 transition-all duration-500">
-
-                <img src="./assets/images/kelso.jpeg" alt="T S Kelso" class="w-full h-full object-cover" loading="lazy">
-
-              </div>
-
-              <!-- Organization Badge -->
-              <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
-                <div
-                  class="org-badge bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-indigo-500/30">
-                  CelesTrak
-                </div>
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-indigo-400/30 group-hover:border-indigo-400 transition-colors duration-500 relative flex items-center justify-center bg-indigo-900/20">
+                <img src="./assets/images/speakers/kelso.jpeg" alt="T S Kelso" class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-indigo-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
               </div>
             </div>
-
-            <!-- Speaker Info -->
-            <div class="space-y-4 mt-8">
-              <h3
-                class="text-2xl lg:text-3xl font-bold text-white group-hover:text-indigo-300 transition-colors duration-300">
-                T S Kelso
-              </h3>
-              <p class="text-base lg:text-lg text-indigo-200/80 leading-relaxed min-h-[3rem]">
-                CelesTrak
-              </p>
-            </div>
-
-            <!-- Decorative Line -->
-            <div class="mt-8 flex justify-center">
-              <div
-                class="w-16 h-1 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full group-hover:w-24 transition-all duration-300">
-              </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-indigo-300 transition-colors">T S Kelso</h3>
+              <p class="text-xs text-indigo-200/60 uppercase tracking-widest font-semibold mb-3">CelesTrak</p>
             </div>
           </div>
         </div>
 
         <!-- Speaker 3: Simon Plum -->
-        <div
-          class="speaker-card glassmorphic-bg p-8 rounded-3xl border border-white/20 hover:border-purple-400/60 group animate-fade-in-up md:col-span-2 lg:col-span-1 md:mx-auto md:max-w-md lg:max-w-none"
+        <div class="mission-control-card card-accent-pink p-6 rounded-2xl group animate-fade-in-up"
           style="animation-delay: 0.3s">
-          <div class="text-center">
-            <!-- Profile Image -->
-            <div class="relative mb-6 animate-float" style="animation-delay: 2s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
               <div
-                class="image-container w-40 h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border-4 border-purple-400/50 group-hover:border-purple-400 shadow-2xl group-hover:shadow-purple-500/50 transition-all duration-500">
-
-                <img src="./assets/images/SimonPlum.jpg" alt="Simon Plum" class="w-full h-full object-cover"
-                  loading="lazy">
-
-              </div>
-
-              <!-- Organization Badge -->
-              <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
-                <div
-                  class="org-badge bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-purple-500/30">
-                  ESA
-                </div>
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-purple-400/30 group-hover:border-purple-400 transition-colors duration-500 relative flex items-center justify-center bg-purple-900/20">
+                <img src="./assets/images/speakers/SimonPlum.jpg" alt="Simon Plum" class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-purple-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
               </div>
             </div>
-
-            <!-- Speaker Info -->
-            <div class="space-y-4 mt-8">
-              <h3
-                class="text-2xl lg:text-3xl font-bold text-white group-hover:text-purple-300 transition-colors duration-300">
-                Simon Plum
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">Simon Plum
               </h3>
-              <p class="text-base lg:text-lg text-purple-200/80 leading-relaxed min-h-[3rem]">
-                European Space Agency
+              <p class="text-xs text-purple-200/60 uppercase tracking-widest font-semibold mb-3">European Space Agency
               </p>
-            </div>
-
-            <!-- Decorative Line -->
-            <div class="mt-8 flex justify-center">
-              <div
-                class="w-16 h-1 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full group-hover:w-24 transition-all duration-300">
-              </div>
             </div>
           </div>
         </div>
+
+
+        <!-- Speaker 4: Mr. Jean-Yves Le Gall -->
+        <div class="mission-control-card card-accent-blue p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.4s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-blue-400/30 group-hover:border-blue-400 transition-colors duration-500 relative flex items-center justify-center bg-blue-900/20">
+                <img src="./assets/images/speakers/Jean-Yves-Le-Gall.png" alt="Mr. Jean-Yves Le Gall"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-blue-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">Mr. Jean-Yves Le
+                Gall</h3>
+              <p class="text-xs text-blue-200/60 uppercase tracking-widest font-semibold mb-3">Former President, French
+                National Space Agency</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 5: Keyur Patel -->
+        <div class="mission-control-card card-accent-indigo p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.5s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-indigo-400/30 group-hover:border-indigo-400 transition-colors duration-500 relative flex items-center justify-center bg-indigo-900/20">
+                <img src="./assets/images/speakers/Keyur-Patel.png" alt="Keyur Patel" class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-indigo-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-indigo-300 transition-colors">Keyur Patel
+              </h3>
+              <p class="text-xs text-indigo-200/60 uppercase tracking-widest font-semibold mb-3">Associate Director,
+                Flight Projects & Mission Success
+                , JPL</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 6: Akiko Otsuka -->
+        <div class="mission-control-card card-accent-purple p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.6s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-purple-400/30 group-hover:border-purple-400 transition-colors duration-500 relative flex items-center justify-center bg-purple-900/20">
+                <img src="./assets/images/speakers/Akiko-Otsuka.png" alt="Akiko Otsuka"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-purple-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">Akiko Otsuka
+              </h3>
+              <p class="text-xs text-purple-200/60 uppercase tracking-widest font-semibold mb-3">Keio University, JAXA
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 7: A. S. Kiran Kumar -->
+        <div class="mission-control-card card-accent-pink p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.7s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-pink-400/30 group-hover:border-pink-400 transition-colors duration-500 relative flex items-center justify-center bg-pink-900/20">
+                <img src="./assets/images/speakers/AS-Kiran-Kumar.png" alt="A. S. Kiran Kumar"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-pink-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-pink-300 transition-colors">A. S. Kiran
+                Kumar</h3>
+              <p class="text-xs text-pink-200/60 uppercase tracking-widest font-semibold mb-3">Former Secretary of the
+                Department of Space, Chairman of the Space Commission, and ISRO Chairman</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 8: Dr. Shujiro Sawai -->
+        <div class="mission-control-card card-accent-blue p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.8s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-blue-400/30 group-hover:border-blue-400 transition-colors duration-500 relative flex items-center justify-center bg-blue-900/20">
+                <img src="./assets/images/speakers/Shujiro-Sawai.png" alt="Dr. Shujiro Sawai"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-blue-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">Dr. Shujiro
+                Sawai</h3>
+              <p class="text-xs text-blue-200/60 uppercase tracking-widest font-semibold mb-3">Associate Professor,
+                Department of Space Systems and Astronautics, Institute of Space and Astronautical Science (ISAS), JAXA
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 9: M Sankaran -->
+        <div class="mission-control-card card-accent-indigo p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.9s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-indigo-400/30 group-hover:border-indigo-400 transition-colors duration-500 relative flex items-center justify-center bg-indigo-900/20">
+                <img src="./assets/images/speakers/Sankaran.png" alt="M Sankaran" class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-indigo-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-indigo-300 transition-colors">M Sankaran
+              </h3>
+              <p class="text-xs text-indigo-200/60 uppercase tracking-widest font-semibold mb-3">Distinguished Scientist
+                & Director URSC</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 10: Dr. A K Anil Kumar -->
+        <div class="mission-control-card card-accent-purple p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 1.0s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-purple-400/30 group-hover:border-purple-400 transition-colors duration-500 relative flex items-center justify-center bg-purple-900/20">
+                <img src="./assets/images/speakers/AKAnilKumar.png" alt="Dr. A K Anil Kumar"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-purple-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">Dr. A K Anil
+                Kumar</h3>
+              <p class="text-xs text-purple-200/60 uppercase tracking-widest font-semibold mb-3">Vice President of the
+                International Astronautical Federation (IAF), Director ISTRAC
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 11: Dr. Krishna Dev Kumar -->
+        <div class="mission-control-card card-accent-pink p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.1s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-pink-400/30 group-hover:border-pink-400 transition-colors duration-500 relative flex items-center justify-center bg-pink-900/20">
+                <img src="./assets/images/speakers/Krishna-Dev-Kumar.png" alt="Dr. Krishna Dev Kumar"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-pink-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-pink-300 transition-colors">Dr. Krishna Dev
+                Kumar</h3>
+              <p class="text-xs text-pink-200/60 uppercase tracking-widest font-semibold mb-3">Department of Aerospace
+                Engineering, Toronto Metropolitan University,
+                Professor & Director of Artificial Intelligence for Aerospace Systems (AIAS) Laboratory</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 12: Shubhanshu Shukla -->
+        <div class="mission-control-card card-accent-blue p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.2s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-blue-400/30 group-hover:border-blue-400 transition-colors duration-500 relative flex items-center justify-center bg-blue-900/20">
+                <img src="./assets/images/speakers/Shubhanshu-Shukla.png" alt="Shubhanshu Shukla"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-blue-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">Shubhanshu
+                Shukla</h3>
+              <p class="text-xs text-blue-200/60 uppercase tracking-widest font-semibold mb-3">Group Captain IAF,
+                Gaganyatri, Axiom 4</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 13: Cosmonaut Denis Matveev -->
+        <div class="mission-control-card card-accent-indigo p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.3s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-indigo-400/30 group-hover:border-indigo-400 transition-colors duration-500 relative flex items-center justify-center bg-indigo-900/20">
+                <img src="./assets/images/speakers/Denis-Matveev.png" alt="Denis Matveev"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-indigo-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-indigo-300 transition-colors">Cosmonaut
+                Denis Matveev
+              </h3>
+              <p class="text-xs text-indigo-200/60 uppercase tracking-widest font-semibold mb-3">Gagarin Research & Test
+                Cosmonaut Training Centre</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 14: Dr. Aleksei Shpakov -->
+        <div class="mission-control-card card-accent-purple p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.4s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-purple-400/30 group-hover:border-purple-400 transition-colors duration-500 relative flex items-center justify-center bg-purple-900/20">
+                <img src="./assets/images/speakers/Aleksei-Shpakov.png" alt="Dr. Aleksei Shpakov"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-purple-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">Dr. Aleksei
+                Shpakov</h3>
+              <p class="text-xs text-purple-200/60 uppercase tracking-widest font-semibold mb-3">Institute of
+                Bio-Medical Problems Moscow (IBMP)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 15: Dr. Vsevolod Peysakhovich -->
+        <div class="mission-control-card card-accent-pink p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.5s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-pink-400/30 group-hover:border-pink-400 transition-colors duration-500 relative flex items-center justify-center bg-pink-900/20">
+                <img src="./assets/images/speakers/Vsevolod-Peysakhovich.png" alt="Dr. V. Peysakhovich"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-pink-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-pink-300 transition-colors">Dr. V.
+                Peysakhovich</h3>
+              <p class="text-xs text-pink-200/60 uppercase tracking-widest font-semibold mb-3">Professor,
+                Neuroergonomics, ISAE-SUPAERO</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 16: Dr. Adrianos Golemis -->
+        <div class="mission-control-card card-accent-blue p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.6s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-blue-400/30 group-hover:border-blue-400 transition-colors duration-500 relative flex items-center justify-center bg-blue-900/20">
+                <img src="./assets/images/speakers/Adrianos-Golemis.png" alt="Dr. Adrianos Golemis"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-blue-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">Dr. Adrianos
+                Golemis</h3>
+              <p class="text-xs text-blue-200/60 uppercase tracking-widest font-semibold mb-3">Lead Flight Surgeon, ESA
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 17: Mr. Jitendra Singh -->
+        <div class="mission-control-card card-accent-indigo p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.7s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-indigo-400/30 group-hover:border-indigo-400 transition-colors duration-500 relative flex items-center justify-center bg-indigo-900/20">
+                <img src="./assets/images/speakers/Jitendra-Singh.png" alt="Mr. Jitendra Singh"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-indigo-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-indigo-300 transition-colors">Mr. Jitendra
+                Singh</h3>
+              <p class="text-xs text-indigo-200/60 uppercase tracking-widest font-semibold mb-3">Aircraft Propulsion and
+                Flight Testing, TU Delft and ISAE SUPAERO
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 18: Prem Sundaramoorthy -->
+        <div class="mission-control-card card-accent-purple p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.8s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-purple-400/30 group-hover:border-purple-400 transition-colors duration-500 relative flex items-center justify-center bg-purple-900/20">
+                <img src="./assets/images/speakers/Prem-Sundaramoorthy.png" alt="P. Sundaramoorthy"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-purple-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">P.
+                Sundaramoorthy</h3>
+              <p class="text-xs text-purple-200/60 uppercase tracking-widest font-semibold mb-3">Professor, Space
+                Engineering, TU Delft</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 19: Richard B. Leshner -->
+        <div class="mission-control-card card-accent-pink p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.9s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-pink-400/30 group-hover:border-pink-400 transition-colors duration-500 relative flex items-center justify-center bg-pink-900/20">
+                <img src="./assets/images/speakers/Richard-B-Leshner.png" alt="Richard B. Leshner"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-pink-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-pink-300 transition-colors">Richard B.
+                Leshner</h3>
+              <p class="text-xs text-pink-200/60 uppercase tracking-widest font-semibold mb-3">Vice President, VAST</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 20: Mr. Sean Burns -->
+        <div class="mission-control-card card-accent-blue p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 1.0s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-blue-400/30 group-hover:border-blue-400 transition-colors duration-500 relative flex items-center justify-center bg-blue-900/20">
+                <img src="./assets/images/speakers/Sean-Burns.png" alt="Mr. Sean Burns"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-blue-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">Mr. Sean Burns
+              </h3>
+              <p class="text-xs text-blue-200/60 uppercase tracking-widest font-semibold mb-3">Director of Operations,
+                EUMETSAT</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 21: Mr. Daniel Kroboth -->
+        <div class="mission-control-card card-accent-indigo p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.1s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-indigo-400/30 group-hover:border-indigo-400 transition-colors duration-500 relative flex items-center justify-center bg-indigo-900/20">
+                <img src="./assets/images/speakers/Daniel-Kroboth.png" alt="Mr. Daniel Kroboth"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-indigo-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-indigo-300 transition-colors">Mr. Daniel
+                Kroboth</h3>
+              <p class="text-xs text-indigo-200/60 uppercase tracking-widest font-semibold mb-3">Vice President,
+                Satellite Operations, Eutelsat</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 22: Dr. K V Sriram -->
+        <div class="mission-control-card card-accent-purple p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.2s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-purple-400/30 group-hover:border-purple-400 transition-colors duration-500 relative flex items-center justify-center bg-purple-900/20">
+                <img src="./assets/images/speakers/K-V-Sriram.png" alt="Dr. K V Sriram"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-purple-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">Dr. K V Sriram
+              </h3>
+              <p class="text-xs text-purple-200/60 uppercase tracking-widest font-semibold mb-3">Director, LEOS, ISRO
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speaker 23: Shri M Mohan -->
+        <div class="mission-control-card card-accent-pink p-6 rounded-2xl group animate-fade-in-up"
+          style="animation-delay: 0.3s">
+          <div class="scanline"></div>
+          <div class="relative z-10">
+
+            <div class="relative mb-6">
+              <div class="radar-ring"></div>
+              <div
+                class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-pink-400/30 group-hover:border-pink-400 transition-colors duration-500 relative flex items-center justify-center bg-pink-900/20">
+                <img src="./assets/images/speakers/M-Mohan.png" alt="Shri M Mohan" class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-16 h-16 text-pink-400/40" style="display: none;" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-pink-300 transition-colors">Shri M Mohan
+              </h3>
+              <p class="text-xs text-pink-200/60 uppercase tracking-widest font-semibold mb-3">Director, LPSC, ISRO</p>
+            </div>
+          </div>
+        </div>
+
+
 
       </div>
     </div>
