@@ -108,10 +108,10 @@ class ScheduleModalManager {
                                     <div class="schedule-card card-purple">
                                         <div class="schedule-time">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                            11:00 - 01:00
+                                            11:00 - 01:10
                                         </div>
                                         <h4 class="schedule-title">Plenary Sessions 1 & 2</h4>
-                                        <p class="schedule-desc">Key talks on Space Domain Awareness and Future Technologies.</p>
+                                        <p class="schedule-desc">Key talks on Space Domain Awareness and Leadership Forum.</p>
                                         <div class="schedule-meta">
                                             <div class="meta-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> Session Hall 1</div>
                                         </div>
@@ -119,7 +119,7 @@ class ScheduleModalManager {
 
                                     <div class="flex items-center gap-4 py-2 opacity-50">
                                         <div class="h-px bg-white/20 grow"></div>
-                                        <span class="text-xs font-bold uppercase tracking-widest italic text-pink-300">Lunch Break | 01:00 - 02:00</span>
+                                        <span class="text-xs font-bold uppercase tracking-widest italic text-pink-300">Lunch Break | 01:10 - 02:00</span>
                                         <div class="h-px bg-white/20 grow"></div>
                                     </div>
 
@@ -130,7 +130,7 @@ class ScheduleModalManager {
                                             02:00 - 03:30
                                         </div>
                                         <h4 class="schedule-title">Parallel Technical Sessions</h4>
-                                        <p class="schedule-desc">Dedicated tracks for Mission Design, Power, and Thermal systems.</p>
+                                        <p class="schedule-desc">Dedicated tracks for Mission Operations and Paper Presentations.</p>
                                         <div class="schedule-meta">
                                             <div class="meta-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg> Halls 1-4</div>
                                         </div>
@@ -142,8 +142,8 @@ class ScheduleModalManager {
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                             05:00 - 06:00
                                         </div>
-                                        <h4 class="schedule-title uppercase font-black text-emerald-300">Astronaut Panel</h4>
-                                        <p class="schedule-desc text-white/80">Interactive session with global space travelers sharing mission experiences.</p>
+                                        <h4 class="schedule-title uppercase font-black text-emerald-300">Human Space Program</h4>
+                                        <p class="schedule-desc text-white/80">Interactive panel discussion on Human Space Program Challenges.</p>
                                     </div>
 
                                     <!-- Card: Dinner style -->
