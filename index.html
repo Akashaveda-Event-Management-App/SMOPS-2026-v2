@@ -1296,157 +1296,97 @@
           </div>
         </div>
 
-        <!-- Status Display for Countdown -->
-        <div class="mt-8 text-center">
-          <div
-            class="inline-flex items-center space-x-3 px-6 py-3 rounded-full backdrop-blur-xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-400/50 text-emerald-200 transition-all duration-300">
-            <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-            <span class="font-semibold text-sm sm:text-base">Abstracts & Registration Open</span>
+        <!-- Status & Actions (Restored UI) -->
+        <div class="mt-8 sm:mt-12 w-full max-w-5xl mx-auto px-4 z-40 relative flex flex-col items-center justify-center gap-8 fade-in-up">
+          
+          <!-- Top Yellow Registration Pill -->
+          <div class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full border border-yellow-500/40 bg-black/40 backdrop-blur-md mb-2">
+            <span class="text-yellow-500 font-bold text-sm sm:text-base tracking-wide flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>
+              Regular Registration Open
+            </span>
           </div>
 
-          <div class="mt-8 max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-6 px-4 sm:px-0">
-            <!-- Conference Registration Card -->
-            <div
-              class="relative overflow-hidden glassmorphic-bg p-6 rounded-2xl border border-blue-400/30 shadow-2xl hover:border-blue-400/60 transition-all duration-300 group hover:-translate-y-1">
-              <div
-                class="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 blur-3xl rounded-full group-hover:bg-blue-500/30 transition-all duration-500">
+          <!-- Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full text-left">
+            <!-- Conference Card -->
+            <div class="p-6 rounded-2xl border border-blue-500/30 bg-black/30 backdrop-blur-sm hover:border-blue-500/50 transition-colors">
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold tracking-wide uppercase mb-5">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                REGISTRATION OPEN
               </div>
-              <div class="relative z-10 text-left">
-                <div
-                  class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 mb-4">
-                  <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
-                  <span class="text-xs font-bold text-blue-300 uppercase tracking-wide">Registration Open</span>
-                </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Conference</h3>
-                <div class="flex items-center gap-2 mb-3 text-blue-200">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span class="font-semibold">April 8th & 9th, 2026</span>
-                </div>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                  <span class="text-green-400 font-semibold">Venue: Taj Yeshwantpur, Bengaluru</span>
-                </p>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                  Join global experts for two days of premier insights into spacecraft mission operations.
-                </p>
-              </div>
-            </div>
-
-            <!-- Workshop Registration Card (Highlighted) -->
-            <div
-              class="relative overflow-hidden glassmorphic-bg p-6 rounded-2xl border border-yellow-400/30 shadow-2xl hover:border-yellow-400/60 transition-all duration-300 group hover:-translate-y-1">
-              <div
-                class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/20 blur-3xl rounded-full group-hover:bg-yellow-500/30 transition-all duration-500">
-              </div>
-              <div class="relative z-10 text-left">
-                <div
-                  class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/20 border border-yellow-500/30 mb-4">
-                  <span class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
-                  <span class="text-xs font-bold text-yellow-300 uppercase tracking-wide">Workshop Registration
-                    Open</span>
-                </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Conference Workshop</h3>
-                <div class="flex items-center gap-2 mb-3 text-yellow-200">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                  <span class="font-semibold">April 10, 2026</span>
-
-                </div>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                  <span class="text-green-400 font-semibold">Venue: Taj Yeshwantpur, Bengaluru</span>
-                </p>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                  <span class="text-yellow-400 font-semibold">Limited seats
-                    available.</span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4 max-w-md mx-auto">
-            <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
-              <span class="text-red-400 font-medium">Full Paper Submission is Closed</span>
-              <br class="hidden sm:block" />
-              Submission deadline has passed.
-            <h1><b><a class="text-blue-400 font-semibold hover:text-blue-300 transition-colors"
-                  href="./assets/Full_paper_submission_template.doc"
-                  download="Full_paper_submission_template.doc">Download Template for Reference</a></b></h1>
-            </p>
-          </div>
-        </div>
-
-        <!-- Enhanced Action Buttons -->
-        <div class="mt-12 sm:mt-16 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6 sm:gap-8">
-          <div class="relative group" id="hero-registration-button">
-            <!-- Enhanced Registration Button -->
-            <div
-              class="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full blur opacity-50 group-hover:opacity-75">
-            </div>
-            <a href="./registration.html">
-              <button type="button"
-                class="relative px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 backdrop-blur-xl border-2 border-white/30 text-white rounded-full font-bold text-lg shadow-2xl transition-all duration-300 flex items-center space-x-3 group-hover:scale-105 group-hover:shadow-blue-500/50">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
-                  </path>
+              <h3 class="text-2xl font-bold text-white mb-4">Conference</h3>
+              <div class="flex items-center gap-2 text-white/90 mb-4">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                <span>Register Now</span>
-                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-              </button>
+                <span class="font-semibold text-lg">April 8th & 9th, 2026</span>
+              </div>
+              <p class="text-emerald-400 font-medium mb-3 text-sm">Venue: Taj Yeshwantpur, Bengaluru</p>
+              <p class="text-gray-400 text-sm leading-relaxed">Join global experts for two days of premier insights into spacecraft mission operations.</p>
+            </div>
+
+            <!-- Workshop Card -->
+            <div class="p-6 rounded-2xl border border-yellow-500/30 bg-black/30 backdrop-blur-sm hover:border-yellow-500/50 transition-colors">
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-500/20 text-yellow-300 text-xs font-bold tracking-wide uppercase mb-5">
+                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
+                WORKSHOP REGISTRATION OPEN
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-4">Conference Workshop</h3>
+              <div class="flex items-center gap-2 text-white/90 mb-4">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+                <span class="font-semibold text-lg">April 10, 2026</span>
+              </div>
+              <p class="text-emerald-400 font-medium mb-3 text-sm">Venue: Taj Yeshwantpur, Bengaluru</p>
+              <p class="text-yellow-400 font-medium text-sm">Limited seats available.</p>
+            </div>
+          </div>
+
+          <div class="text-center mt-2 max-w-md mx-auto">
+            <p class="text-red-400 font-medium text-lg mb-1">Full Paper Submission is Closed</p>
+            <p class="text-gray-400 text-base mb-4">Submission deadline has passed.</p>
+            <a class="inline-flex items-center gap-2 text-sm text-blue-400 font-medium hover:text-blue-300 transition-colors bg-white/5 py-1.5 px-4 rounded-full border border-white/10 hover:bg-white/10"
+               href="./assets/Full_paper_submission_template.doc"
+               download="Full_paper_submission_template.doc">
+               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+               </svg>
+               Download Template Reference
             </a>
           </div>
 
-          <!-- Travel Page Button -->
-          <div class="relative group">
-            <div
-              class="absolute -inset-1 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 rounded-full blur opacity-50 group-hover:opacity-75">
-            </div>
-            <a href="./travel.html">
-              <button type="button"
-                class="relative px-8 py-4 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 backdrop-blur-xl border-2 border-white/30 text-white rounded-full font-bold text-lg shadow-2xl transition-all duration-300 flex items-center space-x-3 group-hover:scale-105 group-hover:shadow-orange-500/50">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                  </path>
-                </svg>
-                <span>Travel Guide</span>
-              </button>
+          <!-- Clean Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-4">
+            
+            <!-- Register Button -->
+            <a href="./registration.html" class="group relative px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-full font-semibold text-base sm:text-lg shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all duration-300 flex items-center gap-2 hover:-translate-y-0.5 border border-white/10 relative overflow-hidden">
+              <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+              <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+              </svg>
+              <span class="relative z-10">Register Now</span>
             </a>
-          </div>
 
-          <div class="relative group">
-            <div
-              class="absolute -inset-1 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 rounded-full blur opacity-50 group-hover:opacity-75">
-            </div>
-            <button type="button"
-              class="open-schedule-btn relative px-8 py-4 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 backdrop-blur-xl border-2 border-white/30 text-white rounded-full font-bold text-lg shadow-2xl transition-all duration-300 flex items-center space-x-3 group-hover:scale-105 group-hover:shadow-emerald-500/50">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            <!-- View Schedule Button -->
+            <button type="button" class="open-schedule-btn group px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 backdrop-blur-md text-white rounded-full font-semibold text-base sm:text-lg transition-all duration-300 flex items-center gap-2 hover:-translate-y-0.5">
+              <svg class="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
               </svg>
               <span>View Schedule</span>
             </button>
-          </div>
 
-          <div class="relative group">
-            <div
-              class="absolute -inset-1 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 rounded-full blur opacity-50 group-hover:opacity-75">
-            </div>
-            <button type="button" disabled
-              class="relative px-8 py-4 bg-gray-600/50 backdrop-blur-xl border-2 border-white/10 text-gray-400 rounded-full font-bold text-lg cursor-not-allowed flex items-center space-x-3 opacity-70">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            <!-- Travel Guide Button -->
+            <a href="./travel.html" class="group px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 backdrop-blur-md text-white rounded-full font-semibold text-base sm:text-lg transition-all duration-300 flex items-center gap-2 hover:-translate-y-0.5">
+              <svg class="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              <span>Submissions Closed</span>
-            </button>
+              <span>Travel Guide</span>
+            </a>
+
           </div>
         </div>
-      </div>
     </div>
   </section>
 
@@ -5006,6 +4946,82 @@
     </div>
   </section>
 
+  <!-- Accommodation Section -->
+  <section id="accommodation" class="py-12 sm:py-16 relative overflow-hidden scroll-mt-20">
+    <!-- Clean Dark Background linking smoothly -->
+    <div class="absolute inset-0 w-full h-full">
+      <div class="absolute inset-0 border-y border-white/5 bg-slate-900/20 backdrop-blur-sm"></div>
+    </div>
+
+    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-12 animate-fade-in-down">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold tracking-wide uppercase mb-4">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+          Students Only
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-400 to-orange-300 drop-shadow-lg">
+            Guest House Accommodation
+          </span>
+        </h2>
+        <div class="h-1 w-24 mx-auto bg-gradient-to-r from-amber-400 to-orange-500 rounded-full mb-4"></div>
+        <p class="text-lg text-amber-100/80 max-w-3xl mx-auto leading-relaxed">
+          Limited accommodation is available exclusively for student attendees on a first-come, first-served basis. Location details will be shared through email after confirmation.
+        </p>
+      </div>
+
+      <!-- Info Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <!-- Deadline -->
+        <div class="glassmorphic-bg p-6 rounded-2xl border-2 border-amber-500/20 flex flex-col items-center text-center group hover:border-amber-500/40 hover:bg-amber-500/5 transition-all duration-300 animate-fade-in-up">
+          <div class="w-14 h-14 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-amber-500/5">
+            <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h4 class="text-amber-100/60 text-xs font-bold uppercase tracking-widest mb-2">Application Deadline</h4>
+          <p class="text-2xl font-black text-amber-400 mb-2">25th March 2026</p>
+          <p class="text-amber-200/60 text-xs">Apply early to secure your spot</p>
+        </div>
+
+        <!-- Capacity -->
+        <div class="glassmorphic-bg p-6 rounded-2xl border-2 border-emerald-500/20 flex flex-col items-center text-center group hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.1s">
+          <div class="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-emerald-500/5">
+            <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h4 class="text-emerald-100/60 text-xs font-bold uppercase tracking-widest mb-2">Total Capacity</h4>
+          <p class="text-2xl font-black text-emerald-400 mb-2">90 Students</p>
+          <p class="text-emerald-200/60 text-xs">First-come, first-served basis</p>
+        </div>
+
+        <!-- Transport -->
+        <div class="glassmorphic-bg p-6 rounded-2xl border-2 border-blue-500/20 flex flex-col items-center text-center group hover:border-blue-500/40 hover:bg-blue-500/5 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.2s">
+          <div class="w-14 h-14 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-blue-500/5">
+            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+            </svg>
+          </div>
+          <h4 class="text-blue-100/60 text-xs font-bold uppercase tracking-widest mb-2">Transport Provided</h4>
+          <p class="text-lg font-black text-blue-400 mb-2">Guest House to Venue</p>
+          <p class="text-blue-200/60 text-xs">Daily pick-up & drop arranged for attendees</p>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center animate-fade-in-up" style="animation-delay: 0.3s">
+        <a href="travel.html#accommodation" class="inline-flex items-center justify-center px-8 py-3.5 glassmorphic-bg border border-white/20 hover:border-amber-400/50 hover:shadow-[0_0_20px_rgba(251,191,36,0.15)] hover:bg-amber-900/20 text-white rounded-xl transition-all duration-300 font-semibold gap-3 group">
+          <span>View Application Steps</span>
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Enhanced Sponsorship Opportunities Section -->
   <section id="sponsorship" class="py-8 sm:py-10 relative overflow-hidden scroll-mt-20">
     <!-- Dynamic Background -->
@@ -5400,6 +5416,8 @@
         </div>
       </div>
 
+      
+
       <!-- Call to Action -->
       <div class="text-center">
         <div class="glassmorphic-bg p-6 rounded-2xl border border-white/10 animate-fade-in-up"
@@ -5424,6 +5442,525 @@
       </div>
     </div>
   </section>
+
+
+  <!-- Sponsors Section -->
+<section id="sponsors-list" class="py-8 sm:py-10 relative overflow-hidden scroll-mt-20">
+  <!-- Dynamic Background -->
+  <div class="absolute inset-0 w-full h-full">
+    <div class="absolute inset-0 bg-gradient-to-br from-green-900/30 via-blue-900/50 to-purple-900/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/80"></div>
+    <div class="absolute inset-0 star-bg opacity-70"></div>
+  </div>
+
+  <div class="relative z-20">
+    <style>
+      .sponsors-tier { margin-bottom: 2rem; }
+    @media (min-width: 640px) {
+      .sponsors-tier { margin-bottom: 3rem; }
+    }
+
+    .sponsors-tier-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .sponsors-tier-label::before,
+    .sponsors-tier-label::after {
+      content: '';
+      flex: 1;
+      max-width: 120px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #1e293b);
+    }
+    .sponsors-tier-label span {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: .35rem 1.1rem;
+      border-radius: 99px;
+    }
+
+    .sponsors-tier--plat .sponsors-tier-label span {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.25);
+      color: #94a3b8;
+    }
+    .sponsors-tier--gold .sponsors-tier-label span {
+      background: rgba(212,168,80,0.08);
+      border: 1px solid rgba(212,168,80,0.3);
+      color: #d4a850;
+    }
+    .sponsors-tier--gold .sponsors-tier-label::before,
+    .sponsors-tier--gold .sponsors-tier-label::after {
+      background: linear-gradient(to right, transparent, rgba(212,168,80,0.15));
+    }
+    .sponsors-tier--silver .sponsors-tier-label span {
+      background: rgba(156,163,175,0.07);
+      border: 1px solid rgba(156,163,175,0.25);
+      color: #9ca3af;
+    }
+    .sponsors-tier--bronze .sponsors-tier-label span {
+      background: rgba(194,118,58,0.08);
+      border: 1px solid rgba(194,118,58,0.28);
+      color: #c2763a;
+    }
+
+    .sponsors-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .sponsor-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .25s ease;
+      text-decoration: none;
+      display: block;
+    }
+    .sponsor-card:hover { transform: translateY(-4px); }
+
+    .sponsor-card__inner {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      background: rgba(15, 22, 40, 0.8);
+      backdrop-filter: blur(10px);
+      transition: all .3s ease;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Base sizing for Platinum (Largest) */
+    .sponsors-tier--plat .sponsor-card {
+      width: calc(100% - 1rem);
+      max-width: 380px;
+    }
+    .sponsors-tier--plat .sponsor-card__inner {
+      padding: 1.5rem;
+    }
+    .sponsors-tier--plat .sponsor-card__logo {
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+    }
+    .sponsors-tier--plat .sponsor-card__name {
+      font-size: 1.25rem;
+      text-align: left;
+    }
+
+    /* Sizing for Gold */
+    .sponsors-tier--gold .sponsor-card {
+      width: calc(100% - 1rem);
+      max-width: 320px;
+    }
+    @media (min-width: 768px) {
+      .sponsors-tier--gold .sponsor-card {
+        width: calc(50% - 1rem);
+      }
+    }
+    .sponsors-tier--gold .sponsor-card__inner {
+      padding: 1.25rem;
+    }
+    .sponsors-tier--gold .sponsor-card__logo {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+    }
+    .sponsors-tier--gold .sponsor-card__name {
+      font-size: 1.1rem;
+      text-align: left;
+    }
+
+    /* Sizing for Silver */
+    .sponsors-tier--silver .sponsor-card {
+      width: calc(100% - 1rem);
+      max-width: 280px;
+    }
+    @media (min-width: 768px) {
+      .sponsors-tier--silver .sponsor-card {
+        width: calc(33.333% - 1rem);
+      }
+    }
+    .sponsors-tier--silver .sponsor-card__inner {
+      padding: 1rem;
+    }
+    .sponsors-tier--silver .sponsor-card__logo {
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+    }
+    .sponsors-tier--silver .sponsor-card__name {
+      font-size: 0.95rem;
+      text-align: left;
+    }
+
+    /* Sizing for Bronze */
+    .sponsors-tier--bronze .sponsor-card {
+      width: calc(100% - 1rem);
+      max-width: 240px;
+    }
+    @media (min-width: 768px) {
+      .sponsors-tier--bronze .sponsor-card {
+        width: calc(25% - 1.2rem);
+      }
+    }
+    .sponsors-tier--bronze .sponsor-card__inner {
+      padding: 0.875rem;
+    }
+    .sponsors-tier--bronze .sponsor-card__logo {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+    }
+    .sponsors-tier--bronze .sponsor-card__name {
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    /* Distinct default states for each tier */
+    .sponsors-tier--plat .sponsor-card__inner { 
+      border-color: rgba(192, 132, 252, 0.3); /* Purple-ish tint for platinum to match section colors */
+      background: linear-gradient(145deg, rgba(192, 132, 252, 0.1), rgba(15, 22, 40, 0.8));
+      box-shadow: inset 0 0 20px rgba(192, 132, 252, 0.05);
+    }
+    .sponsors-tier--gold .sponsor-card__inner { 
+      border-color: rgba(250, 204, 21, 0.3); 
+      background: linear-gradient(145deg, rgba(250, 204, 21, 0.1), rgba(15, 22, 40, 0.8));
+      box-shadow: inset 0 0 20px rgba(250, 204, 21, 0.05);
+    }
+    .sponsors-tier--silver .sponsor-card__inner { 
+      border-color: rgba(148, 163, 184, 0.3); 
+      background: linear-gradient(145deg, rgba(148, 163, 184, 0.1), rgba(15, 22, 40, 0.8));
+      box-shadow: inset 0 0 20px rgba(148, 163, 184, 0.05);
+    }
+    .sponsors-tier--bronze .sponsor-card__inner { 
+      border-color: rgba(249, 115, 22, 0.3); 
+      background: linear-gradient(145deg, rgba(249, 115, 22, 0.1), rgba(15, 22, 40, 0.8));
+      box-shadow: inset 0 0 20px rgba(249, 115, 22, 0.05);
+    }
+
+    /* Hover states for each tier */
+    .sponsors-tier--plat .sponsor-card:hover .sponsor-card__inner { 
+      border-color: rgba(192, 132, 252, 0.7); 
+      background: linear-gradient(145deg, rgba(192, 132, 252, 0.2), rgba(15, 22, 40, 0.9)); 
+    }
+    .sponsors-tier--gold .sponsor-card:hover .sponsor-card__inner { 
+      border-color: rgba(250, 204, 21, 0.7);  
+      background: linear-gradient(145deg, rgba(250, 204, 21, 0.2), rgba(15, 22, 40, 0.9)); 
+    }
+    .sponsors-tier--silver .sponsor-card:hover .sponsor-card__inner { 
+      border-color: rgba(148, 163, 184, 0.7);  
+      background: linear-gradient(145deg, rgba(148, 163, 184, 0.2), rgba(15, 22, 40, 0.9)); 
+    }
+    .sponsors-tier--bronze .sponsor-card:hover .sponsor-card__inner { 
+      border-color: rgba(249, 115, 22, 0.7);   
+      background: linear-gradient(145deg, rgba(249, 115, 22, 0.2), rgba(15, 22, 40, 0.9)); 
+    }
+
+    .sponsor-card__glow {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      opacity: 0.4; /* Always slightly visible */
+      transition: opacity .3s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .sponsors-tier--plat .sponsor-card__glow  { box-shadow: 0 0 28px rgba(192, 132, 252, 0.2); }
+    .sponsors-tier--gold .sponsor-card__glow   { box-shadow: 0 0 28px rgba(250, 204, 21, 0.2); }
+    .sponsors-tier--silver .sponsor-card__glow { box-shadow: 0 0 28px rgba(148, 163, 184, 0.2); }
+    .sponsors-tier--bronze .sponsor-card__glow { box-shadow: 0 0 28px rgba(249, 115, 22, 0.2); }
+    .sponsor-card:hover .sponsor-card__glow { opacity: 1; }
+
+    .sponsor-card__logo {
+      border-radius: 12px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      position: relative;
+      z-index: 1;
+      transition: transform .25s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .sponsor-card:hover .sponsor-card__logo { transform: scale(1.05); }
+    .sponsor-card__logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .sponsor-card__logo .fallback {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1e293b;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .sponsor-card__content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .sponsor-card__name {
+      font-weight: 600;
+      color: #e2e8f0;
+      line-height: 1.3;
+      position: relative;
+      z-index: 1;
+      transition: color .2s;
+    }
+    .sponsors-tier--plat .sponsor-card__name  { color: #d8b4fe; } /* subtle distinct text colors */
+    .sponsors-tier--gold .sponsor-card__name   { color: #fdf08a; }
+    .sponsors-tier--silver .sponsor-card__name { color: #cbd5e1; }
+    .sponsors-tier--bronze .sponsor-card__name { color: #fdba74; }
+
+    /* Enhance hover text color */
+    .sponsors-tier--plat .sponsor-card:hover .sponsor-card__name  { color: #e9d5ff; }
+    .sponsors-tier--gold .sponsor-card:hover .sponsor-card__name   { color: #fef08a; }
+    .sponsors-tier--silver .sponsor-card:hover .sponsor-card__name { color: #f1f5f9; }
+    .sponsors-tier--bronze .sponsor-card:hover .sponsor-card__name { color: #fed7aa; }
+
+    .sponsor-card__arrow {
+      font-size: 14px;
+      color: #64748b;
+      transition: color .2s, transform .2s;
+      position: relative;
+      z-index: 1;
+      opacity: 0.5;
+    }
+    .sponsor-card:hover .sponsor-card__arrow {
+      color: #94a3b8;
+      opacity: 1;
+      transform: translate(3px, -3px);
+    }
+  </style>
+
+  <!-- Header -->
+  <div class="text-center mb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="glassmorphic-bg p-6 sm:p-8 rounded-3xl border border-white/20 shadow-2xl animate-fade-in-down">
+      <div class="relative">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 drop-shadow-lg">
+            Our Valued Sponsors
+          </span>
+        </h2>
+        <div class="flex justify-center items-center space-x-4 mb-4">
+          <div class="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent flex-1 max-w-xs"></div>
+          <div class="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+          <div class="h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent flex-1 max-w-xs"></div>
+        </div>
+        <p class="text-base sm:text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">
+          Organizations making SMOPS-2026 possible
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-4">
+
+    <!-- Platinum -->
+    <div class="sponsors-tier sponsors-tier--plat">
+      <div class="sponsors-tier-label"><span>Platinum Partners</span></div>
+      <div class="sponsors-cards">
+        <a href="https://www.arista.com/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="assets/images/sponsors_logo/Arista_Networks_Logo.png" alt="Arista Networks"
+                onerror="this.parentElement.innerHTML='<span class=fallback>Arista Networks</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">Arista Networks</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+        <a href="https://www.digilogsys.in/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="assets/images/sponsors_logo/Digilog_Technologies_Private_Limited_Logo.jpg" alt="Digilog Technologies"
+                onerror="this.parentElement.innerHTML='<span class=fallback>Digilog Technologies</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">Digilog Technologies</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Gold -->
+    <div class="sponsors-tier sponsors-tier--gold">
+      <div class="sponsors-tier-label"><span>Gold Partners</span></div>
+      <div class="sponsors-cards">
+        <a href="https://www.elastic.co/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="assets/images/sponsors_logo/Elastic_Logo.png" alt="Elastic"
+                onerror="this.parentElement.innerHTML='<span class=fallback>Elastic</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">Elastic</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+        <a href="https://www.netapp.com/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="assets/images/sponsors_logo/NetApp_Logo.png" alt="NetApp"
+                onerror="this.parentElement.innerHTML='<span class=fallback>NetApp</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">NetApp</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+        <a href="https://www.locuz.com/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="assets/images/sponsors_logo/SHI_SOLUTIONS_INDIA_PRIVATE_LIMITED_Logo.png" alt="SHI Solutions India"
+                onerror="this.parentElement.innerHTML='<span class=fallback>SHI Solutions</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">SHI Solutions India</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Silver -->
+    <div class="sponsors-tier sponsors-tier--silver">
+      <div class="sponsors-tier-label"><span>Silver Partners</span></div>
+      <div class="sponsors-cards">
+        <a href="https://www.safran-group.com/companies/safran-data-systems" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="assets/images/sponsors_logo/Safran_Data_Systems_India__Logo.png" alt="Safran Data Systems"
+                onerror="this.parentElement.innerHTML='<span class=fallback>Safran Data Systems</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">Safran Data Systems</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+        <a href="https://arts.net.in/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="assets/images/sponsors_logo/Keysight_Logo.png" alt="Keysight"
+                onerror="this.parentElement.innerHTML='<span class=fallback>Keysight</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">Keysight</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+        <a href="https://mineflaresoftware.com/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="assets/images/sponsors_logo/Mineflare_Technologies_Pvt_Ltd_Logo.jpeg" alt="Mineflare Technologies"
+                onerror="this.parentElement.innerHTML='<span class=fallback>Mineflare</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">Mineflare</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bronze -->
+    <div class="sponsors-tier sponsors-tier--bronze">
+      <div class="sponsors-tier-label"><span>Bronze Partners</span></div>
+      <div class="sponsors-cards">
+        <a href="https://ananthtech.com/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="https://logo.clearbit.com/ananthtech.com" alt="Ananth Technologies"
+                onerror="this.parentElement.innerHTML='<span class=fallback>Ananth Technologies</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">Ananth Technologies</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+        <a href="https://umacindia.com/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="https://logo.clearbit.com/umacindia.com" alt="UMAC"
+                onerror="this.parentElement.innerHTML='<span class=fallback>UMAC</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">UMAC</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+        <a href="https://www.tatacommunications.com/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="https://logo.clearbit.com/tatacommunications.com" alt="Tata Communications"
+                onerror="this.parentElement.innerHTML='<span class=fallback>Tata Communications</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">Tata Communications</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+        <a href="https://www.commediaindia.com/" target="_blank" class="sponsor-card">
+          <div class="sponsor-card__glow"></div>
+          <div class="sponsor-card__inner">
+            <div class="sponsor-card__logo">
+              <img src="assets/images/sponsors_logo/Commedia_Solutions_Pvt_Ltd_Logo.jpg" alt="Commedia Solutions"
+                onerror="this.parentElement.innerHTML='<span class=fallback>Commedia Solutions</span>'">
+            </div>
+            <div class="sponsor-card__content">
+              <span class="sponsor-card__name">Commedia Solutions</span>
+            </div>
+            <span class="sponsor-card__arrow">↗</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
 
 
 
