@@ -103,7 +103,7 @@
         }
 
         .content-wrap {
-            max-width: 1100px;
+            max-width: 1380px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
@@ -179,7 +179,7 @@
         /* ── Table ── */
         .schedule-table {
             width: 100%;
-            min-width: 580px;
+            min-width: 1160px;
             border-collapse: separate;
             border-spacing: 0;
             color: #e2e8f0;
@@ -200,15 +200,26 @@
 
         /* Column widths */
         .schedule-table colgroup col:nth-child(1) {
-            width: 185px;
+            width: 150px;
         }
 
         .schedule-table colgroup col:nth-child(2) {
-            width: 210px;
+            width: 160px;
         }
 
         .schedule-table colgroup col:nth-child(3) {
-            width: auto;
+            width: 230px;
+        }
+
+        .schedule-table colgroup col:nth-child(4),
+        .schedule-table colgroup col:nth-child(5),
+        .schedule-table colgroup col:nth-child(6),
+        .schedule-table colgroup col:nth-child(7) {
+            width: 170px;
+        }
+
+        .schedule-table colgroup col:nth-child(8) {
+            width: 190px;
         }
 
         .schedule-table td {
@@ -217,6 +228,8 @@
             vertical-align: middle;
             transition: background 0.2s ease;
             line-height: 1.55;
+            color: #e2e8f0;
+            font-size: 0.82rem;
         }
 
         .schedule-table tr:last-child td {
@@ -230,8 +243,8 @@
         /* ── Cell types ── */
         .schedule-time {
             font-weight: 700;
-            color: #a78bfa;
-            font-size: 0.82rem;
+            color: #c4b5fd;
+            font-size: 0.9rem;
             white-space: nowrap;
             vertical-align: middle;
         }
@@ -239,7 +252,7 @@
         .schedule-event {
             font-weight: 700;
             color: #f8fafc;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             vertical-align: middle;
         }
 
@@ -248,6 +261,46 @@
             font-size: 0.88rem;
             line-height: 1.6;
             vertical-align: middle;
+        }
+
+        .day-separator td {
+            background: linear-gradient(90deg, rgba(30, 64, 175, 0.55), rgba(139, 92, 246, 0.5));
+            text-align: center;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #e2e8f0;
+            letter-spacing: 0.02em;
+        }
+
+        .row-plenary td {
+            background: rgba(30, 41, 59, 0.38);
+        }
+
+        .row-technical td {
+            background: rgba(15, 23, 42, 0.34);
+        }
+
+        .row-neutral td {
+            background: rgba(51, 65, 85, 0.46);
+        }
+
+        .row-meta td {
+            background: rgba(76, 29, 149, 0.32);
+        }
+
+        .row-valedictory td {
+            background: linear-gradient(90deg, rgba(30, 64, 175, 0.42), rgba(139, 92, 246, 0.36));
+        }
+
+        .center-cell {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .theme-cell {
+            text-align: center;
+            font-weight: 700;
+            color: #cbd5e1;
         }
 
         /* ── Break rows ── */
@@ -265,7 +318,6 @@
             vertical-align: middle;
         }
 
-        /* Override the time cell in break rows so it stays right-aligned */
         .schedule-break td.schedule-time {
             text-align: left !important;
             color: #a78bfa !important;
@@ -402,87 +454,104 @@
                             <col>
                             <col>
                             <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
                         </colgroup>
                         <thead>
                             <tr>
+                                <th>Event</th>
                                 <th>Timings</th>
-                                <th>Event / Session</th>
-                                <th>Details / Halls</th>
+                                <th>Main Hall</th>
+                                <th>Hall 2</th>
+                                <th>Hall 3</th>
+                                <th>Hall 4</th>
+                                <th>Hall 5</th>
+                                <th>Theme</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr class="row-meta">
+                                <td class="schedule-event">Registration:</td>
                                 <td class="schedule-time">08:00 AM – 09:30 AM</td>
-                                <td class="schedule-event">Registration</td>
-                                <td class="schedule-topic">Welcome &amp; Badge Collection</td>
+                                <td colspan="5"></td>
+                                <td></td>
                             </tr>
-                            <tr>
+                            <tr class="row-neutral">
+                                <td class="schedule-event">Inaugural function:</td>
                                 <td class="schedule-time">09:30 AM – 10:30 AM</td>
-                                <td class="schedule-event" colspan="2">INAUGURAL FUNCTION</td>
+                                <td class="schedule-topic center-cell" colspan="5">INAUGURATION<br>(Chairman ISRO, Chairman DRDO - Chief Guest, Chairman IN-SPACe)</td>
+                                <td></td>
                             </tr>
                             <tr class="schedule-break">
+                                <td class="schedule-event">High Tea:</td>
                                 <td class="schedule-time">10:30 AM – 11:00 AM</td>
-                                <td colspan="2">High Tea</td>
+                                <td class="center-cell" colspan="5">High Tea</td>
+                                <td></td>
                             </tr>
-                            <tr>
-                                <td class="schedule-time">11:00 AM – 12:20 PM</td>
+                            <tr class="row-plenary">
                                 <td class="schedule-event">Plenary Session 1</td>
-                                <td class="schedule-topic">Keynote Talks on Mission Operation: Turning Design into
-                                    Achievement</td>
+                                <td class="schedule-time">11:00 AM – 12:20 PM</td>
+                                <td class="schedule-topic center-cell" colspan="5">Keynote Talks on Mission Operation<br>11:00 to 11:20: Dr. A.S. Kiran Kumar (ISRO)<br>11:30 to 11:50: Dr. Shujiro Sawai (JAXA)<br>12:00 to 12:20: Dr. T.S. Kelso (CelesTrak)</td>
+                                <td class="theme-cell">Mission Operation:<br>Turning Design into Achievement</td>
                             </tr>
-                            <tr>
-                                <td class="schedule-time">12:30 PM – 01:10 PM</td>
+                            <tr class="row-plenary">
                                 <td class="schedule-event">Plenary Session 2</td>
-                                <td class="schedule-topic">Panel on International Space Agency Leadership Forum:
-                                    Navigating Current Milestones &amp; Future Horizons</td>
+                                <td class="schedule-time">12:30 PM – 01:10 PM</td>
+                                <td class="schedule-topic center-cell" colspan="5"><u>International Space Agency Leadership Forum</u></td>
+                                <td class="theme-cell">Navigating Current Milestones &amp; Future Horizons</td>
                             </tr>
                             <tr class="schedule-break">
+                                <td class="schedule-event">Lunch</td>
                                 <td class="schedule-time">01:10 PM – 02:00 PM</td>
-                                <td colspan="2">Lunch</td>
+                                <td class="center-cell" colspan="5">Lunch</td>
+                                <td></td>
                             </tr>
-                            <tr>
+                            <tr class="row-technical">
+                                <td class="schedule-event">Technical Session 1:</td>
                                 <td class="schedule-time">02:00 PM – 03:30 PM</td>
-                                <td class="schedule-event">Technical Session 1</td>
-                                <td class="schedule-topic">
-                                    <div class="hall-grid">
-                                        <div class="hall-item">Hall 1: Paper Presentations</div>
-                                        <div class="hall-item">Hall 2: Paper Presentations</div>
-                                        <div class="hall-item">Hall 3: Paper Presentations</div>
-                                        <div class="hall-item">Hall 4: Paper Presentations</div>
-                                    </div>
-                                </td>
+                                <td class="schedule-topic"><strong>Technical Paper-S1</strong><br>02:00 to 02:10 Keynote by Director MCF</td>
+                                <td class="schedule-topic"><strong>Technical Paper-S2</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S3</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S4</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S5</strong></td>
+                                <td></td>
                             </tr>
                             <tr class="schedule-break">
+                                <td class="schedule-event">Tea Break</td>
                                 <td class="schedule-time">03:30 PM – 04:00 PM</td>
-                                <td colspan="2">High Tea</td>
+                                <td class="center-cell" colspan="5">High Tea</td>
+                                <td></td>
                             </tr>
-                            <tr>
-                                <td class="schedule-time">04:00 PM – 05:00 PM</td>
+                            <tr class="row-plenary">
                                 <td class="schedule-event">Plenary Session 3</td>
-                                <td class="schedule-topic">Keynote Talks on Mission Operation Strategy and Future
-                                    Roadmap</td>
+                                <td class="schedule-time">04:00 PM – 05:00 PM</td>
+                                <td class="schedule-topic center-cell" colspan="5"><u>Keynote Talks</u><br>04:00 to 04:20: Director ISTRAC<br>04:25 to 04:45: Mr. Jean-Yves Le Gall (CNES)</td>
+                                <td class="theme-cell">Mission Operation Strategy and Future Roadmap</td>
                             </tr>
-                            <!-- SWAPPED: from Day 2 12:00–01:00 PM -->
-                            <tr>
+                            <tr class="row-technical">
+                                <td class="schedule-event">Technical Session 2</td>
                                 <td class="schedule-time">05:00 PM – 06:00 PM</td>
-                                <td class="schedule-event">Technical Session 3</td>
-                                <td class="schedule-topic">
-                                    <div class="hall-grid">
-                                        <div class="hall-item">Hall 1: Paper Presentation</div>
-                                        <div class="hall-item">Hall 2: Paper Presentation</div>
-                                        <div class="hall-item">Hall 3: Paper Presentation</div>
-                                        <div class="hall-item">Hall 4: Paper Presentation</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="schedule-time">06:30 PM – 07:30 PM</td>
-                                <td class="schedule-event">Cultural Events</td>
-                                <td class="schedule-topic">Cultural Program</td>
+                                <td class="schedule-topic"><strong>Technical Paper-S6</strong><br>05:00 to 05:10 Keynote by Dr. Krishna Dev Kumar (AIML, Toronto)</td>
+                                <td class="schedule-topic"><strong>Technical Paper-S7</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S8</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S9</strong></td>
+                                <td class="schedule-topic"><strong>Sponsor Interaction</strong></td>
+                                <td></td>
                             </tr>
                             <tr class="schedule-break">
+                                <td class="schedule-event">Cultural Events</td>
+                                <td class="schedule-time">06:30 PM – 07:30 PM</td>
+                                <td class="center-cell" colspan="5">Cultural Program</td>
+                                <td></td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-event">Dinner</td>
                                 <td class="schedule-time">07:30 PM onwards</td>
-                                <td colspan="2">Gala Dinner</td>
+                                <td class="center-cell" colspan="5">Gala Dinner</td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -498,70 +567,86 @@
                             <col>
                             <col>
                             <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
                         </colgroup>
                         <thead>
                             <tr>
+                                <th>Event</th>
                                 <th>Timings</th>
-                                <th>Event / Session</th>
-                                <th>Details / Halls</th>
+                                <th>Main Hall</th>
+                                <th>Hall 2</th>
+                                <th>Hall 3</th>
+                                <th>Hall 4</th>
+                                <th>Hall 5</th>
+                                <th>Theme</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="schedule-time">09:00 AM – 10:10 AM</td>
-                                <td class="schedule-event">Plenary Session 5</td>
-                                <td class="schedule-topic">Plenary Talks</td>
-                            </tr>
-                            <tr class="schedule-break">
-                                <td class="schedule-time">10:10 AM – 10:30 AM</td>
-                                <td colspan="2">Tea Break</td>
-                            </tr>
-                            <tr>
-                                <td class="schedule-time">10:30 AM – 12:00 PM</td>
-                                <td class="schedule-event">Technical Session 2</td>
-                                <td class="schedule-topic">
-                                    <div class="hall-grid">
-                                        <div class="hall-item">Hall 1: Paper Presentation</div>
-                                        <div class="hall-item">Hall 2: Paper Presentation</div>
-                                        <div class="hall-item">Hall 3: Paper Presentation</div>
-                                        <div class="hall-item">Hall 4: Paper Presentation</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- SWAPPED: from Day 1 05:00–06:00 PM -->
-                            <tr>
-                                <td class="schedule-time">12:00 PM – 01:00 PM</td>
+                            <tr class="row-plenary">
                                 <td class="schedule-event">Plenary Session 4</td>
-                                <td class="schedule-topic">Panel on Human Space Program Challenges</td>
+                                <td class="schedule-time">09:00 AM – 10:10 AM</td>
+                                <td class="schedule-topic center-cell" colspan="5">Plenary Talks<br>09:00 to 09:20: Dr. Holger Mass (DLR)<br>09:25 to 09:45: Dr. Simon Plum (ESA)<br>09:50 to 10:10: Mr. Daniel Kroboth (EUTELSAT)</td>
+                                <td></td>
                             </tr>
                             <tr class="schedule-break">
+                                <td class="schedule-event">Tea Break</td>
+                                <td class="schedule-time">10:10 AM – 10:30 AM</td>
+                                <td class="center-cell" colspan="5">Tea Break</td>
+                                <td></td>
+                            </tr>
+                            <tr class="row-technical">
+                                <td class="schedule-event">Technical Session 3</td>
+                                <td class="schedule-time">10:30 AM – 12:00 PM</td>
+                                <td class="schedule-topic"><strong>Technical Paper-S5</strong><br>10:30 to 10:45 Keynote by Director LEOS</td>
+                                <td class="schedule-topic"><strong>Technical Paper-S6</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S7</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S8</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S5</strong></td>
+                                <td></td>
+                            </tr>
+                            <tr class="row-plenary">
+                                <td class="schedule-event">Plenary Session 5</td>
+                                <td class="schedule-time">12:00 PM – 01:00 PM</td>
+                                <td class="schedule-topic center-cell" colspan="5"><u>Industry Panel</u></td>
+                                <td></td>
+                            </tr>
+                            <tr class="schedule-break">
+                                <td class="schedule-event">Lunch</td>
                                 <td class="schedule-time">01:00 PM – 02:00 PM</td>
-                                <td colspan="2">Lunch</td>
+                                <td class="center-cell" colspan="5">Lunch</td>
+                                <td></td>
                             </tr>
-                            <tr>
-                                <td class="schedule-time">02:00 PM – 03:00 PM</td>
+                            <tr class="row-plenary">
                                 <td class="schedule-event">Plenary Session 6</td>
-                                <td class="schedule-topic">Industry Panel</td>
+                                <td class="schedule-time">02:00 PM – 03:00 PM</td>
+                                <td class="schedule-topic center-cell" colspan="5"><u>Panel Discussion on Human Space Program Challenges</u></td>
+                                <td class="theme-cell">Human Space Program Challenges</td>
                             </tr>
                             <tr class="schedule-break">
+                                <td class="schedule-event">Tea Break</td>
                                 <td class="schedule-time">03:00 PM – 03:30 PM</td>
-                                <td colspan="2">High Tea</td>
+                                <td class="center-cell" colspan="5">High Tea</td>
+                                <td></td>
                             </tr>
-                            <tr>
-                                <td class="schedule-time">03:30 PM – 05:00 PM</td>
+                            <tr class="row-technical">
                                 <td class="schedule-event">Technical Session 4</td>
-                                <td class="schedule-topic">
-                                    <div class="hall-grid">
-                                        <div class="hall-item">Hall 1: Paper Presentation</div>
-                                        <div class="hall-item">Hall 2: Paper Presentation</div>
-                                        <div class="hall-item">Hall 3: Paper Presentation</div>
-                                        <div class="hall-item">Hall 4: Paper Presentation</div>
-                                    </div>
-                                </td>
+                                <td class="schedule-time">03:30 PM – 05:00 PM</td>
+                                <td class="schedule-topic"><strong>Technical Paper-S13</strong><br>03:30 to 03:45 Keynote Talk by Mr. Vladimir Nazarov (Institute of Russian Academy of Science)</td>
+                                <td class="schedule-topic"><strong>Technical Paper-S14</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S15</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S16</strong></td>
+                                <td class="schedule-topic"><strong>Technical Paper-S5</strong></td>
+                                <td></td>
                             </tr>
-                            <tr>
+                            <tr class="row-valedictory">
+                                <td class="schedule-event">Valedictory function</td>
                                 <td class="schedule-time">05:00 PM – 06:00 PM</td>
-                                <td class="schedule-event" colspan="2">VALEDICTORY FUNCTION (Concluding Session)</td>
+                                <td class="schedule-topic center-cell" colspan="5">Concluding Session</td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
