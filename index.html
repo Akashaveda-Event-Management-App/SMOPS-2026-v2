@@ -2630,7 +2630,7 @@
       </div>
 
       <!-- Speakers Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto">
+      <div id="speakers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto">
 
         <!-- Speaker 1: Holger Maas -->
         <div class="mission-control-card card-accent-blue p-6 rounded-2xl group animate-fade-in-up"
@@ -3182,6 +3182,205 @@
       </div>
     </div>
   </section>
+
+  <script>
+    (function () {
+      var speakersGrid = document.getElementById('speakers-grid');
+      if (!speakersGrid) return;
+
+      var desiredSpeakerOrder = [
+        'ISRO Chairman',
+        'DRDO Chairman',
+        'InSPACe Chairman',
+        'AS Kiran Kumar',
+        'M Sankaran',
+        'ISTRAC Director',
+        'DK Singh Sir',
+        'NRSC Director',
+        'MCF Director',
+        'Leos Director',
+        'Shubhanshu Shukla',
+        'Denis Matveev',
+        'Dr Shujiro Sawai',
+        'TS kelso',
+        'DG DSA',
+        'Simon Plum',
+        'Akiko Otsuka',
+        'Holger Mass',
+        'Jean Le Gall',
+        'Dr. Aleksei Shpakov',
+        'Adreanos Golemis',
+        'Richard Leshner',
+        'Sean Burns',
+        'Daniel Kroboth',
+        'Vladmir Nazarov',
+        'Bourguet Solene CNES',
+        'Dr Jitendra Singh',
+        'Prem Sundaramoorthy',
+        'Krishna Dev Kumar'
+      ];
+
+      var imageOverrides = {
+        isrochairman: './assets/images/Dr_V_Narayana.webp',
+        drdochairman: './assets/images/DrSamirVKamat.jpeg',
+        inspacechairman: './assets/images/DrPawanKumarGoenka.jpeg',
+        dksinghsir: './assets/images/Speakers/DKSingh.png',
+        nrscdirector: './assets/images/Speakers/Dr-Prakash-Chauhan.png',
+        mcfdirector: './assets/images/Speakers/Pnakaj-D-Killedar.png',
+        dgdsa: './assets/images/Speakers/AVM-Manu.png',
+        adreanosgolemis: './assets/images/Speakers/Adrianos-Golemis.png',
+        vladmirnazarov: './assets/images/Speakers/Vladmir-Nazarov.png',
+        bourguetsolenecnes: './assets/images/Speakers/Bourguest-Solene.png'
+      };
+
+      var profileOverrides = {
+        isrochairman: {
+          name: 'Dr. V. Narayanan',
+          subtitle: 'Chairman, ISRO'
+        },
+        drdochairman: {
+          name: 'Dr. Samir V. Kamat',
+          subtitle: 'Chairman, DRDO'
+        },
+        inspacechairman: {
+          name: 'Dr. Pawan Kumar Goenka',
+          subtitle: 'Chairman, IN-SPACe'
+        },
+        dksinghsir: {
+          name: 'D K Singh',
+          subtitle: 'Director, HSFC'
+        },
+        nrscdirector: {
+          name: 'Dr. Prakash Chauhan',
+          subtitle: 'Director, NRSC'
+        },
+        mcfdirector: {
+          name: 'Pankaj D Killedar',
+          subtitle: 'Director, MCF'
+        },
+        dgdsa: {
+          name: 'AVM Manu Midha',
+          subtitle: 'DG, DSA'
+        },
+        adreanosgolemis: {
+          name: 'Dr. Adrianos Golemis',
+          subtitle: 'ESA Lead Flight Surgeon'
+        },
+        vladmirnazarov: {
+          name: 'Vladmir Nazarov',
+          subtitle: 'Institute of Russian Academy of Science'
+        },
+        bourguetsolenecnes: {
+          name: 'Bourguet Solene',
+          subtitle: 'CNES'
+        }
+      };
+
+      var matchAliases = {
+        holgermass: ['holgermaas'],
+        jeanlegall: ['mrjeanyveslegall', 'jeanyveslegall'],
+        denismatveev: ['cosmonautdenismatveev'],
+        drjitendrasingh: ['mrjitendrasingh', 'jitendrasingh'],
+        premsundaramoorthy: ['psundaramoorthy'],
+        richardleshner: ['richardbleshner'],
+        seanburns: ['mrseanburns'],
+        danielkroboth: ['mrdanielkroboth'],
+        krishnadevkumar: ['drkrishnadevkumar'],
+        tskelso: ['tskelso'],
+        dkalias: ['dineshkumarsingh']
+      };
+
+      function normalizeName(value) {
+        return (value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      }
+
+      function getCardName(card) {
+        var heading = card.querySelector('h3');
+        return heading ? heading.textContent.trim() : '';
+      }
+
+      function buildPlaceholderCard(name, index) {
+        var accents = ['blue', 'indigo', 'purple', 'pink'];
+        var accent = accents[index % accents.length];
+        var animationDelay = ((index % 4) + 1) / 10;
+        var normalized = normalizeName(name);
+        var imagePath = imageOverrides[normalized];
+        var profile = profileOverrides[normalized] || {};
+        var displayName = profile.name || name;
+        var subtitle = profile.subtitle || 'Profile details will be updated';
+
+        var avatarInner = imagePath
+          ? '<img src="' + imagePath + '" alt="' + name + '" class="w-full h-full object-cover" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';">' +
+          '<svg class="w-16 h-16 text-' + accent + '-400/40" style="display: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24">' +
+          '<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />' +
+          '</svg>'
+          : '<svg class="w-16 h-16 text-' + accent + '-400/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">' +
+          '<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />' +
+          '</svg>';
+
+        var card = document.createElement('div');
+        card.className = 'mission-control-card card-accent-' + accent + ' p-6 rounded-2xl group animate-fade-in-up';
+        card.style.animationDelay = animationDelay + 's';
+        card.innerHTML =
+          '<div class="scanline"></div>' +
+          '<div class="relative z-10">' +
+          '<div class="relative mb-6">' +
+          '<div class="radar-ring"></div>' +
+          '<div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-' + accent + '-400/30 group-hover:border-' + accent + '-400 transition-colors duration-500 relative flex items-center justify-center bg-' + accent + '-900/20">' +
+          avatarInner +
+          '</div>' +
+          '</div>' +
+          '<div class="text-center">' +
+          '<h3 class="text-xl font-bold text-white mb-1 group-hover:text-' + accent + '-300 transition-colors">' + displayName + '</h3>' +
+          '<p class="text-xs text-' + accent + '-200/80 font-semibold mb-3 leading-snug">' + subtitle + '</p>' +
+          '</div>' +
+          '</div>';
+
+        return card;
+      }
+
+      var existingCards = Array.prototype.slice.call(speakersGrid.querySelectorAll('.mission-control-card'));
+      var existingByName = new Map();
+
+      existingCards.forEach(function (card) {
+        var key = normalizeName(getCardName(card));
+        if (key) existingByName.set(key, card);
+      });
+
+      function findExistingCard(targetName) {
+        var normalizedTarget = normalizeName(targetName);
+        var keys = [normalizedTarget];
+
+        if (matchAliases[normalizedTarget]) {
+          keys = keys.concat(matchAliases[normalizedTarget]);
+        }
+
+        if (normalizedTarget === 'istracdirector') {
+          keys.push('drakanilkumar');
+        }
+        if (normalizedTarget === 'leosdirector') {
+          keys.push('drkvsriram');
+        }
+
+        for (var i = 0; i < keys.length; i++) {
+          var key = keys[i];
+          if (existingByName.has(key)) {
+            var card = existingByName.get(key);
+            existingByName.delete(key);
+            return card;
+          }
+        }
+
+        return null;
+      }
+
+      var reorderedCards = desiredSpeakerOrder.map(function (name, index) {
+        return findExistingCard(name) || buildPlaceholderCard(name, index);
+      });
+
+      speakersGrid.replaceChildren.apply(speakersGrid, reorderedCards);
+    })();
+  </script>
 
   <!-- Committee Section -->
   <section id="Committee" class="py-8 sm:py-10 relative overflow-hidden scroll-mt-20">
